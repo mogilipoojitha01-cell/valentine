@@ -8,41 +8,40 @@
 body {
   margin: 0;
   font-family: 'Georgia', serif;
-  background: linear-gradient(to right, #ff9a9e, #fad0c4);
   overflow: hidden;
+  background: linear-gradient(135deg,#ff9a9e,#fecfef,#f6d365);
   color: white;
 }
 
-.slide {
-  display: none;
+.container {
+  display: flex;
+  width: 1500vw;
   height: 100vh;
+  transition: transform 1s ease-in-out;
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
   padding: 60px;
   box-sizing: border-box;
   text-align: center;
-  animation: fade 1.5s ease;
-}
-
-.active {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-@keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
 h1 {
-  font-size: 45px;
+  font-size: 40px;
   margin-bottom: 20px;
 }
 
 p {
-  font-size: 22px;
-  max-width: 800px;
-  line-height: 1.6;
+  font-size: 20px;
+  max-width: 850px;
+  line-height: 1.8;
 }
 
 button {
@@ -50,11 +49,11 @@ button {
   padding: 15px 40px;
   border: none;
   border-radius: 30px;
+  font-size: 18px;
   background: white;
   color: #ff4d6d;
-  font-size: 18px;
   cursor: pointer;
-  transition: 0.4s;
+  transition: 0.3s;
 }
 
 button:hover {
@@ -63,115 +62,160 @@ button:hover {
   transform: scale(1.1);
 }
 
-.gallery img {
-  width: 250px;
+img {
+  width: 320px;
   border-radius: 20px;
-  margin: 15px;
-  transition: 0.4s;
-}
-
-.gallery img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px white;
+  margin-top: 20px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.6);
 }
 </style>
 </head>
 
 <body>
 
-<!-- Slide 1 -->
-<div class="slide active">
-  <h1>Happy Valentine’s Day My Chittikanna 💖</h1>
-  <p>
-  This is not just a website, Kanna…  
-  This is my heart written in words.  
-  Every click you make will show you how deeply I love you.
-  </p>
-  <button onclick="nextSlide()">Start The Love Story 💕</button>
+<div class="container" id="slider">
+
+<!-- PAGE 1 -->
+<div class="slide">
+<h1>Happy Valentine’s Day My Chittikanna 💖</h1>
+<p>
+Kanna… this is not just a website.  
+This is my heart written in words.  
+Every slide you see is one emotion I feel for you.  
+Today I want you to know how special you are in my life.
+</p>
+<button onclick="next()">Start Our Love Story 💕</button>
 </div>
 
-<!-- Slide 2 -->
+<!-- PAGE 2 -->
 <div class="slide">
-  <h1>How It All Started 💞</h1>
-  <p>
-  The day you entered my life, everything changed.  
-  My normal days became special.  
-  My simple smiles became real happiness.  
-  You didn’t just become a person in my life…  
-  You became my peace, my comfort, my safe place.
-  </p>
-  <button onclick="nextSlide()">Next Chapter 💘</button>
+<h1>The Day You Came Into My Life 💞</h1>
+<p>
+From the moment you entered my world, everything changed.  
+My normal days became magical.  
+My silence became comfort.  
+My heart found its favorite person.
+</p>
+<button onclick="next()">Next 💘</button>
 </div>
 
-<!-- Slide 3 -->
+<!-- PAGE 3 -->
 <div class="slide">
-  <h1>Why I Love You ❤️</h1>
-  <p>
-  I love your smile.  
-  I love the way you care for me.  
-  I love how you understand me without explaining.  
-  I love your voice, your laugh, your heart.  
-  Every little thing about you makes me fall more in love.
-  </p>
-  <button onclick="nextSlide()">See Our Memories 📸</button>
+<h1>Why I Fell For You ❤️</h1>
+<p>
+I fell for your smile.  
+I fell for your caring heart.  
+I fell for the way you understand me without words.  
+You became my happiness without even trying.
+</p>
+<button onclick="next()">Next 💖</button>
 </div>
 
-<!-- Slide 4 -->
+<!-- IMAGE PAGES (4–13) -->
+
 <div class="slide">
-  <h1>Our Beautiful Memories 📸</h1>
-  <div class="gallery">
-    <img src="photo1.jpg">
-    <img src="photo2.jpg">
-    <img src="photo3.jpg">
-  </div>
-  <button onclick="nextSlide()">Play Our Song 🎵</button>
+<h1>Our Memory 1 📸</h1>
+<p>This moment will always stay in my heart forever.</p>
+<img src="photo1.jpg">
+<button onclick="next()">Next 💕</button>
 </div>
 
-<!-- Slide 5 -->
 <div class="slide">
-  <h1>Our Special Song 🎶</h1>
-  <p>
-  Every time this song plays, I think of you.  
-  It reminds me of our moments, our laughter, our love.
-  </p>
-  <button onclick="document.getElementById('song').play()">Play Song ❤️</button>
-  <audio id="song" src="song.mp3"></audio>
-  <button onclick="nextSlide()">Continue 💕</button>
+<h1>Our Memory 2 📸</h1>
+<p>Every smile in this picture reminds me how lucky I am.</p>
+<img src="photo2.jpg">
+<button onclick="next()">Next 💕</button>
 </div>
 
-<!-- Slide 6 -->
 <div class="slide">
-  <h1>My Promise To You 💍</h1>
-  <p>
-  No matter what life gives us…  
-  I promise to stand beside you.  
-  I promise to support you.  
-  I promise to love you more every single day.
-  </p>
-  <button onclick="nextSlide()">Final Words 💖</button>
+<h1>Our Memory 3 📸</h1>
+<p>Your smile here melts my heart every time.</p>
+<img src="photo3.jpg">
+<button onclick="next()">Next 💕</button>
 </div>
 
-<!-- Slide 7 -->
 <div class="slide">
-  <h1>Forever Yours, Kanna ❤️</h1>
-  <p>
-  You are not just my boyfriend…  
-  You are my future, my forever, my everything.  
-  I am so lucky to have you in my life.  
-  Happy Valentine’s Day, My Charan 💞  
-  I Love You So Much 💖
-  </p>
+<h1>Our Memory 4 📸</h1>
+<p>This was one of my favorite days with you.</p>
+<img src="photo4.jpg">
+<button onclick="next()">Next 💕</button>
+</div>
+
+<div class="slide">
+<h1>Our Memory 5 📸</h1>
+<p>I feel so safe and happy whenever I am with you.</p>
+<img src="photo5.jpg">
+<button onclick="next()">Next 💕</button>
+</div>
+
+<div class="slide">
+<h1>Our Memory 6 📸</h1>
+<p>Every picture with you is my favorite memory.</p>
+<img src="photo6.jpg">
+<button onclick="next()">Next 💕</button>
+</div>
+
+<div class="slide">
+<h1>Our Memory 7 📸</h1>
+<p>With you, even ordinary moments become special.</p>
+<img src="photo7.jpg">
+<button onclick="next()">Next 💕</button>
+</div>
+
+<div class="slide">
+<h1>Our Memory 8 📸</h1>
+<p>You are the best thing that ever happened to me.</p>
+<img src="photo8.jpg">
+<button onclick="next()">Next 💕</button>
+</div>
+
+<div class="slide">
+<h1>Our Memory 9 📸</h1>
+<p>Thank you for being my peace and my strength.</p>
+<img src="photo9.jpg">
+<button onclick="next()">Next 💕</button>
+</div>
+
+<div class="slide">
+<h1>Our Memory 10 📸</h1>
+<p>I want to create thousands more memories with you.</p>
+<img src="photo10.jpg">
+<button onclick="next()">Next 💕</button>
+</div>
+
+<!-- PAGE 14 -->
+<div class="slide">
+<h1>My Promise To You 💍</h1>
+<p>
+No matter what life brings,  
+I promise to stand beside you.  
+To support you.  
+To love you more every single day.  
+You are my forever person, Kanna.
+</p>
+<button onclick="next()">Final Page 💖</button>
+</div>
+
+<!-- PAGE 15 -->
+<div class="slide">
+<h1>Forever Yours ❤️</h1>
+<p>
+Happy Valentine’s Day, My Charan 💞  
+You are my love, my happiness, my world.  
+I am so proud to call you mine.  
+I Love You So Much Kanna 💖
+</p>
+</div>
+
 </div>
 
 <script>
-let current = 0;
-const slides = document.querySelectorAll(".slide");
-
-function nextSlide() {
-  slides[current].classList.remove("active");
-  current++;
-  if(current >= slides.length) current = slides.length - 1;
-  slides[current].classList.add("active");
+let index = 0;
+function next(){
+  if(index < 14){
+    index++;
+    document.getElementById("slider").style.transform = "translateX(-" + (index * 100) + "vw)";
+  }
 }
 </script>
 
