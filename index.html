@@ -3,136 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <title>Kanna ❤️ Poojitha</title>
-
 <style>
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #ff9a9e, #fad0c4);
-  text-align: center;
+  background: linear-gradient(-45deg,#ff9a9e,#fad0c4,#ffdde1,#ee9ca7);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  overflow: hidden;
   color: white;
-  overflow-x: hidden;
+  text-align: center;
 }
 
-h1 {
-  font-size: 3em;
-  margin-top: 50px;
-  animation: glow 2s infinite alternate;
+@keyframes gradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
-@keyframes glow {
-  from { text-shadow: 0 0 10px white; }
-  to { text-shadow: 0 0 25px red; }
+.slide {
+  display: none;
+  height: 100vh;
+  padding: 40px;
 }
 
-.section {
-  padding: 50px 20px;
+.active {
+  display: block;
+  animation: fade 1.5s;
 }
 
-.gallery {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+h1 { font-size: 40px; }
+
+button {
+  padding: 15px 30px;
+  background: red;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
 .gallery img {
   width: 250px;
   border-radius: 20px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  margin: 15px;
+  transition: 0.4s;
 }
 
 .gallery img:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 30px red;
+  box-shadow: 0 0 25px white;
 }
 
-button {
-  padding: 15px 30px;
-  border: none;
-  border-radius: 30px;
-  background: red;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: darkred;
-  transform: scale(1.1);
-}
-
-.heart {
-  position: fixed;
-  color: red;
-  animation: float 5s linear infinite;
-}
-
-@keyframes float {
-  from { transform: translateY(100vh); }
-  to { transform: translateY(-10vh); }
-}
 </style>
 </head>
 
 <body>
 
-<h1>To My Chittikanna 💖</h1>
-
-<div class="section">
-  <h2>Kanna, My Forever ❤️</h2>
-  <p>
-    My sweet Charan…  
-    You are the reason for my smile, my peace, my happiness.  
-    Every moment with you feels magical.  
-    I am so lucky to call you mine 💕  
-  </p>
+<!-- Slide 1 -->
+<div class="slide active">
+  <h1>To My Chittikanna 💖</h1>
+  <p>Kanna… this website is only for you ❤️</p>
+  <button onclick="nextSlide()">Tap to Begin 💕</button>
 </div>
 
-<div class="section">
-  <h2>Our Beautiful Memories 📸</h2>
+<!-- Slide 2 -->
+<div class="slide">
+  <h1>My Sweet Charan 💞</h1>
+  <p>You are my smile, my happiness, my everything.</p>
+  <button onclick="nextSlide()">Next 💘</button>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide">
+  <h1>Our Beautiful Memories 📸</h1>
   <div class="gallery">
     <img src="photo1.jpg">
     <img src="photo2.jpg">
     <img src="photo3.jpg">
   </div>
+  <button onclick="nextSlide()">Next 💖</button>
 </div>
 
-<div class="section">
-  <h2>Click This Kanna 🎵</h2>
-  <button onclick="playSong1()">Play Our Song1 ❤️</button>
-  <audio id="song1" src="song1.mp3"></audio>
+<!-- Slide 4 -->
+<div class="slide">
+  <h1>Play Our Song 🎵</h1>
+  <button onclick="document.getElementById('song').play()">Play Song ❤️</button>
+  <audio id="song" src="song1.mp3"></audio>
+  <button onclick="nextSlide()">Next 💕</button>
 </div>
 
-<div class="section">
-  <h2>I Love You Forever 💍</h2>
-  <p>
-    No matter what happens in life,  
-    I will always choose you, my Kanna.  
-    You are my today, tomorrow and forever 💖
-  </p>
+<!-- Slide 5 -->
+<div class="slide">
+  <h1>I Love You Forever 💍</h1>
+  <p>No matter what happens… I will always choose you Kanna.</p>
+  <button onclick="nextSlide()">Next 💓</button>
+</div>
+
+<!-- Slide 6 -->
+<div class="slide">
+  <h1>You Are My Future 🌹</h1>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- Slide 7 -->
+<div class="slide">
+  <h1>My Heart Belongs To You ❤️</h1>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- Slide 8 -->
+<div class="slide">
+  <h1>Forever With You 💞</h1>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- Slide 9 -->
+<div class="slide">
+  <h1>Only You, My Kanna 💖</h1>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- Slide 10 -->
+<div class="slide">
+  <h1>Will You Stay With Me Forever? 💍</h1>
+  <p>I Love You So Much 💕</p>
 </div>
 
 <script>
-function playSong1() {
-  document.getElementById("song1").play();
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+
+function nextSlide() {
+  slides[currentSlide].classList.remove("active");
+  currentSlide++;
+  if(currentSlide >= slides.length) currentSlide = 0;
+  slides[currentSlide].classList.add("active");
 }
-
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = Math.random() * 20 + 20 + "px";
-  document.body.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-  }, 5000);
-}
-
-setInterval(createHeart, 500);
 </script>
 
 </body>
