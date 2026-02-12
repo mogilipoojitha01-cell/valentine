@@ -1,429 +1,328 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine's Day - Chittikanna ❤️</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(45deg, #ff6b9d, #c44569, #f0544f);
-            color: white;
-            overflow: hidden;
-            height: 100vh;
-        }
-        
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            animation: fadeIn 1s ease-in-out;
-        }
-        
-        .slide.active {
-            display: flex;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        
-        .nav-btn {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            font-size: 24px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-            z-index: 1000;
-        }
-        
-        .nav-btn:hover {
-            background: rgba(255,255,255,0.4);
-            transform: translateY(-50%) scale(1.1);
-        }
-        
-        .prev { left: 20px; }
-        .next { right: 20px; }
-        
-        h1 { font-size: 3em; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        h2 { font-size: 2em; margin-bottom: 15px; }
-        .caption { font-size: 1.3em; margin: 10px 0; }
-        .matter { font-size: 1.1em; line-height: 1.5; margin: 10px 0; opacity: 0.9; }
-        
-        .photo { 
-            width: 80%; 
-            max-width: 400px; 
-            height: 250px; 
-            object-fit: cover; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            margin: 20px 0;
-        }
-        
-        audio { width: 90%; margin: 10px 0; }
-        
-        .feature-section {
-            max-width: 90%;
-            text-align: center;
-        }
-        
-        .love-meter {
-            font-size: 4em;
-            background: linear-gradient(45deg, #ff6b9d, #ffd93d);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 20px 0;
-            animation: pulse 1s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .hearts {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        
-        .heart {
-            position: absolute;
-            font-size: 20px;
-            color: #ff69b4;
-            animation: fall 3s linear infinite;
-        }
-        
-        @keyframes fall {
-            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-        
-        .countdown {
-            font-size: 2.5em;
-            margin: 20px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        .quiz-btn, .submit-btn {
-            background: linear-gradient(45deg, #ff6b9d, #ff8e8e);
-            border: none;
-            color: white;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border-radius: 50px;
-            cursor: pointer;
-            margin: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s;
-            touch-action: manipulation;
-        }
-        
-        .quiz-btn:hover, .submit-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-        }
-        
-        button:active {
-            transform: scale(0.95);
-        }
-        
-        .result {
-            font-size: 1.5em;
-            margin: 20px 0;
-            padding: 20px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-        }
-        
-        @media (max-width: 768px) {
-            h1 { font-size: 2em; }
-            h2 { font-size: 1.5em; }
-            .photo { width: 95%; height: 200px; }
-            .nav-btn { width: 50px; height: 50px; font-size: 20px; }
-            .prev { left: 10px; }
-            .next { right: 10px; }
-        }
-    </style>
-</head>
-<body>
-    <button class="nav-btn prev" onclick="prevSlide()">‹</button>
-    <button class="nav-btn next" onclick="nextSlide()">›</button>
-    
-    <!-- Slide 1: Surprise -->
-    <div class="slide active" id="slide1">
-        <h1>🎉 SURPRISE! 🎉</h1>
-        <h2>Chittikanna ❤️</h2>
-        <p class="caption">Your special Valentine's presentation is here!</p>
-        <div class="hearts" id="hearts1"></div>
-    </div>
-    
-    <!-- Slides 2-9: Photos + Songs -->
-    <div class="slide" id="slide2">
-        <img src="photo1.jpg" class="photo" alt="Photo 1">
-        <p class="caption">Our first memory together ✨</p>
-        <p class="matter">1. That day when we first met</p>
-        <p class="matter">2. Your smile stole my heart</p>
-        <p class="matter">3. Forever grateful for you</p>
-        <audio controls>
-            <source src="song1.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-    
-    <div class="slide" id="slide3">
-        <img src="photo2.jpg" class="photo" alt="Photo 2">
-        <p class="caption">Our adventure begins 🌟</p>
-        <p class="matter">1. Laughing till our stomachs hurt</p>
-        <p class="matter">2. Making memories every moment</p>
-        <p class="matter">3. You make life beautiful</p>
-        <audio controls>
-            <source src="song2.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-    
-    <!-- Continue pattern for slides 4-9 (add your photos/songs) -->
-    <div class="slide" id="slide4">
-        <img src="photo3.jpg" class="photo" alt="Photo 3">
-        <p class="caption">Special moments 💕</p>
-        <p class="matter">1. Your hugs heal everything</p>
-        <p class="matter">2. Together we shine brighter</p>
-        <p class="matter">3. My favorite place is with you</p>
-        <audio controls>
-            <source src="song3.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-    
-    <div class="slide" id="slide5">
-        <img src="photo4.jpg" class="photo" alt="Photo 4">
-        <p class="caption">Love in every smile 😍</p>
-        <p class="matter">1. Your eyes speak to my soul</p>
-        <p class="matter">2. Every day with you is magic</p>
-        <p class="matter">3. My heart chose you always</p>
-        <audio controls>
-            <source src="song4.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-    
-    <div class="slide" id="slide6">
-        <img src="photo5.jpg" class="photo" alt="Photo 5">
-        <p class="caption">Our forever moments 🌹</p>
-        <p class="matter">1. Holding hands through life</p>
-        <p class="matter">2. Your love is my strength</p>
-        <p class="matter">3. Together till eternity</p>
-        <audio controls>
-            <source src="song5.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-    
-    <div class="slide" id="slide7">
-        <img src="photo6.jpg" class="photo" alt="Photo 6">
-        <p class="caption">You complete me ❤️</p>
-        <p class="matter">1. My best friend, my love</p>
-        <p class="matter">2. Dreams come true with you</p>
-        <p class="matter">3. Grateful for our journey</p>
-        <audio controls>
-            <source src="song6.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-    
-    <div class="slide" id="slide8">
-        <img src="photo7.jpg" class="photo" alt="Photo 7">
-        <p class="caption">Beautiful us 💖</p>
-        <p class="matter">1. Your laughter is music</p>
-        <p class="matter">2. Love grows stronger daily</p>
-        <p class="matter">3. You're my everything</p>
-        <audio controls>
-            <source src="song7.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-    
-    <div class="slide" id="slide9">
-        <img src="photo8.jpg" class="photo" alt="Photo 8">
-        <p class="caption">Our love story continues ✨</p>
-        <p class="matter">1. Every moment is precious</p>
-        <p class="matter">2. Can't wait for more memories</p>
-        <p class="matter">3. Forever and always yours</p>
-        <audio controls>
-            <source src="song8.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-    
-    <!-- Slide 10: Love Meter -->
-    <div class="slide" id="slide10">
-        <h2>💕 Love Compatibility Calculator 💕</h2>
-        <p>Enter your names to calculate love percentage!</p>
-        <input type="text" id="name1" placeholder="Chittikanna" style="padding:15px; margin:10px; border-radius:25px; border:none; font-size:1.1em; width:80%; max-width:300px;">
-        <input type="text" id="name2" placeholder="Charan" style="padding:15px; margin:10px; border-radius:25px; border:none; font-size:1.1em; width:80%; max-width:300px;">
-        <button class="submit-btn" onclick="calculateLove()">Calculate Love %</button>
-        <div id="loveResult" class="result" style="display:none;"></div>
-        <div class="love-meter" id="percentage"></div>
-    </div>
-    
-    <!-- Slides 11-24: Interactive Features -->
-    <div class="slide" id="slide11">
-        <h2>⏰ Valentine's Countdown</h2>
-        <div class="countdown" id="countdown">Get Ready!</div>
-        <p>Our special moments are just beginning...</p>
-        <button class="quiz-btn" onclick="startCountdown()">Start Valentine's Timer</button>
-    </div>
-    
-    <div class="slide" id="slide12">
-        <h2>❓ Love Quiz</h2>
-        <p>How well do you know each other?</p>
-        <button class="quiz-btn" onclick="loveQuiz()">Take Love Quiz</button>
-        <div id="quizResult"></div>
-    </div>
-    
-    <div class="slide" id="slide13">
-        <h2>💖 Valentine's Activities</h2>
-        <p>Romantic ideas for your boy:</p>
-        <ul style="text-align:left; max-width:90%;">
-            <li>Starry night picnic date</li>
-            <li>Handwritten love letters</li>
-            <li>Couple dance under moonlight</li>
-            <li>Memory scrapbook making</li>
-            <li>Surprise love coupons</li>
-        </ul>
-    </div>
-    
-    <div class="slide" id="slide14">
-        <h2>✨ Romantic Games</h2>
-        <p>Find the hidden hearts game!</p>
-        <div class="hearts" id="gameHearts"></div>
-        <button class="quiz-btn" onclick="startHeartGame()">Play Hearts Game</button>
-        <p id="gameScore">Score: 0</p>
-    </div>
-    
-    <!-- Continue with more interactive slides... -->
-    
-    <!-- Final Slide 15 -->
-    <div class="slide" id="slide15">
-        <h1>💝 Happy Valentine's Day! 💝</h1>
-        <h2>Chittikanna / Charan / Kanna</h2>
-        <p class="caption">You make every day special</p>
-        <p class="matter">Thank you for being my everything</p>
-        <p class="matter">Here's to many more Valentine's together!</p>
-        <p class="matter">Forever yours, with all my love 💕</p>
-        <div class="hearts" id="finalHearts"></div>
-    </div>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Kanna 💖</title>
 
-    <script>
-        let currentSlide = 1;
-        const totalSlides = 15;
-        
-        function showSlide(n) {
-            document.querySelectorAll('.slide').forEach(slide => slide.classList.remove('active'));
-            document.getElementById(`slide${n}`).classList.add('active');
-            currentSlide = n;
-            
-            // Add hearts animation
-            if (n === 1 || n === 15) createHearts();
-        }
-        
-        function nextSlide() {
-            if (currentSlide < totalSlides) {
-                showSlide(currentSlide + 1);
-            }
-        }
-        
-        function prevSlide() {
-            if (currentSlide > 1) {
-                showSlide(currentSlide - 1);
-            }
-        }
-        
-        // Touch/swipe support for mobile
-        let startX = 0;
-        document.addEventListener('touchstart', e => startX = e.touches[0].clientX);
-        document.addEventListener('touchend', e => {
-            let endX = e.changedTouches[0].clientX;
-            if (startX - endX > 50) nextSlide();
-            if (endX - startX > 50) prevSlide();
-        });
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', e => {
-            if (e.key === 'ArrowRight') nextSlide();
-            if (e.key === 'ArrowLeft') prevSlide();
-        });
-        
-        // Love Calculator
-        function calculateLove() {
-            const name1 = document.getElementById('name1').value || 'Chittikanna';
-            const name2 = document.getElementById('name2').value || 'Charan';
-            const percentage = Math.floor(Math.random() * 20) + 80; // Always 80-100%
-            document.getElementById('percentage').textContent = `${percentage}%`;
-            document.getElementById('loveResult').innerHTML = 
-                `<strong>${name1} ♥ ${name2}</strong><br>Perfect match! 💖`;
-            document.getElementById('loveResult').style.display = 'block';
-        }
-        
-        // Hearts animation
-        function createHearts() {
-            const heartsContainer = document.querySelector('.slide.active .hearts');
-            if (!heartsContainer) return;
-            
-            for (let i = 0; i < 10; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.className = 'heart';
-                    heart.innerHTML = '💖';
-                    heart.style.left = Math.random() * 100 + '%';
-                    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                    heartsContainer.appendChild(heart);
-                    
-                    setTimeout(() => heart.remove(), 5000);
-                }, i * 300);
-            }
-        }
-        
-        // Countdown
-        function startCountdown() {
-            let time = 5;
-            const countdownEl = document.getElementById('countdown');
-            const interval = setInterval(() => {
-                countdownEl.textContent = time;
-                time--;
-                if (time < 0) {
-                    clearInterval(interval);
-                    countdownEl.textContent = 'HAPPY VALENTINE\'S DAY! 💕';
-                    nextSlide();
-                }
-            }, 1000);
-        }
-        
-        // Auto-play hearts on load
-        window.onload = () => {
-            createHearts();
-            setInterval(createHearts, 5000);
-        };
-    </script>
+<style>
+    .love{
+position:absolute;
+font-size:24px;
+animation:float 6s linear forwards;
+cursor:pointer;
+color:#ff1493;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh) rotate(0deg);}
+100%{transform:translateY(-10vh) rotate(360deg);}
+}
+
+/* Crackers burst */
+.cracker{
+position:absolute;
+font-size:30px;
+animation:boom 0.6s ease-out forwards;
+color:#ff69b4;
+}
+
+@keyframes boom{
+0%{transform:scale(1);opacity:1;}
+100%{transform:scale(2.5);opacity:0;}
+}
+
+/* Flower particles */
+.flower{
+position:absolute;
+font-size:20px;
+animation:flowerSpread 1s ease-out forwards;
+color:#ff69b4;
+}
+
+@keyframes flowerSpread{
+0%{transform:translate(0,0) scale(1);opacity:1;}
+100%{transform:translate(var(--x),var(--y)) scale(0.5);opacity:0;}
+}
+
+body{
+margin:0;
+padding:0;
+overflow:hidden;
+background:linear-gradient(to bottom,#fff0f5,#ffd9ec);
+font-family:cursive;
+}
+
+.slide{
+display:none;
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+box-sizing:border-box;
+padding:25px;
+text-align:center;
+color:#ff1493;
+}
+
+.active{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+animation:fade 0.6s ease;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+.photo{
+width:90%;
+height:50vh;
+object-fit:contain;
+border-radius:20px;
+box-shadow:0 0 20px pink;
+margin-bottom:15px;
+}
+
+.controls{
+position:fixed;
+bottom:15px;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:0 25px;
+box-sizing:border-box;
+}
+
+button{
+background:#ff69b4;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:25px;
+font-size:16px;
+}
+
+.love{
+position:absolute;
+font-size:22px;
+animation:float 6s linear forwards;
+cursor:pointer;
+color:#ff69b4;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh) rotate(0deg);}
+100%{transform:translateY(-10vh) rotate(360deg);}
+}
+
+.blast{
+position:absolute;
+font-size:35px;
+animation:explode 0.5s forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(1);opacity:1;}
+100%{transform:scale(3);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<script>
+// Floating pink symbols with blast
+const icons=["💖","🌹","💋","🧸","🍫","💕"];
+setInterval(()=>{
+let el=document.createElement("span");
+el.className="love";
+el.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+el.style.left=Math.random()*100+"%";
+el.onclick=function(){
+let boom=document.createElement("span");
+boom.className="blast";
+boom.innerHTML="💥";
+boom.style.left=el.style.left;
+boom.style.top=el.offsetTop+"px";
+document.body.appendChild(boom);
+setTimeout(()=>boom.remove(),500);
+el.remove();
+}
+document.body.appendChild(el);
+setTimeout(()=>{if(el) el.remove()},6000);
+},900);
+</script>
+
+<!-- SLIDE 1 -->
+<div class="slide active">
+<h2>For My Chittikanna 💗</h2>
+<p>
+The moment you entered my world,<br>
+everything turned into pink magic,<br>
+Kanna you are my forever dream,<br>
+Charan my sweetest heartbeat,<br>
+Tonight is only about us.
+</p>
+</div>
+
+<!-- PHOTO SLIDES 2–9 -->
+
+<div class="slide">
+<img src="photo1.jpg" class="photo">
+<p>Your eyes hold my universe.<br>I fall for you every second.<br>You are my forever spark.</p>
+<audio src="song1.mp3"></audio>
+</div>
+
+<div class="slide">
+<img src="photo2.jpg" class="photo">
+<p>Your hug feels like heaven.<br>My safest place is you.<br>I belong only to you.</p>
+<audio src="song2.mp3"></audio>
+</div>
+
+<div class="slide">
+<img src="photo3.jpg" class="photo">
+<p>Your smile melts my heart.<br>You are my sweetest dream.<br>I choose you forever.</p>
+<audio src="song3.mp3"></audio>
+</div>
+
+<div class="slide">
+<img src="photo4.jpg" class="photo">
+<p>Time stops with you.<br>Every second feels magical.<br>Stay mine always.</p>
+<audio src="song4.mp3"></audio>
+</div>
+
+<div class="slide">
+<img src="photo5.jpg" class="photo">
+<p>You color my life pink.<br>My world shines because of you.<br>I adore you.</p>
+<audio src="song5.mp3"></audio>
+</div>
+
+<div class="slide">
+<img src="photo6.jpg" class="photo">
+<p>Your touch is electricity.<br>You light my darkest nights.<br>I’m yours endlessly.</p>
+<audio src="song6.mp3"></audio>
+</div>
+
+<div class="slide">
+<img src="photo7.jpg" class="photo">
+<p>Your laugh heals me.<br>You are my comfort zone.<br>Forever my love.</p>
+<audio src="song7.mp3"></audio>
+</div>
+
+<div class="slide">
+<img src="photo8.jpg" class="photo">
+<p>Your love is my strength.<br>My future has only us.<br>Kanna I adore you.</p>
+<audio src="song8.mp3"></audio>
+</div>
+
+<!-- FEATURE SLIDES -->
+
+<div class="slide">
+<h2>Love Calculator 💕</h2>
+<input id="name" placeholder="Enter our names">
+<button onclick="calculate()">Check</button>
+<p id="loveResult"></p>
+</div>
+
+<div class="slide">
+<h2>Countdown For Forever ⏳</h2>
+<p id="countdown"></p>
+</div>
+
+<div class="slide">
+<h2>Compatibility Quiz 💌</h2>
+<p>Who loves more?</p>
+<button onclick="alert('Poojitha loves Kanna infinity 💖')">Reveal</button>
+</div>
+
+<div class="slide">
+<h2>Find My Heart 💖</h2>
+<button onclick="alert('You found my heart 💕')">Tap Here</button>
+</div>
+
+<div class="slide">
+<h2>Romantic Adventures 🌹</h2>
+<p>Stargazing picnic.<br>Hot air balloon sunrise.<br>Candlelight cooking night.</p>
+</div>
+
+<div class="slide">
+<h2>Fun Date Nights 💗</h2>
+<p>Arcade battles.<br>Karaoke duets.<br>Ice skating romance.</p>
+</div>
+
+<div class="slide">
+<h2>Cozy Bonding 🤍</h2>
+<p>Pottery crafting.<br>Comedy night laughs.<br>Sunset love letters.</p>
+</div>
+
+<div class="slide">
+<h1>Happy Valentine’s Day 💖</h1>
+<p>
+Under pink skies we shine,<br>
+our love feels cinematic,<br>
+written in destiny,<br>
+two souls intertwined,<br>
+Forever begins now.
+</p>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+<button onclick="prev()">Back</button>
+<button onclick="next()">Next</button>
+</div>
+
+<script>
+const icons=["💖","🌹","💋","🧸","🍫","💕"];
+
+setInterval(()=>{
+let el=document.createElement("span");
+el.className="love";
+el.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+el.style.left=Math.random()*100+"%";
+document.body.appendChild(el);
+
+el.onclick=function(){
+
+// cracker burst
+let burst=document.createElement("span");
+burst.className="cracker";
+burst.innerHTML="💥";
+burst.style.left=el.offsetLeft+"px";
+burst.style.top=el.offsetTop+"px";
+document.body.appendChild(burst);
+setTimeout(()=>burst.remove(),600);
+
+// flower particles
+for(let i=0;i<8;i++){
+let flower=document.createElement("span");
+flower.className="flower";
+flower.innerHTML="🌸";
+flower.style.left=el.offsetLeft+"px";
+flower.style.top=el.offsetTop+"px";
+
+let x=(Math.random()*200-100)+"px";
+let y=(Math.random()*200-100)+"px";
+
+flower.style.setProperty('--x',x);
+flower.style.setProperty('--y',y);
+
+document.body.appendChild(flower);
+setTimeout(()=>flower.remove(),1000);
+}
+
+el.remove();
+};
+
+setTimeout(()=>{if(el) el.remove()},6000);
+
+},800);
+</script>
+
+
 </body>
 </html>
-
