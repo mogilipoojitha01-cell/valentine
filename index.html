@@ -5,62 +5,24 @@
 <title>For My Kanna 💖</title>
 
 <style>
-    .love{
-position:absolute;
-font-size:24px;
-animation:float 6s linear forwards;
-cursor:pointer;
-color:#ff1493;
-}
-
-@keyframes float{
-0%{transform:translateY(100vh) rotate(0deg);}
-100%{transform:translateY(-10vh) rotate(360deg);}
-}
-
-/* Crackers burst */
-.cracker{
-position:absolute;
-font-size:30px;
-animation:boom 0.6s ease-out forwards;
-color:#ff69b4;
-}
-
-@keyframes boom{
-0%{transform:scale(1);opacity:1;}
-100%{transform:scale(2.5);opacity:0;}
-}
-
-/* Flower particles */
-.flower{
-position:absolute;
-font-size:20px;
-animation:flowerSpread 1s ease-out forwards;
-color:#ff69b4;
-}
-
-@keyframes flowerSpread{
-0%{transform:translate(0,0) scale(1);opacity:1;}
-100%{transform:translate(var(--x),var(--y)) scale(0.5);opacity:0;}
-}
-
 body{
 margin:0;
 padding:0;
 overflow:hidden;
-background:linear-gradient(to bottom,#fff0f5,#ffd9ec);
+background:linear-gradient(to bottom,#ffe6f2,#fff0f5);
 font-family:cursive;
 }
 
+/* Slides */
 .slide{
 display:none;
 position:absolute;
-top:0;
-left:0;
 width:100%;
 height:100vh;
-box-sizing:border-box;
+top:0;
+left:0;
 padding:25px;
+box-sizing:border-box;
 text-align:center;
 color:#ff1493;
 }
@@ -70,7 +32,7 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-animation:fade 0.6s ease;
+animation:fade 0.5s ease;
 }
 
 @keyframes fade{
@@ -78,15 +40,17 @@ from{opacity:0;}
 to{opacity:1;}
 }
 
+/* Image */
 .photo{
 width:90%;
-height:50vh;
+max-height:55vh;
 object-fit:contain;
 border-radius:20px;
-box-shadow:0 0 20px pink;
+box-shadow:0 0 20px #ff69b4;
 margin-bottom:15px;
 }
 
+/* Controls */
 .controls{
 position:fixed;
 bottom:15px;
@@ -106,166 +70,144 @@ border-radius:25px;
 font-size:16px;
 }
 
+/* Floating love symbols */
 .love{
 position:absolute;
-font-size:22px;
+font-size:24px;
 animation:float 6s linear forwards;
 cursor:pointer;
 color:#ff69b4;
 }
 
 @keyframes float{
-0%{transform:translateY(100vh) rotate(0deg);}
-100%{transform:translateY(-10vh) rotate(360deg);}
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
 }
 
-.blast{
+/* Crack burst */
+.burst{
 position:absolute;
 font-size:35px;
-animation:explode 0.5s forwards;
+animation:explode 0.6s forwards;
 }
 
 @keyframes explode{
 0%{transform:scale(1);opacity:1;}
-100%{transform:scale(3);opacity:0;}
+100%{transform:scale(2.5);opacity:0;}
+}
+
+/* Flower bloom */
+.flower{
+position:absolute;
+font-size:22px;
+animation:bloom 1s forwards;
+}
+
+@keyframes bloom{
+0%{transform:translate(0,0) scale(1);opacity:1;}
+100%{transform:translate(var(--x),var(--y)) scale(0.5);opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
+<!-- FLOATING SYMBOL SCRIPT -->
 <script>
-// Floating pink symbols with blast
-const icons=["💖","🌹","💋","🧸","🍫","💕"];
+const icons=["💖","🌹","💕","💗"];
+
 setInterval(()=>{
 let el=document.createElement("span");
 el.className="love";
 el.innerHTML=icons[Math.floor(Math.random()*icons.length)];
 el.style.left=Math.random()*100+"%";
+document.body.appendChild(el);
+
 el.onclick=function(){
+
+// burst effect
 let boom=document.createElement("span");
-boom.className="blast";
+boom.className="burst";
 boom.innerHTML="💥";
-boom.style.left=el.style.left;
+boom.style.left=el.offsetLeft+"px";
 boom.style.top=el.offsetTop+"px";
 document.body.appendChild(boom);
-setTimeout(()=>boom.remove(),500);
-el.remove();
+setTimeout(()=>boom.remove(),600);
+
+// flower bloom pink & white
+for(let i=0;i<10;i++){
+let flower=document.createElement("span");
+flower.className="flower";
+flower.innerHTML= i%2==0 ? "🌸" : "🤍";
+flower.style.left=el.offsetLeft+"px";
+flower.style.top=el.offsetTop+"px";
+
+let x=(Math.random()*200-100)+"px";
+let y=(Math.random()*200-100)+"px";
+flower.style.setProperty("--x",x);
+flower.style.setProperty("--y",y);
+
+document.body.appendChild(flower);
+setTimeout(()=>flower.remove(),1000);
 }
-document.body.appendChild(el);
+
+el.remove();
+};
+
 setTimeout(()=>{if(el) el.remove()},6000);
+
 },900);
 </script>
 
-<!-- SLIDE 1 -->
+<!-- SLIDES -->
+
 <div class="slide active">
-<h2>For My Chittikanna 💗</h2>
+<h2>For My Chittikanna 💖</h2>
 <p>
-The moment you entered my world,<br>
+The day you came into my life,<br>
 everything turned into pink magic,<br>
 Kanna you are my forever dream,<br>
 Charan my sweetest heartbeat,<br>
-Tonight is only about us.
+Tonight belongs to us.
 </p>
 </div>
 
-<!-- PHOTO SLIDES 2–9 -->
-
 <div class="slide">
 <img src="photo1.jpg" class="photo">
-<p>Your eyes hold my universe.<br>I fall for you every second.<br>You are my forever spark.</p>
+<p>Your eyes are my universe.<br>I fall deeper each day.<br>You are my forever spark.</p>
 <audio src="song1.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo2.jpg" class="photo">
-<p>Your hug feels like heaven.<br>My safest place is you.<br>I belong only to you.</p>
+<p>Your hug feels like heaven.<br>You are my safest place.<br>I belong only to you.</p>
 <audio src="song2.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo3.jpg" class="photo">
-<p>Your smile melts my heart.<br>You are my sweetest dream.<br>I choose you forever.</p>
+<p>Your smile melts my heart.<br>Life shines with you.<br>Stay mine forever.</p>
 <audio src="song3.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo4.jpg" class="photo">
-<p>Time stops with you.<br>Every second feels magical.<br>Stay mine always.</p>
+<p>You color my world pink.<br>Every second is magical.<br>I adore you endlessly.</p>
 <audio src="song4.mp3"></audio>
 </div>
 
 <div class="slide">
-<img src="photo5.jpg" class="photo">
-<p>You color my life pink.<br>My world shines because of you.<br>I adore you.</p>
-<audio src="song5.mp3"></audio>
+<h2>Love Meter 💕</h2>
+<p>Our Love = 100% Perfect 💖</p>
 </div>
 
 <div class="slide">
-<img src="photo6.jpg" class="photo">
-<p>Your touch is electricity.<br>You light my darkest nights.<br>I’m yours endlessly.</p>
-<audio src="song6.mp3"></audio>
-</div>
-
-<div class="slide">
-<img src="photo7.jpg" class="photo">
-<p>Your laugh heals me.<br>You are my comfort zone.<br>Forever my love.</p>
-<audio src="song7.mp3"></audio>
-</div>
-
-<div class="slide">
-<img src="photo8.jpg" class="photo">
-<p>Your love is my strength.<br>My future has only us.<br>Kanna I adore you.</p>
-<audio src="song8.mp3"></audio>
-</div>
-
-<!-- FEATURE SLIDES -->
-
-<div class="slide">
-<h2>Love Calculator 💕</h2>
-<input id="name" placeholder="Enter our names">
-<button onclick="calculate()">Check</button>
-<p id="loveResult"></p>
-</div>
-
-<div class="slide">
-<h2>Countdown For Forever ⏳</h2>
-<p id="countdown"></p>
-</div>
-
-<div class="slide">
-<h2>Compatibility Quiz 💌</h2>
-<p>Who loves more?</p>
-<button onclick="alert('Poojitha loves Kanna infinity 💖')">Reveal</button>
-</div>
-
-<div class="slide">
-<h2>Find My Heart 💖</h2>
-<button onclick="alert('You found my heart 💕')">Tap Here</button>
-</div>
-
-<div class="slide">
-<h2>Romantic Adventures 🌹</h2>
-<p>Stargazing picnic.<br>Hot air balloon sunrise.<br>Candlelight cooking night.</p>
-</div>
-
-<div class="slide">
-<h2>Fun Date Nights 💗</h2>
-<p>Arcade battles.<br>Karaoke duets.<br>Ice skating romance.</p>
-</div>
-
-<div class="slide">
-<h2>Cozy Bonding 🤍</h2>
-<p>Pottery crafting.<br>Comedy night laughs.<br>Sunset love letters.</p>
-</div>
-
-<div class="slide">
-<h1>Happy Valentine’s Day 💖</h1>
+<h1>Happy Valentine’s Day 💗</h1>
 <p>
 Under pink skies we shine,<br>
+two hearts beating as one,<br>
 our love feels cinematic,<br>
 written in destiny,<br>
-two souls intertwined,<br>
 Forever begins now.
 </p>
 </div>
@@ -277,52 +219,34 @@ Forever begins now.
 </div>
 
 <script>
-const icons=["💖","🌹","💋","🧸","🍫","💕"];
+let slides=document.querySelectorAll(".slide");
+let current=0;
 
-setInterval(()=>{
-let el=document.createElement("span");
-el.className="love";
-el.innerHTML=icons[Math.floor(Math.random()*icons.length)];
-el.style.left=Math.random()*100+"%";
-document.body.appendChild(el);
-
-el.onclick=function(){
-
-// cracker burst
-let burst=document.createElement("span");
-burst.className="cracker";
-burst.innerHTML="💥";
-burst.style.left=el.offsetLeft+"px";
-burst.style.top=el.offsetTop+"px";
-document.body.appendChild(burst);
-setTimeout(()=>burst.remove(),600);
-
-// flower particles
-for(let i=0;i<8;i++){
-let flower=document.createElement("span");
-flower.className="flower";
-flower.innerHTML="🌸";
-flower.style.left=el.offsetLeft+"px";
-flower.style.top=el.offsetTop+"px";
-
-let x=(Math.random()*200-100)+"px";
-let y=(Math.random()*200-100)+"px";
-
-flower.style.setProperty('--x',x);
-flower.style.setProperty('--y',y);
-
-document.body.appendChild(flower);
-setTimeout(()=>flower.remove(),1000);
+function showSlide(i){
+slides.forEach(s=>{
+s.classList.remove("active");
+let a=s.querySelector("audio");
+if(a){a.pause();a.currentTime=0;}
+});
+slides[i].classList.add("active");
+let audio=slides[i].querySelector("audio");
+if(audio){audio.play();}
 }
 
-el.remove();
-};
+function next(){
+if(current<slides.length-1){
+current++;
+showSlide(current);
+}
+}
 
-setTimeout(()=>{if(el) el.remove()},6000);
-
-},800);
+function prev(){
+if(current>0){
+current--;
+showSlide(current);
+}
+}
 </script>
-
 
 </body>
 </html>
