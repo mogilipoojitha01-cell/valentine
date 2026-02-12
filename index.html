@@ -2,12 +2,20 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Forever Story ❤️</title>
+<title>Our Forever 💖</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
-body{background:black;color:white;overflow-x:hidden;}
-section{
+body{
+overflow:hidden;
+background:linear-gradient(to bottom,#ffb6d9,#ffffff);
+color:#b30059;
+}
+
+/* Slides */
+.slide{
+position:absolute;
+width:100%;
 height:100vh;
 display:flex;
 flex-direction:column;
@@ -15,83 +23,79 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:25px;
-position:relative;
+transition:1s;
 }
 
-h1{font-size:28px;margin-bottom:15px;}
-p{font-size:17px;line-height:1.6;max-width:90%;}
-
+/* Images */
 img{
 width:85%;
 max-width:320px;
 border-radius:20px;
 margin:15px 0;
-box-shadow:0 0 30px pink;
+box-shadow:0 0 25px #ff66b2;
 }
 
-/* Falling Hearts */
-.heart{
+/* Caption */
+.caption{
+font-size:20px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+/* Matter */
+.matter{
+font-size:16px;
+line-height:1.6;
+max-width:90%;
+}
+
+/* Buttons */
+button{
+position:fixed;
+bottom:20px;
+padding:10px 20px;
+border:none;
+border-radius:30px;
+background:#ff66b2;
+color:white;
+font-weight:bold;
+}
+
+#prev{left:20px;}
+#next{right:20px;}
+
+/* Rotating Love Symbols */
+.rotate{
+position:absolute;
+font-size:24px;
+animation:spin 6s linear infinite;
+}
+@keyframes spin{
+0%{transform:rotate(0);}
+100%{transform:rotate(360deg);}
+}
+
+/* Falling Roses */
+.rose{
 position:fixed;
 top:-10px;
 font-size:20px;
 animation:fall 6s linear infinite;
 }
-
 @keyframes fall{
 0%{transform:translateY(0);}
 100%{transform:translateY(110vh);}
 }
 
-/* Sparkle */
+/* Sparkles */
 .sparkle{
 position:absolute;
 font-size:18px;
-animation:blink 1.5s infinite alternate;
+animation:blink 1s infinite alternate;
 }
 @keyframes blink{
 from{opacity:0;}
 to{opacity:1;}
-}
-
-/* Buttons */
-button{
-margin-top:15px;
-padding:10px 18px;
-border:none;
-border-radius:30px;
-background:white;
-color:#ff0066;
-font-weight:bold;
-}
-
-/* Love Meter */
-input{
-padding:8px;
-border-radius:10px;
-border:none;
-margin:10px;
-}
-
-/* Popup */
-#popup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-display:none;
-justify-content:center;
-align-items:center;
-text-align:center;
-}
-
-#popupContent{
-background:white;
-color:#ff0066;
-padding:25px;
-border-radius:20px;
-width:80%;
 }
 
 </style>
@@ -100,164 +104,107 @@ width:80%;
 
 <audio id="music"></audio>
 
-<!-- Countdown -->
-<section>
-<h1>Valentine Countdown 💖</h1>
-<p id="countdown"></p>
-</section>
+<div id="slides"></div>
 
-<!-- Romantic Intro -->
-<section>
-<h1>Our Love Story Begins ❤️</h1>
-<p>
-From strangers to soulmates…  
-From simple talks to endless dreams…  
-This journey with you is my greatest blessing.
-</p>
-</section>
+<button id="prev" onclick="prevSlide()">⬅ Back</button>
+<button id="next" onclick="nextSlide()">Next ➡</button>
 
-<!-- Photo Slides (8) -->
 <script>
+
 const photos=["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg","photo6.jpg","photo7.jpg","photo8.jpg"];
 const songs=["song1.mp3","song2.mp3","song3.mp3","song4.mp3","song5.mp3","song6.mp3","song7.mp3","song8.mp3"];
-const messages=[
-"You walked into my life like destiny written by the stars.",
-"Your smile became my daily sunshine.",
-"With you, even silence feels beautiful.",
-"You are my peace in every storm.",
-"My heart found its home in you.",
-"Every memory with you is priceless.",
-"I see my forever when I look at you.",
-"You are my always and beyond."
+
+const captions=[
+"Our First Magic 💞",
+"Your Smile, My Peace 🌸",
+"Moments That Matter 🌹",
+"Forever Starts Here 💍",
+"My Safe Place 🤍",
+"Our Beautiful Madness 💕",
+"Endless Memories ✨",
+"You Are My Always 💖"
 ];
 
+const matters=[
+"That day changed everything.\nYou entered quietly,\nbut your presence rewrote my destiny.\nSince then, my heart beats differently.\nIt beats for you.",
+"Your smile is my sunrise.\nYour eyes hold galaxies.\nYour voice calms my storms.\nYour touch feels like home.\nYou are my peace.",
+"Every picture holds a heartbeat.\nEvery memory holds warmth.\nEvery second with you feels rare.\nTime stops when you are near.\nI cherish us endlessly.",
+"I don’t want temporary.\nI don’t want almost.\nI want forever.\nI want always.\nI want you.",
+"In your arms I feel safe.\nIn your love I feel strong.\nIn your presence I feel complete.\nYou are not part of my life.\nYou are my life.",
+"Our love is crazy.\nOur bond is rare.\nOur connection is deep.\nOur story is divine.\nAnd I wouldn't trade it.",
+"I replay our memories daily.\nYour laugh echoes in my heart.\nYour love fills my soul.\nYou are my sweetest habit.\nMy forever favorite person.",
+"If destiny asked me again,\nI would choose you.\nWithout doubt.\nWithout fear.\nWithout hesitation."
+];
+
+const features=[
+"Countdown Feature 💘",
+"Compatibility Quiz 💌",
+"Love Audio Message 🎵",
+"Love Meter Calculator 💞",
+"Find My Heart Game 🎮",
+"Virtual E-Card 💌",
+"Couple Bundle Dreams 🎁",
+"AI Love Poem ✨"
+];
+
+let container=document.getElementById("slides");
+
+for(let i=0;i<8;i++){
+
+let slide=document.createElement("div");
+slide.className="slide";
+slide.style.left=(i*100)+"%";
+
+slide.innerHTML=`
+<div class="rotate" style="top:10%;left:10%;">💖</div>
+<div class="rotate" style="top:80%;left:80%;">🤍</div>
+<div class="sparkle" style="top:20%;left:70%;">✨</div>
+
+<div class="caption">${captions[i]}</div>
+
+<img src="${photos[i]}">
+
+<div class="matter">${matters[i].replace(/\n/g,"<br>")}</div>
+
+<br>
+<div><b>${features[i]}</b></div>
+`;
+
+container.appendChild(slide);
+}
+
+/* Slide Movement */
+let current=0;
 let music=document.getElementById("music");
 
-photos.forEach((photo,i)=>{
-document.write(`
-<section onclick="playSong(${i})">
-<h1>My Heartbeat 💕</h1>
-<img src="${photo}">
-<p>${messages[i]}</p>
-</section>
-`);
+function showSlide(index){
+if(index<0||index>7)return;
+current=index;
+document.querySelectorAll(".slide").forEach((s)=>{
+s.style.transform="translateX(-"+current*100+"%)";
 });
-</script>
-
-<!-- Love Meter -->
-<section>
-<h1>Love Calculator 💞</h1>
-<input id="name1" placeholder="Your Name">
-<input id="name2" placeholder="His Name">
-<button onclick="calculateLove()">Calculate</button>
-<p id="result"></p>
-</section>
-
-<!-- Quiz -->
-<section>
-<h1>Love Quiz 💌</h1>
-<p>Who loves more?</p>
-<button onclick="quizAnswer()">You</button>
-<button onclick="quizAnswer()">Me</button>
-<p id="quizResult"></p>
-</section>
-
-<!-- Mini Game -->
-<section>
-<h1>Find The Hidden Heart 💖</h1>
-<p>Tap the screen to find hidden love</p>
-<button onclick="findHeart()">Find Heart</button>
-<p id="gameResult"></p>
-</section>
-
-<!-- AI Poem -->
-<section>
-<h1>Personalized Love Poem ✨</h1>
-<button onclick="generatePoem()">Generate</button>
-<p id="poem"></p>
-</section>
-
-<!-- Final Proposal -->
-<section>
-<h1>Forever With Me? 💍</h1>
-<p>
-Not just for Valentine’s Day…  
-But for every sunrise and sunset of our lives.
-</p>
-<button onclick="showPopup()">Yes ❤️</button>
-</section>
-
-<!-- Popup -->
-<div id="popup">
-<div id="popupContent">
-<h2>I Love You Forever 💖</h2>
-<p>
-You are my destiny, my dream, my always.
-</p>
-<button onclick="closePopup()">Close</button>
-</div>
-</div>
-
-<script>
-
-/* Countdown */
-let countDate=new Date("Feb 14, 2026 00:00:00").getTime();
-let x=setInterval(function(){
-let now=new Date().getTime();
-let distance=countDate-now;
-let days=Math.floor(distance/(1000*60*60*24));
-document.getElementById("countdown").innerHTML=days+" days left ❤️";
-},1000);
-
-/* Play song per photo */
-function playSong(i){
-music.src=songs[i];
+music.src=songs[current];
 music.play();
 }
 
-/* Love Calculator */
-function calculateLove(){
-let percent=Math.floor(Math.random()*50)+50;
-document.getElementById("result").innerHTML="Your Love is "+percent+"% 💖";
-}
+function nextSlide(){showSlide(current+1);}
+function prevSlide(){showSlide(current-1);}
+showSlide(0);
 
-/* Quiz */
-function quizAnswer(){
-document.getElementById("quizResult").innerHTML="Both love equally forever ❤️";
-}
-
-/* Mini Game */
-function findHeart(){
-document.getElementById("gameResult").innerHTML="You found my heart! 💕";
-}
-
-/* AI Poem */
-function generatePoem(){
-document.getElementById("poem").innerHTML=
-"You are my moon in darkest night,<br>My heart’s eternal shining light,<br>With you my world feels so divine,<br>Forever yours, forever mine.";
-}
-
-/* Popup */
-function showPopup(){
-document.getElementById("popup").style.display="flex";
-}
-function closePopup(){
-document.getElementById("popup").style.display="none";
-}
-
-/* Falling Hearts */
+/* Falling Roses */
 setInterval(()=>{
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"%";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
-},400);
+let rose=document.createElement("div");
+rose.className="rose";
+rose.innerHTML="🌹";
+rose.style.left=Math.random()*100+"%";
+document.body.appendChild(rose);
+setTimeout(()=>rose.remove(),6000);
+},500);
 
 </script>
 
 </body>
 </html>
+
 
 
