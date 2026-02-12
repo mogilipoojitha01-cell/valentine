@@ -2,309 +2,274 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kanna ❤️ Poojitha</title>
+<title>For My Kanna ❤️</title>
 
 <style>
-*{
+body{
 margin:0;
 padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
-
-body{
+background:linear-gradient(to bottom,#fff0f5,#ffe6f0);
+font-family: 'Segoe UI', cursive;
 overflow:hidden;
-background:linear-gradient(to bottom,#ffd6eb,#ffffff);
-color:#b30059;
 }
 
-/* Slide */
 .slide{
-position:absolute;
-width:100%;
+display:none;
 height:100vh;
+width:100%;
+position:absolute;
+top:0;
+left:0;
+padding:30px;
+box-sizing:border-box;
+text-align:center;
+color:#ff1493;
+}
+
+.active{
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-text-align:center;
-padding:20px;
-transition:1s ease;
-overflow:auto;
+animation:fade 1s ease;
 }
 
-/* Image */
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
 img{
-width:85%;
-max-width:300px;
-max-height:40vh;
-object-fit:contain;
+width:80%;
 border-radius:20px;
-margin:10px 0;
+margin-bottom:15px;
 box-shadow:0 0 20px pink;
 }
 
-/* Buttons inside slide */
-.nav{
-margin-top:15px;
-}
-
-.nav button{
-padding:8px 18px;
-margin:5px;
+button{
+position:absolute;
+bottom:20px;
+padding:12px 25px;
 border:none;
-border-radius:20px;
-background:#ff66b2;
+background:#ff69b4;
 color:white;
+border-radius:30px;
+font-size:16px;
 }
 
-/* Pink & White rotating animation */
-.symbol{
-position:fixed;
-font-size:20px;
-color:#ff66b2;
-animation:spin 6s linear infinite;
-}
-
-@keyframes spin{
-0%{transform:rotate(0deg);}
-100%{transform:rotate(360deg);}
-}
-
-/* Floating hearts */
-.heart{
-position:fixed;
-bottom:-20px;
-font-size:18px;
-color:white;
-animation:float 6s linear infinite;
+.love{
+position:absolute;
+font-size:22px;
+color:#ff69b4;
+animation:float 6s infinite linear;
 }
 
 @keyframes float{
-0%{transform:translateY(0);}
-100%{transform:translateY(-110vh);}
+0%{transform:translateY(100vh) rotate(0deg);}
+100%{transform:translateY(-10vh) rotate(360deg);}
 }
-
-input,select{
-padding:8px;
-margin:5px;
-border-radius:10px;
-border:1px solid pink;
-width:80%;
-max-width:250px;
-}
-
 </style>
 </head>
+
 <body>
 
-<audio id="music"></audio>
-<div id="slides"></div>
+<!-- FLOATING LOVE SYMBOLS -->
+<script>
+const symbols=["💖","🌹","💋","🧸","🍫","💕"];
+setInterval(()=>{
+let span=document.createElement("span");
+span.className="love";
+span.innerHTML=symbols[Math.floor(Math.random()*symbols.length)];
+span.style.left=Math.random()*100+"%";
+document.body.appendChild(span);
+setTimeout(()=>span.remove(),6000);
+},800);
+</script>
+
+<!-- SLIDES -->
+
+<div class="slide active">
+<h2>For My Chittikanna 💗</h2>
+<p>
+From the moment you smiled at me,<br>
+my world turned into pink dreams,<br>
+Every heartbeat whispers your name,<br>
+Kanna… you are my forever magic,<br>
+Tonight is just for you, my love.
+</p>
+<button onclick="next()">Next</button>
+</div>
+
+<!-- PHOTO SLIDES 2-9 -->
 
 <script>
-
-/* Songs */
-const songs=["song1.mp3","song2.mp3","song3.mp3","song4.mp3","song5.mp3","song6.mp3","song7.mp3","song8.mp3"];
-
-let container=document.getElementById("slides");
-
-/* Slide creator */
-function createSlide(content){
-let slide=document.createElement("div");
-slide.className="slide";
-slide.style.top=(document.querySelectorAll(".slide").length*100)+"vh";
-slide.innerHTML=content+`
-<div class="nav">
-<button onclick="prevSlide()">⬆</button>
-<button onclick="nextSlide()">⬇</button>
-</div>`;
-container.appendChild(slide);
+const slidesContent=[
+{
+img:"photo1.jpg",
+song:"song1.mp3",
+text:"Kanna… your eyes hold my entire universe.<br>Every blink feels like a love story.<br>You are my sweetest addiction."
+},
+{
+img:"photo2.jpg",
+song:"song2.mp3",
+text:"Charan… when you hug me, time stops.<br>Your arms are my safest place.<br>I melt only for you."
+},
+{
+img:"photo3.jpg",
+song:"song3.mp3",
+text:"My love… your smile heals my storms.<br>You are sunshine in my darkest days.<br>I choose you always."
+},
+{
+img:"photo4.jpg",
+song:"song4.mp3",
+text:"Chittikanna… your voice is my favorite melody.<br>Even silence feels romantic with you.<br>You complete me."
+},
+{
+img:"photo5.jpg",
+song:"song5.mp3",
+text:"Kanna… every memory with you sparkles.<br>You are my pink fairy tale.<br>Forever yours."
+},
+{
+img:"photo6.jpg",
+song:"song6.mp3",
+text:"Charan… your touch sets my heart racing.<br>Every moment feels magical.<br>I belong to you."
+},
+{
+img:"photo7.jpg",
+song:"song7.mp3",
+text:"My heartbeat says your name softly.<br>You are my sweetest destiny.<br>I love you endlessly."
+},
+{
+img:"photo8.jpg",
+song:"song8.mp3",
+text:"Kanna… your love colors my world pink.<br>With you, life is beautiful.<br>Stay mine forever."
 }
-
-/* 1 Intro */
-createSlide(`
-<h2>My Forever Kanna 🤍</h2>
-<p>
-Charan you are my destiny.<br>
-Chittikanna you are my sweetest blessing.<br>
-My love for you grows every second.
-</p>
-`);
-
-/* 2–9 Photo Slides */
-const photoMessages=[
-["My Beautiful Beginning 💗","The day you smiled at me,<br>My world turned pink,<br>You became my happiness."],
-["Holding You 🤍","When you hold my hand,<br>I feel safe and loved,<br>Stay forever mine."],
-["Your Cute Laugh 🌸","Your laugh heals me,<br>Your voice comforts me,<br>I adore you Kanna."],
-["Eyes Full of Love ✨","When you look at me,<br>I forget everything,<br>You are my peace."],
-["Sweet Memory 💕","This moment shines bright,<br>With you life feels magical,<br>I choose you always."],
-["My Strong Charan 💗","You protect my heart,<br>You respect my dreams,<br>You are my strength."],
-["My Soft Chittikanna 🤍","Your hugs melt me,<br>Your touch feels home,<br>Forever us."],
-["My Future Husband 💍","You are my tomorrow,<br>You are my always,<br>I belong to you."]
 ];
 
-for(let i=0;i<8;i++){
-createSlide(`
-<h3>${photoMessages[i][0]}</h3>
-<img src="photo${i+1}.jpg">
-<p>${photoMessages[i][1]}</p>
-`);
-}
-
-/* 10 Scavenger Hunt */
-createSlide(`
-<h3>Love Treasure Hunt 💌</h3>
-<p>
-Clues hidden with memories,<br>
-Each place whispers our story,<br>
-Final gift is my heart.
-</p>
-`);
-
-/* 11 Stargazing */
-createSlide(`
-<h3>Under The Stars 🌙</h3>
-<p>
-Blanket, music and you,<br>
-Stars witness our promises,<br>
-Forever begins tonight.
-</p>
-`);
-
-/* 12 Hot Air Balloon */
-createSlide(`
-<h3>Flying With You 🎈</h3>
-<p>
-Above the clouds together,<br>
-Holding you tight,<br>
-Love rising higher.
-</p>
-`);
-
-/* 13 Arcade Date */
-createSlide(`
-<h3>Playful Love 🎮</h3>
-<p>
-Competing and laughing,<br>
-Winner gets kisses,<br>
-Loser gets hugs.
-</p>
-`);
-
-/* 14 Cooking Together */
-createSlide(`
-<h3>Cooking With My Love 🍝</h3>
-<p>
-Making your favorite dish,<br>
-Laughing in the kitchen,<br>
-Love tastes sweeter.
-</p>
-`);
-
-/* 15 Pottery Date */
-createSlide(`
-<h3>Clay Hearts 🏺</h3>
-<p>
-Hands covered in colors,<br>
-Creating memories together,<br>
-Our love shaped forever.
-</p>
-`);
-
-/* 16 Comedy Night */
-createSlide(`
-<h3>Laughing Together 😂</h3>
-<p>
-Tears of happiness,<br>
-Inside jokes only us know,<br>
-You are my joy.
-</p>
-`);
-
-/* 17 Ice Skating */
-createSlide(`
-<h3>Gliding In Love ⛸️</h3>
-<p>
-Hand in hand skating,<br>
-Falling only for you,<br>
-Forever side by side.
-</p>
-`);
-
-/* 18 Karaoke */
-createSlide(`
-<h3>Our Love Song 🎤</h3>
-<p>
-Singing off tune,<br>
-But perfect together,<br>
-Because it’s us.
-</p>
-`);
-
-/* 19 Sunset Notes */
-createSlide(`
-<h3>Sunset Promises 🌅</h3>
-<p>
-Watching sky turn pink,<br>
-Reading love letters,<br>
-Hearts speaking softly.
-</p>
-`);
-
-/* 20 Final */
-createSlide(`
-<h2>Happy Valentine’s Day My Love ❤️</h2>
-<p>
-Kanna you are my forever.<br>
-Chittikanna you are my sweetest dream.<br>
-Charan you are my destiny always.
-</p>
-`);
-
-/* Slide control */
 let current=0;
-let totalSlides=document.querySelectorAll(".slide").length;
-let music=document.getElementById("music");
 
-function showSlide(index){
-if(index<0||index>=totalSlides)return;
-current=index;
-document.querySelectorAll(".slide").forEach(s=>{
-s.style.transform="translateY(-"+current*100+"vh)";
+slidesContent.forEach(data=>{
+let div=document.createElement("div");
+div.className="slide";
+div.innerHTML=`
+<img src="${data.img}">
+<p>${data.text}</p>
+<audio src="${data.song}" id="audio${current+1}"></audio>
+<button onclick="next()">Next</button>
+`;
+document.body.appendChild(div);
+current++;
 });
-if(current>0 && current<=8){
-music.src=songs[current-1];
-music.play();
-}else{
-music.pause();
-}
-}
-function nextSlide(){showSlide(current+1);}
-function prevSlide(){showSlide(current-1);}
-showSlide(0);
-
-/* Pink rotating symbols */
-setInterval(()=>{
-let icons=["💗","🤍","🌸"];
-let i=document.createElement("div");
-i.className="symbol";
-i.innerHTML=icons[Math.floor(Math.random()*icons.length)];
-i.style.top=Math.random()*90+"%";
-i.style.left=Math.random()*90+"%";
-document.body.appendChild(i);
-setTimeout(()=>i.remove(),6000);
-},900);
-
-/* White floating hearts */
-setInterval(()=>{
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="🤍";
-heart.style.left=Math.random()*100+"%";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
-},600);
-
 </script>
+
+<!-- FEATURES SLIDES 10-19 -->
+
+<div class="slide">
+<h2>Love Calculator 💕</h2>
+<input id="nameInput" placeholder="Enter our names">
+<button onclick="calc()">Calculate</button>
+<p id="result"></p>
+<button onclick="next()">Next</button>
+</div>
+
+<script>
+function calc(){
+document.getElementById("result").innerHTML="100% Perfect Love 💖";
+}
+</script>
+
+<div class="slide">
+<h2>Countdown For Our Forever ⏳</h2>
+<p id="count"></p>
+<button onclick="next()">Next</button>
+</div>
+
+<script>
+setInterval(()=>{
+document.getElementById("count").innerHTML=
+Math.floor(Math.random()*100)+" Days more of loving you 💗";
+},2000);
+</script>
+
+<div class="slide">
+<h2>Compatibility Quiz 💌</h2>
+<p>Who loves more?</p>
+<button onclick="alert('Poojitha loves Kanna infinity 💖')">Answer</button>
+<button onclick="next()">Next</button>
+</div>
+
+<div class="slide">
+<h2>AI Love Poem 🤍</h2>
+<p>
+Kanna, your name shines bright,<br>
+In my heart day and night,<br>
+Forever we stay tight.
+</p>
+<button onclick="next()">Next</button>
+</div>
+
+<div class="slide">
+<h2>Find Hidden Hearts 💕</h2>
+<button onclick="alert('You found my heart 💖')">Tap Me</button>
+<button onclick="next()">Next</button>
+</div>
+
+<div class="slide">
+<h2>Romantic Adventures 🌹</h2>
+<p>
+Scavenger hunt for kisses,<br>
+Stargazing under pink skies,<br>
+Cooking love with candlelight.
+</p>
+<button onclick="next()">Next</button>
+</div>
+
+<div class="slide">
+<h2>Fun Date Night 💖</h2>
+<p>
+Hot air balloon sunrise,<br>
+Arcade laughter battles,<br>
+Karaoke love duets.
+</p>
+<button onclick="next()">Next</button>
+</div>
+
+<div class="slide">
+<h2>Cozy Moments 🤍</h2>
+<p>
+Pottery heart crafting,<br>
+Ice skating hand in hand,<br>
+Sunset letters of love.
+</p>
+<button onclick="next()">Next</button>
+</div>
+
+<!-- FINAL SLIDE -->
+
+<div class="slide">
+<h1>Happy Valentine’s Day 💖</h1>
+<p>
+In a world full of chaos,<br>
+you are my calm and fire.<br>
+Tonight the stars witness us,<br>
+two souls wrapped in destiny.<br>
+Forever starts now, my love.
+</p>
+</div>
+
+<script>
+let slides=document.querySelectorAll(".slide");
+
+function next(){
+slides[current].classList.remove("active");
+current++;
+if(current<slides.length){
+slides[current].classList.add("active");
+let audio=slides[current].querySelector("audio");
+if(audio) audio.play();
+}
+}
+</script>
+
 </body>
 </html>
