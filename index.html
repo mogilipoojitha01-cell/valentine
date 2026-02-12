@@ -15,7 +15,7 @@
 
 body{
   overflow:hidden;
-  background:linear-gradient(to bottom,#ff9a9e,#fecfef);
+  background:linear-gradient(to bottom,#ff758c,#ff7eb3);
 }
 
 .slider{
@@ -23,15 +23,39 @@ body{
 }
 
 .slide{
-  width:100%;
   height:100vh;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
-  text-align:center;
   padding:20px;
   color:white;
+}
+
+.content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  max-width:1000px;
+}
+
+@media(min-width:768px){
+  .content{
+    flex-direction:row;
+    gap:40px;
+    text-align:left;
+  }
+}
+
+img{
+  width:90%;
+  max-width:350px;
+  border-radius:20px;
+  box-shadow:0 15px 30px rgba(0,0,0,0.4);
+}
+
+.text{
+  max-width:500px;
 }
 
 h1{
@@ -42,16 +66,6 @@ h1{
 p{
   font-size:18px;
   line-height:1.6;
-  max-width:95%;
-}
-
-img{
-  width:90%;
-  max-width:350px;
-  height:auto;
-  border-radius:20px;
-  margin-top:20px;
-  box-shadow:0 15px 30px rgba(0,0,0,0.4);
 }
 
 .buttons{
@@ -80,8 +94,10 @@ button{
 
 <div class="slider" id="slider">
 
-<!-- 1 -->
+<!-- INTRO -->
 <div class="slide">
+<div class="content">
+<div class="text">
 <h1>Happy Valentine’s Day Kanna 🧸❤️</h1>
 <p>
 You are my teddy 🧸  
@@ -89,188 +105,160 @@ My chocolate 🍫
 My rose 🌹  
 My kiss 💋  
 My hug 🤗  
-My forever promise 💍  
-Today every slide moves down,
-just like my heart falls deeper for you.
+My promise 💍  
+Every slide below holds a memory of us.
 </p>
 </div>
+</div>
+</div>
 
-<!-- 2 -->
+<!-- PHOTO SLIDES -->
+
 <div class="slide">
+<div class="content">
+<img src="photo1.jpg">
+<div class="text">
 <h1>My Sweet Chocolate 🍫</h1>
 <p>
-Life with you feels sweet,
-like my favorite chocolate.
-Every moment with you
-melts my heart softly.
+This picture reminds me how sweet you are.
+Like chocolate, you melt my heart slowly.
+I love you more every single day.
 </p>
-<img src="photo1.jpg">
+</div>
+</div>
 </div>
 
-<!-- 3 -->
 <div class="slide">
+<div class="content">
+<img src="photo2.jpg">
+<div class="text">
 <h1>My Beautiful Rose 🌹</h1>
 <p>
-Just like a rose,
-you make my world beautiful.
-Even your small smile
-blooms happiness in my life.
+Just like a rose, you make my life bloom.
+Your smile makes everything brighter.
 </p>
-<img src="photo2.jpg">
+</div>
+</div>
 </div>
 
-<!-- 4 -->
 <div class="slide">
+<div class="content">
+<img src="photo3.jpg">
+<div class="text">
 <h1>Your Warm Hug 🤗</h1>
 <p>
-When you hug me,
-all my fears disappear.
-Your arms are my safest place.
+In your hug, I feel safe.
+In your arms, I feel home.
 </p>
-<img src="photo3.jpg">
+</div>
+</div>
 </div>
 
-<!-- 5 -->
 <div class="slide">
+<div class="content">
+<img src="photo4.jpg">
+<div class="text">
 <h1>Sweet Kiss 💋</h1>
 <p>
-Your love feels magical.
-One kiss from you
-can fix my entire world.
+Every kiss from you feels magical.
+You make my heart skip a beat.
 </p>
-<img src="photo4.jpg">
+</div>
+</div>
 </div>
 
-<!-- 6 -->
 <div class="slide">
-<h1>My Teddy Bear 🧸</h1>
-<p>
-You are my comfort,
-my cuteness,
-my soft heart.
-</p>
+<div class="content">
 <img src="photo5.jpg">
+<div class="text">
+<h1>My Teddy 🧸</h1>
+<p>
+You are my comfort and my happiness.
+I never want to lose you.
+</p>
+</div>
+</div>
 </div>
 
-<!-- 7 -->
 <div class="slide">
+<div class="content">
+<img src="photo6.jpg">
+<div class="text">
 <h1>Promise 💍</h1>
 <p>
-I promise to stand beside you,
-support you,
-and love you
-forever.
+I promise to love you,
+care for you,
+and stand beside you forever.
 </p>
-<img src="photo6.jpg">
+</div>
+</div>
 </div>
 
-<!-- 8 -->
 <div class="slide">
+<div class="content">
+<img src="photo7.jpg">
+<div class="text">
 <h1>My Sunshine ☀</h1>
 <p>
-You brighten my darkest days.
-Without you,
-life feels incomplete.
+Even on my darkest days,
+you light up my world.
 </p>
-<img src="photo7.jpg">
+</div>
+</div>
 </div>
 
-<!-- 9 -->
 <div class="slide">
+<div class="content">
+<img src="photo8.jpg">
+<div class="text">
 <h1>Only You ❤️</h1>
 <p>
-Out of everyone,
+Out of millions,
 my heart chose you.
 And it will always choose you.
 </p>
-<img src="photo8.jpg">
 </div>
-
-<!-- 10 -->
-<div class="slide">
-<h1>Forever Together 🤍</h1>
-<p>
-No distance.
-No fights.
-No ego.
-Only love.
-</p>
-<img src="photo9.jpg">
 </div>
-
-<!-- 11 -->
-<div class="slide">
-<h1>My Happiness 💖</h1>
-<p>
-Your smile is my peace.
-Your love is my strength.
-</p>
-<img src="photo10.jpg">
 </div>
-
-<!-- 12 -->
-<div class="slide">
-<h1>Advance to Next Love 💘</h1>
-<p>
-Each click triggers the transition
-of another memory of us.
-Our love is the slide master
-of my life.
-</p>
-</div>
-
-<!-- 13 -->
-<div class="slide">
-<h1>Moving On... 💕</h1>
-<p>
-As we move ahead,
-let's take a look
-at our beautiful future together.
-</p>
-</div>
-
-<!-- 14 -->
-<div class="slide">
-<h1>My Charan 💗</h1>
-<p>
-You are my today,
-my tomorrow,
-my forever.
-</p>
-</div>
-
-<!-- 15 -->
-<div class="slide">
-<h1>Forever Yours Poojitha ❤️</h1>
-<p>
-Happy Valentine’s Day my Kanna.
-I love you endlessly. 💕
-</p>
-</div>
-
+  
 </div>
 
 <div class="buttons">
-<button onclick="prevSlide()">⬆ Back</button>
-<button onclick="nextSlide()">⬇ Next</button>
-<button onclick="playMusic()">🎵</button>
+<button onclick="prevSlide()">⬆</button>
+<button onclick="nextSlide()">⬇</button>
 </div>
 
-<audio id="music">
-<source src="song1.mp3" type="audio/mpeg">
-</audio>
+<audio id="music"></audio>
 
 <script>
 let current = 0;
 const slider = document.getElementById("slider");
-const totalSlides = 15;
+const slides = document.querySelectorAll(".slide");
+const music = document.getElementById("music");
+
+const songs = [
+"",
+"song1.mp3",
+"song2.mp3",
+"song3.mp3",
+"song4.mp3",
+"song5.mp3",
+"song6.mp3",
+"song7.mp3",
+"song8.mp3"
+];
 
 function updateSlide(){
   slider.style.transform = "translateY(-" + current * 100 + "vh)";
+  
+  if(songs[current]){
+    music.src = songs[current];
+    music.play();
+  }
 }
 
 function nextSlide(){
-  if(current < totalSlides-1){
+  if(current < slides.length-1){
     current++;
     updateSlide();
   }
@@ -281,10 +269,6 @@ function prevSlide(){
     current--;
     updateSlide();
   }
-}
-
-function playMusic(){
-  document.getElementById("music").play();
 }
 </script>
 
