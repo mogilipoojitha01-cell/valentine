@@ -2,25 +2,26 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Kanna ❤️</title>
+<title>For My Kanna 💖</title>
 
 <style>
 body{
 margin:0;
+padding:0;
 overflow:hidden;
+background:linear-gradient(to bottom,#fff0f5,#ffd9ec);
 font-family:cursive;
-background:linear-gradient(to bottom,#fff0f5,#ffd6eb);
 }
 
 .slide{
 display:none;
-height:100vh;
-width:100%;
 position:absolute;
 top:0;
 left:0;
-padding:30px;
+width:100%;
+height:100vh;
 box-sizing:border-box;
+padding:25px;
 text-align:center;
 color:#ff1493;
 }
@@ -30,7 +31,7 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-animation:fade 0.7s ease;
+animation:fade 0.6s ease;
 }
 
 @keyframes fade{
@@ -38,38 +39,40 @@ from{opacity:0;}
 to{opacity:1;}
 }
 
-img{
-width:80%;
+.photo{
+width:90%;
+height:50vh;
+object-fit:contain;
 border-radius:20px;
 box-shadow:0 0 20px pink;
 margin-bottom:15px;
 }
 
 .controls{
-position:absolute;
-bottom:20px;
+position:fixed;
+bottom:15px;
 width:100%;
 display:flex;
 justify-content:space-between;
-padding:0 30px;
+padding:0 25px;
 box-sizing:border-box;
 }
 
 button{
-padding:10px 20px;
-border:none;
 background:#ff69b4;
 color:white;
+border:none;
+padding:10px 20px;
 border-radius:25px;
 font-size:16px;
 }
 
 .love{
 position:absolute;
-font-size:24px;
-color:#ff69b4;
+font-size:22px;
 animation:float 6s linear forwards;
 cursor:pointer;
+color:#ff69b4;
 }
 
 @keyframes float{
@@ -79,8 +82,8 @@ cursor:pointer;
 
 .blast{
 position:absolute;
-font-size:40px;
-animation:explode 0.6s forwards;
+font-size:35px;
+animation:explode 0.5s forwards;
 }
 
 @keyframes explode{
@@ -93,99 +96,102 @@ animation:explode 0.6s forwards;
 <body>
 
 <script>
-// floating symbols
+// Floating pink symbols with blast
 const icons=["💖","🌹","💋","🧸","🍫","💕"];
 setInterval(()=>{
-let span=document.createElement("span");
-span.className="love";
-span.innerHTML=icons[Math.floor(Math.random()*icons.length)];
-span.style.left=Math.random()*100+"%";
-span.onclick=function(){
-let blast=document.createElement("span");
-blast.className="blast";
-blast.innerHTML="💥";
-blast.style.left=span.style.left;
-blast.style.top=span.offsetTop+"px";
-document.body.appendChild(blast);
-setTimeout(()=>blast.remove(),600);
-span.remove();
+let el=document.createElement("span");
+el.className="love";
+el.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+el.style.left=Math.random()*100+"%";
+el.onclick=function(){
+let boom=document.createElement("span");
+boom.className="blast";
+boom.innerHTML="💥";
+boom.style.left=el.style.left;
+boom.style.top=el.offsetTop+"px";
+document.body.appendChild(boom);
+setTimeout(()=>boom.remove(),500);
+el.remove();
 }
-document.body.appendChild(span);
-setTimeout(()=>{if(span) span.remove()},6000);
+document.body.appendChild(el);
+setTimeout(()=>{if(el) el.remove()},6000);
 },900);
 </script>
 
-<!-- SLIDES -->
-
+<!-- SLIDE 1 -->
 <div class="slide active">
 <h2>For My Chittikanna 💗</h2>
 <p>
-The moment you entered my life,<br>
-everything turned magical pink,<br>
-Kanna you are my sweetest destiny,<br>
-Charan my forever heartbeat,<br>
-Tonight is only about us 💖
+The moment you entered my world,<br>
+everything turned into pink magic,<br>
+Kanna you are my forever dream,<br>
+Charan my sweetest heartbeat,<br>
+Tonight is only about us.
 </p>
 </div>
 
-<!-- PHOTO SLIDES -->
+<!-- PHOTO SLIDES 2–9 -->
+
 <div class="slide">
-<img src="photo1.jpg">
+<img src="photo1.jpg" class="photo">
 <p>Your eyes hold my universe.<br>I fall for you every second.<br>You are my forever spark.</p>
 <audio src="song1.mp3"></audio>
 </div>
 
 <div class="slide">
-<img src="photo2.jpg">
-<p>Your hug feels like heaven.<br>My safest place is your arms.<br>I belong to you.</p>
+<img src="photo2.jpg" class="photo">
+<p>Your hug feels like heaven.<br>My safest place is you.<br>I belong only to you.</p>
 <audio src="song2.mp3"></audio>
 </div>
 
 <div class="slide">
-<img src="photo3.jpg">
-<p>Your smile melts my soul.<br>You are my sweetest dream.<br>I choose you always.</p>
+<img src="photo3.jpg" class="photo">
+<p>Your smile melts my heart.<br>You are my sweetest dream.<br>I choose you forever.</p>
 <audio src="song3.mp3"></audio>
 </div>
 
 <div class="slide">
-<img src="photo4.jpg">
-<p>With you time stops.<br>Every second feels magical.<br>Stay mine forever.</p>
+<img src="photo4.jpg" class="photo">
+<p>Time stops with you.<br>Every second feels magical.<br>Stay mine always.</p>
 <audio src="song4.mp3"></audio>
 </div>
 
 <div class="slide">
-<img src="photo5.jpg">
-<p>You color my world pink.<br>Life shines with you.<br>My heart beats for you.</p>
+<img src="photo5.jpg" class="photo">
+<p>You color my life pink.<br>My world shines because of you.<br>I adore you.</p>
 <audio src="song5.mp3"></audio>
 </div>
 
 <div class="slide">
-<img src="photo6.jpg">
+<img src="photo6.jpg" class="photo">
 <p>Your touch is electricity.<br>You light my darkest nights.<br>I’m yours endlessly.</p>
 <audio src="song6.mp3"></audio>
 </div>
 
 <div class="slide">
-<img src="photo7.jpg">
-<p>Every laugh of yours heals me.<br>You are my soft comfort.<br>Forever my love.</p>
+<img src="photo7.jpg" class="photo">
+<p>Your laugh heals me.<br>You are my comfort zone.<br>Forever my love.</p>
 <audio src="song7.mp3"></audio>
 </div>
 
 <div class="slide">
-<img src="photo8.jpg">
+<img src="photo8.jpg" class="photo">
 <p>Your love is my strength.<br>My future has only us.<br>Kanna I adore you.</p>
 <audio src="song8.mp3"></audio>
 </div>
 
 <!-- FEATURE SLIDES -->
+
 <div class="slide">
-<h2>Love Meter 💕</h2>
-<p>Our Love = 100% Perfect 💖</p>
+<h2>Love Calculator 💕</h2>
+<input id="name" placeholder="Enter our names">
+<button onclick="calculate()">Check</button>
+<p id="loveResult"></p>
 </div>
 
 <div class="slide">
-<h2>Countdown ⏳</h2>
-<p id="count"></p>
+<h2>Countdown For Forever ⏳</h2>
+<p id="countdown"></p>
 </div>
 
 <div class="slide">
@@ -195,8 +201,8 @@ Tonight is only about us 💖
 </div>
 
 <div class="slide">
-<h2>Find My Heart 💕</h2>
-<button onclick="alert('You found my heart 💗')">Tap</button>
+<h2>Find My Heart 💖</h2>
+<button onclick="alert('You found my heart 💕')">Tap Here</button>
 </div>
 
 <div class="slide">
@@ -205,22 +211,22 @@ Tonight is only about us 💖
 </div>
 
 <div class="slide">
-<h2>Fun Dates 💖</h2>
+<h2>Fun Date Nights 💗</h2>
 <p>Arcade battles.<br>Karaoke duets.<br>Ice skating romance.</p>
 </div>
 
 <div class="slide">
-<h2>Cozy Moments 🤍</h2>
+<h2>Cozy Bonding 🤍</h2>
 <p>Pottery crafting.<br>Comedy night laughs.<br>Sunset love letters.</p>
 </div>
 
 <div class="slide">
 <h1>Happy Valentine’s Day 💖</h1>
 <p>
-Under these pink skies,<br>
-our souls shine brighter,<br>
-this love feels cinematic,<br>
-written in the stars,<br>
+Under pink skies we shine,<br>
+our love feels cinematic,<br>
+written in destiny,<br>
+two souls intertwined,<br>
 Forever begins now.
 </p>
 </div>
@@ -233,37 +239,40 @@ Forever begins now.
 
 <script>
 let slides=document.querySelectorAll(".slide");
-let index=0;
+let current=0;
 
 function showSlide(i){
 slides.forEach(s=>{
 s.classList.remove("active");
-let audio=s.querySelector("audio");
-if(audio) audio.pause();
+let a=s.querySelector("audio");
+if(a){a.pause();a.currentTime=0;}
 });
 slides[i].classList.add("active");
 let audio=slides[i].querySelector("audio");
-if(audio) audio.play();
+if(audio){audio.play();}
 }
 
 function next(){
-if(index < slides.length-1){
-index++;
-showSlide(index);
+if(current<slides.length-1){
+current++;
+showSlide(current);
 }
 }
 
 function prev(){
-if(index > 0){
-index--;
-showSlide(index);
+if(current>0){
+current--;
+showSlide(current);
 }
 }
 
-// countdown
+function calculate(){
+document.getElementById("loveResult").innerHTML="100% Perfect Love 💖";
+}
+
 setInterval(()=>{
-let d=new Date();
-document.getElementById("count").innerHTML=
+let now=new Date();
+document.getElementById("countdown").innerHTML=
 "Every second with you is precious 💕";
 },1000);
 </script>
