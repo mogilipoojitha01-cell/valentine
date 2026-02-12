@@ -7,232 +7,205 @@
 
 <style>
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Segoe UI', sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI', sans-serif;
 }
 
 body{
-  overflow:hidden;
-  background:linear-gradient(to bottom,#ff758c,#ff7eb3);
-}
-
-.slider{
-  transition:transform 1s ease-in-out;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+overflow:hidden;
+color:white;
 }
 
 .slide{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  color:white;
+position:absolute;
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+opacity:0;
+transform:rotateY(90deg);
+transition:all 0.8s ease;
 }
 
-.content{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-  max-width:1000px;
-}
-
-@media(min-width:768px){
-  .content{
-    flex-direction:row;
-    gap:40px;
-    text-align:left;
-  }
+.slide.active{
+opacity:1;
+transform:rotateY(0deg);
 }
 
 img{
-  width:90%;
-  max-width:350px;
-  border-radius:20px;
-  box-shadow:0 15px 30px rgba(0,0,0,0.4);
-}
-
-.text{
-  max-width:500px;
+width:85%;
+max-width:350px;
+border-radius:20px;
+margin:20px 0;
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
 }
 
 h1{
-  font-size:28px;
-  margin-bottom:15px;
+font-size:26px;
+margin-bottom:15px;
 }
 
 p{
-  font-size:18px;
-  line-height:1.6;
+font-size:18px;
+max-width:90%;
+line-height:1.6;
 }
 
 .buttons{
-  position:fixed;
-  right:15px;
-  bottom:20px;
-  display:flex;
-  flex-direction:column;
+position:fixed;
+right:20px;
+bottom:30px;
+display:flex;
+flex-direction:column;
 }
 
 button{
-  padding:10px 18px;
-  margin:5px 0;
-  border:none;
-  border-radius:30px;
-  font-size:14px;
-  background:white;
-  color:#ff2e63;
-  font-weight:bold;
-  cursor:pointer;
+margin:6px 0;
+padding:10px 15px;
+border:none;
+border-radius:30px;
+font-weight:bold;
+cursor:pointer;
+background:white;
+color:#ff2e63;
 }
 </style>
 </head>
 
 <body>
 
-<div class="slider" id="slider">
-
 <!-- INTRO -->
-<div class="slide">
-<div class="content">
-<div class="text">
-<h1>Happy Valentine’s Day Kanna 🧸❤️</h1>
+<div class="slide active">
+<h1>Happy Valentine’s Day My ChittiKanna 🧸❤️</h1>
 <p>
 You are my teddy 🧸  
 My chocolate 🍫  
 My rose 🌹  
 My kiss 💋  
-My hug 🤗  
-My promise 💍  
-Every slide below holds a memory of us.
+My warm hug 🤗  
+My forever promise 💍  
+
+This is not just a slideshow.  
+This is my heart rotating open for you.  
+Every click reveals another piece of my love.
 </p>
 </div>
-</div>
-</div>
 
-<!-- PHOTO SLIDES -->
-
+<!-- PHOTO 1 -->
 <div class="slide">
-<div class="content">
-<img src="photo1.jpg">
-<div class="text">
 <h1>My Sweet Chocolate 🍫</h1>
+<img src="photo1.jpg">
 <p>
-This picture reminds me how sweet you are.
-Like chocolate, you melt my heart slowly.
-I love you more every single day.
+Just like chocolate melts slowly,
+my heart melts when I see you.
+You are sweetness in my life,
+my happiness in human form.
 </p>
 </div>
-</div>
-</div>
 
+<!-- PHOTO 2 -->
 <div class="slide">
-<div class="content">
-<img src="photo2.jpg">
-<div class="text">
 <h1>My Beautiful Rose 🌹</h1>
+<img src="photo2.jpg">
 <p>
-Just like a rose, you make my life bloom.
-Your smile makes everything brighter.
+Like a rose blooming softly,
+you make my world beautiful.
+Your smile lights up even my darkest days.
 </p>
 </div>
-</div>
-</div>
 
+<!-- PHOTO 3 -->
 <div class="slide">
-<div class="content">
-<img src="photo3.jpg">
-<div class="text">
 <h1>Your Warm Hug 🤗</h1>
+<img src="photo3.jpg">
 <p>
-In your hug, I feel safe.
-In your arms, I feel home.
+When you hug me,
+the world feels safe.
+In your arms,
+I feel home.
 </p>
 </div>
-</div>
-</div>
 
+<!-- PHOTO 4 -->
 <div class="slide">
-<div class="content">
-<img src="photo4.jpg">
-<div class="text">
 <h1>Sweet Kiss 💋</h1>
+<img src="photo4.jpg">
 <p>
-Every kiss from you feels magical.
-You make my heart skip a beat.
+Every kiss from you
+is magic.
+It heals my heart
+and fills it with butterflies.
 </p>
 </div>
-</div>
-</div>
 
+<!-- PHOTO 5 -->
 <div class="slide">
-<div class="content">
+<h1>My Teddy Bear 🧸</h1>
 <img src="photo5.jpg">
-<div class="text">
-<h1>My Teddy 🧸</h1>
 <p>
-You are my comfort and my happiness.
+You are my comfort,
+my softness,
+my safe place.
 I never want to lose you.
 </p>
 </div>
-</div>
-</div>
 
+<!-- PHOTO 6 -->
 <div class="slide">
-<div class="content">
+<h1>My Promise 💍</h1>
 <img src="photo6.jpg">
-<div class="text">
-<h1>Promise 💍</h1>
 <p>
 I promise to love you,
-care for you,
-and stand beside you forever.
+stand by you,
+support you,
+and grow with you forever.
 </p>
 </div>
-</div>
-</div>
 
+<!-- PHOTO 7 -->
 <div class="slide">
-<div class="content">
-<img src="photo7.jpg">
-<div class="text">
 <h1>My Sunshine ☀</h1>
+<img src="photo7.jpg">
 <p>
-Even on my darkest days,
-you light up my world.
+You brighten my life
+in ways you don’t even realize.
+You are my light,
+my hope,
+my everything.
 </p>
-</div>
-</div>
 </div>
 
+<!-- PHOTO 8 -->
 <div class="slide">
-<div class="content">
+<h1>Forever Yours ❤️</h1>
 <img src="photo8.jpg">
-<div class="text">
-<h1>Only You ❤️</h1>
 <p>
-Out of millions,
-my heart chose you.
-And it will always choose you.
+Kanna… Charan… my ChittiKanna…
+You are my today,
+my tomorrow,
+and my forever.
+Happy Valentine’s Day.
+Love always,
+Your Poojitha 💕
 </p>
-</div>
-</div>
-</div>
-  
 </div>
 
 <div class="buttons">
-<button onclick="prevSlide()">⬆</button>
-<button onclick="nextSlide()">⬇</button>
+<button onclick="prevSlide()">⬆ Back</button>
+<button onclick="nextSlide()">⬇ Next</button>
 </div>
 
 <audio id="music"></audio>
 
 <script>
 let current = 0;
-const slider = document.getElementById("slider");
 const slides = document.querySelectorAll(".slide");
 const music = document.getElementById("music");
 
@@ -248,30 +221,34 @@ const songs = [
 "song8.mp3"
 ];
 
-function updateSlide(){
-  slider.style.transform = "translateY(-" + current * 100 + "vh)";
-  
-  if(songs[current]){
-    music.src = songs[current];
-    music.play();
-  }
+function showSlide(index){
+slides.forEach(slide => slide.classList.remove("active"));
+slides[index].classList.add("active");
+
+if(songs[index]){
+music.pause();
+music.src = songs[index];
+music.load();
+music.play().catch(()=>{});
+}
 }
 
 function nextSlide(){
-  if(current < slides.length-1){
-    current++;
-    updateSlide();
-  }
+if(current < slides.length-1){
+current++;
+showSlide(current);
+}
 }
 
 function prevSlide(){
-  if(current > 0){
-    current--;
-    updateSlide();
-  }
+if(current > 0){
+current--;
+showSlide(current);
+}
 }
 </script>
 
 </body>
 </html>
+
 
