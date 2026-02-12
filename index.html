@@ -1,112 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Kanna ❤️</title>
+<title>My Love Story</title>
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family: 'Poppins', sans-serif;
+font-family:'Segoe UI', sans-serif;
 }
 
 body{
 overflow:hidden;
-background:linear-gradient(to bottom,#ff758c,#ff7eb3);
+background:black;
 color:white;
-}
-
-/* Floating Hearts */
-.heart{
-position:fixed;
-bottom:-20px;
-font-size:20px;
-animation:float 6s linear infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(0);}
-100%{transform:translateY(-110vh);}
-}
-
-/* Slider */
-.slider{
-transition:transform 1s ease-in-out;
 }
 
 .slide{
 height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:25px;
-}
-
-.slide h1{
-font-size:24px;
-margin-bottom:15px;
-}
-
-.slide p{
-font-size:17px;
-line-height:1.6;
-max-width:95%;
-margin-bottom:15px;
-}
-
-.slide img{
-width:85%;
-max-width:320px;
-border-radius:20px;
-margin-top:15px;
-box-shadow:0 15px 30px rgba(0,0,0,0.4);
-}
-
-/* Buttons */
-.buttons{
-position:fixed;
-right:15px;
-bottom:20px;
-display:flex;
-flex-direction:column;
-}
-
-button{
-margin:5px 0;
-padding:8px 14px;
-border:none;
-border-radius:25px;
-background:white;
-color:#ff2e63;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* Surprise Popup */
-#surprise{
-position:fixed;
+width:100%;
+position:absolute;
 top:0;
 left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-display:none;
+display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
 padding:20px;
+transition:1s;
+background:linear-gradient(to bottom,#ff4e8a,#1a001a);
 }
 
-#surpriseContent{
-background:white;
-color:#ff2e63;
-padding:30px;
+img{
+max-width:90%;
+max-height:50vh;
 border-radius:20px;
+box-shadow:0 0 30px pink;
+object-fit:cover;
+}
+
+h1{
+font-size:28px;
+margin:15px 0;
+animation:fadeIn 2s;
+}
+
+p{
+font-size:16px;
+line-height:1.6;
+max-width:90%;
+animation:fadeIn 3s;
+}
+
+button{
+position:fixed;
+bottom:20px;
+padding:10px 20px;
+background:white;
+color:#ff0066;
+border:none;
+border-radius:30px;
+font-weight:bold;
+}
+
+#next{right:20px;}
+#prev{left:20px;}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+.heart{
+position:absolute;
+font-size:25px;
+animation:rotate 5s linear infinite;
+}
+
+@keyframes rotate{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+.loveMessage{
+font-size:22px;
+color:yellow;
+margin-top:15px;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
 }
 
 </style>
@@ -114,223 +103,105 @@ border-radius:20px;
 
 <body>
 
-<div class="slider" id="slider">
+<audio id="music"></audio>
 
-<!-- 1 -->
-<div class="slide">
-<h1>Happy Valentine’s Day Kanna ❤️</h1>
-<p>
-This is not just a website.  
-This is my heart speaking.  
-Every slide below holds a memory,  
-every word holds a feeling.  
-Today I celebrate us.
-</p>
-</div>
+<div id="slidesContainer">
 
-<!-- PHOTO SLIDES 2-9 -->
-
-<div class="slide">
-<h1>You Changed My World</h1>
-<p>
-Before you, life was normal.  
-After you, life became beautiful.
-</p>
-<img src="photo1.jpg">
-</div>
-
-<div class="slide">
-<h1>Your Smile is My Peace</h1>
-<p>
-Whenever you smile,  
-my worries disappear.
-</p>
-<img src="photo2.jpg">
-</div>
-
-<div class="slide">
-<h1>With You, I Feel Safe</h1>
-<p>
-In your presence,  
-I feel protected and loved.
-</p>
-<img src="photo3.jpg">
-</div>
-
-<div class="slide">
-<h1>Moments I Treasure</h1>
-<p>
-This picture is not just a memory.  
-It is a feeling I never want to lose.
-</p>
-<img src="photo4.jpg">
-</div>
-
-<div class="slide">
-<h1>My Strength</h1>
-<p>
-When I feel weak,  
-you become my power.
-</p>
-<img src="photo5.jpg">
-</div>
-
-<div class="slide">
-<h1>My Happiness</h1>
-<p>
-Your laughter is my favorite sound.
-</p>
-<img src="photo6.jpg">
-</div>
-
-<div class="slide">
-<h1>Choosing You Always</h1>
-<p>
-If I had to choose again,  
-I would still choose you.
-</p>
-<img src="photo7.jpg">
-</div>
-
-<div class="slide">
-<h1>Forever Begins With You</h1>
-<p>
-I see my future in your eyes.
-</p>
-<img src="photo8.jpg">
-</div>
-
-<!-- 10 -->
-<div class="slide">
-<h1>Our Journey 💞</h1>
-<p>
-From strangers  
-to something so beautiful.  
-We built this love together.
-</p>
-</div>
-
-<!-- 11 -->
-<div class="slide">
-<h1>My Promise 💍</h1>
-<p>
-I promise to stand beside you  
-through every storm and sunshine.
-</p>
-</div>
-
-<!-- 12 -->
-<div class="slide">
-<h1>My Favorite Person</h1>
-<p>
-Out of everyone in this world,  
-my heart chose you.
-</p>
-</div>
-
-<!-- 13 -->
-<div class="slide">
-<h1>You Are My Forever</h1>
-<p>
-Not just today.  
-Not just tomorrow.  
-Forever.
-</p>
-</div>
-
-<!-- 14 -->
-<div class="slide">
-<h1>Tap For Surprise 🎁</h1>
-<button onclick="showSurprise()">Open My Heart</button>
-</div>
-
-<!-- 15 -->
-<div class="slide">
-<h1>I Love You Kanna ❤️</h1>
-<p>
-You are my today,  
-my tomorrow,  
-and my always.  
-Forever yours,  
-Poojitha 💕
-</p>
-</div>
-
-</div>
-
-<div class="buttons">
-<button onclick="prevSlide()">⬆</button>
-<button onclick="nextSlide()">⬇</button>
-</div>
-
-<!-- Surprise Popup -->
-<div id="surprise">
-<div id="surpriseContent">
-<h2>I Love You More Than Words ❤️</h2>
-<p>
-No matter what happens,  
-my heart belongs to you.
-</p>
-<button onclick="closeSurprise()">Close</button>
-</div>
-</div>
+<!-- 15 SLIDES -->
 
 <script>
-let current = 0;
-const slider = document.getElementById("slider");
-const totalSlides = 15;
+const photos=[
+"photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg",
+"photo5.jpg","photo6.jpg","photo7.jpg","photo8.jpg"
+];
 
-function updateSlide(){
-slider.style.transform = "translateY(-" + current * 100 + "vh)";
+const songs=[
+"song1.mp3","song2.mp3","song3.mp3","song4.mp3",
+"song5.mp3","song6.mp3","song7.mp3","song8.mp3"
+];
+
+const captions=[
+"You are the reason my world feels magical 💖",
+"Every moment with you is a beautiful dream 🌹",
+"Your smile lights up my darkest days ✨",
+"In your arms, I found my forever 🫶",
+"My heart beats only for you 💕",
+"You are my sweetest addiction 🍫",
+"Our love story is my favorite fairytale 🧸",
+"With you, life feels complete 🌸"
+];
+
+const messages=[
+"From the first time I saw you, something inside me changed forever. You became my peace, my happiness, my everything.",
+"When you hold my hand, I feel safe. When you look into my eyes, I see my future.",
+"Your voice is my favorite melody. Your laugh is my favorite sound.",
+"No matter what happens, my heart will always choose you again and again.",
+"You are not just my love, you are my home.",
+"I promise to stand by you, love you, and cherish you forever.",
+"You are my today, my tomorrow, and all my forever.",
+"I Love You more than words can ever explain ❤️"
+];
+
+let container=document.getElementById("slidesContainer");
+
+for(let i=0;i<15;i++){
+
+let slide=document.createElement("div");
+slide.className="slide";
+slide.style.top=(i*100)+"vh";
+
+let photoIndex=i%8;
+
+slide.innerHTML=`
+<div class="heart" style="top:10%;left:10%;">💖</div>
+<div class="heart" style="top:80%;left:80%;">💕</div>
+<div class="heart" style="top:20%;left:70%;">🌹</div>
+
+<h1>${captions[photoIndex]}</h1>
+
+<img src="${photos[photoIndex]}">
+
+<p>${messages[photoIndex]}</p>
+
+<div class="loveMessage">I LOVE YOU 💋💍🤗</div>
+`;
+
+container.appendChild(slide);
+}
+
+let current=0;
+let music=document.getElementById("music");
+
+function showSlide(index){
+
+if(index<0 || index>14) return;
+
+current=index;
+
+document.querySelectorAll(".slide").forEach((s,i)=>{
+s.style.transform=`translateY(-${current*100}vh)`;
+});
+
+let songIndex=current%8;
+music.src=songs[songIndex];
+music.play();
 }
 
 function nextSlide(){
-if(current < totalSlides-1){
-current++;
-updateSlide();
-}
+showSlide(current+1);
 }
 
 function prevSlide(){
-if(current > 0){
-current--;
-updateSlide();
-}
+showSlide(current-1);
 }
 
-/* Auto Slide */
-setInterval(()=>{
-if(current < totalSlides-1){
-current++;
-}else{
-current=0;
-}
-updateSlide();
-},5000);
-
-/* Surprise */
-function showSurprise(){
-document.getElementById("surprise").style.display="flex";
-}
-
-function closeSurprise(){
-document.getElementById("surprise").style.display="none";
-}
-
-/* Floating hearts */
-setInterval(()=>{
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"%";
-heart.style.fontSize=(15+Math.random()*20)+"px";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
-},500);
+showSlide(0);
 </script>
+
+<button id="prev" onclick="prevSlide()">💗 Back</button>
+<button id="next" onclick="nextSlide()">Next 💖</button>
 
 </body>
 </html>
-
 
 
