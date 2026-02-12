@@ -1,18 +1,24 @@
-CTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kanna ❤️ Poojitha</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
 body{
 overflow:hidden;
-background:linear-gradient(to bottom,#ffcce6,#ffffff);
+background:linear-gradient(to bottom,#ffd6eb,#ffffff);
 color:#b30059;
 }
 
-/* Slides */
+/* Slide */
 .slide{
 position:absolute;
 width:100%;
@@ -24,9 +30,10 @@ align-items:center;
 text-align:center;
 padding:20px;
 transition:1s ease;
+overflow:auto;
 }
 
-/* Images */
+/* Image */
 img{
 width:85%;
 max-width:300px;
@@ -34,42 +41,45 @@ max-height:40vh;
 object-fit:contain;
 border-radius:20px;
 margin:10px 0;
-box-shadow:0 0 25px #ff66b2;
+box-shadow:0 0 20px pink;
 }
 
-/* Buttons */
-button{
-position:fixed;
-bottom:20px;
-padding:10px 18px;
+/* Buttons inside slide */
+.nav{
+margin-top:15px;
+}
+
+.nav button{
+padding:8px 18px;
+margin:5px;
 border:none;
-border-radius:25px;
-background:#ff3399;
+border-radius:20px;
+background:#ff66b2;
 color:white;
-font-weight:bold;
 }
-#prev{left:15px;}
-#next{right:15px;}
 
-/* Rotating Love Symbols */
-.love{
+/* Pink & White rotating animation */
+.symbol{
 position:fixed;
-font-size:22px;
-animation:rotate 6s linear infinite;
+font-size:20px;
+color:#ff66b2;
+animation:spin 6s linear infinite;
 }
-@keyframes rotate{
+
+@keyframes spin{
 0%{transform:rotate(0deg);}
 100%{transform:rotate(360deg);}
 }
 
-/* Floating Hearts */
+/* Floating hearts */
 .heart{
 position:fixed;
 bottom:-20px;
 font-size:18px;
+color:white;
 animation:float 6s linear infinite;
-color:#ff3399;
 }
+
 @keyframes float{
 0%{transform:translateY(0);}
 100%{transform:translateY(-110vh);}
@@ -80,7 +90,10 @@ padding:8px;
 margin:5px;
 border-radius:10px;
 border:1px solid pink;
+width:80%;
+max-width:250px;
 }
+
 </style>
 </head>
 <body>
@@ -88,164 +101,167 @@ border:1px solid pink;
 <audio id="music"></audio>
 <div id="slides"></div>
 
-<button id="prev" onclick="prevSlide()">⬆</button>
-<button id="next" onclick="nextSlide()">⬇</button>
-
 <script>
 
-/* SONGS */
+/* Songs */
 const songs=["song1.mp3","song2.mp3","song3.mp3","song4.mp3","song5.mp3","song6.mp3","song7.mp3","song8.mp3"];
-
-/* CAPTIONS */
-const captions=[
-"Our First Smile 💗",
-"Holding Hands Forever 🤍",
-"My Chittikanna’s Laugh 🌸",
-"When Charan Looked at Me ✨",
-"Our Cute Selfie 📸",
-"The Hug I Love 🤗",
-"My Teddy Bear 🧸",
-"My Forever Kanna 💍"
-];
-
-/* MESSAGES */
-const messages=[
-"You smiled and my world changed.<br>You are my peace Kanna.<br>Stay forever mine.",
-"When you hold my hand,<br>I feel safest My Love.<br>Never leave me.",
-"Your laugh heals my heart.<br>Chittikanna you are magic.<br>I love you endlessly.",
-"That look made me blush.<br>Charan you are my destiny.<br>Always choose me.",
-"This memory is treasure.<br>We shine together.<br>Forever us.",
-"Your hugs fix everything.<br>You are my comfort.<br>My heart is yours.",
-"My teddy Kanna,<br>You are soft and caring.<br>I adore you.",
-"You are my future.<br>My husband my love.<br>My everything."
-];
 
 let container=document.getElementById("slides");
 
-/* SLIDE 1 INTRO */
-createSlide(`
-<h1>Happy Valentine’s Day ❤️</h1>
-<p>
-Kanna, you are my today and tomorrow.<br>
-Chittikanna, you are my sweetest dream.<br>
-Charan, you are my forever home.<br>
-My love grows every second.<br>
-You are my everything.
-</p>
-`);
-
-/* PHOTO SLIDES 2-9 */
-for(let i=0;i<8;i++){
-createSlide(`
-<h2>${captions[i]}</h2>
-<img src="photo${i+1}.jpg">
-<p>${messages[i]}</p>
-`);
-}
-
-/* FEATURE SLIDES 10-19 */
-
-/* Countdown */
-createSlide(`
-<h2>Countdown For Our Forever ⏳</h2>
-<p>Every second brings us closer.<br>My heart waits for you.<br>Let’s start forever.</p>
-<h3 id="countdown"></h3>
-`);
-
-/* Love Meter */
-createSlide(`
-<h2>Love Calculator 💖</h2>
-<p>Kanna + Poojitha = 100% Forever</p>
-<input id="name1" placeholder="Your Name">
-<input id="name2" placeholder="His Name">
-<button onclick="calculateLove()">Check Love</button>
-<h3 id="result"></h3>
-`);
-
-/* Quiz */
-createSlide(`
-<h2>Compatibility Quiz 💞</h2>
-<p>What does Kanna love most?</p>
-<select id="quiz">
-<option>Me</option>
-<option>Food</option>
-<option>Sleep</option>
-</select>
-<button onclick="checkQuiz()">Submit</button>
-<h3 id="quizResult"></h3>
-`);
-
-/* AI Poem */
-createSlide(`
-<h2>AI Love Poem ✨</h2>
-<p>
-Poojitha loves Kanna deeply.<br>
-Charan is her heartbeat.<br>
-Together they are destiny.
-</p>
-`);
-
-/* Proposal Game */
-createSlide(`
-<h2>Find The Heart Game ❤️</h2>
-<p>Tap the hidden heart below</p>
-<button onclick="alert('Will You Marry Me Poojitha? 💍')">💖</button>
-`);
-
-/* Popup Offer */
-createSlide(`
-<h2>Special Love Offer 💌</h2>
-<p>Buy 1 Heart, Get 1000 Kisses Free</p>
-<button onclick="alert('Offer Accepted My Love 💋')">Claim</button>
-`);
-
-/* E-Card */
-createSlide(`
-<h2>Virtual Love Card 💌</h2>
-<p>
-To My Kanna,<br>
-You are my sunshine.<br>
-Forever yours, Poojitha.
-</p>
-`);
-
-/* Slider */
-createSlide(`
-<h2>Our Love Moments 🌹</h2>
-<p>Slide through memories in heart.</p>
-<input type="range">
-`);
-
-/* Scroll Story */
-createSlide(`
-<h2>Our Love Story 📖</h2>
-<p>
-We met by destiny.<br>
-We stayed by choice.<br>
-We love endlessly.
-</p>
-`);
-
-/* FINAL SLIDE 20 */
-createSlide(`
-<h1>Happy Valentine’s Day My Love ❤️</h1>
-<p>
-Kanna you are my forever.<br>
-Chittikanna you are my sweetest blessing.<br>
-Charan you are my destiny.<br>
-I promise to love you endlessly.<br>
-Forever yours, Poojitha 💍
-</p>
-`);
-
+/* Slide creator */
 function createSlide(content){
 let slide=document.createElement("div");
 slide.className="slide";
 slide.style.top=(document.querySelectorAll(".slide").length*100)+"vh";
-slide.innerHTML=content;
+slide.innerHTML=content+`
+<div class="nav">
+<button onclick="prevSlide()">⬆</button>
+<button onclick="nextSlide()">⬇</button>
+</div>`;
 container.appendChild(slide);
 }
 
+/* 1 Intro */
+createSlide(`
+<h2>My Forever Kanna 🤍</h2>
+<p>
+Charan you are my destiny.<br>
+Chittikanna you are my sweetest blessing.<br>
+My love for you grows every second.
+</p>
+`);
+
+/* 2–9 Photo Slides */
+const photoMessages=[
+["My Beautiful Beginning 💗","The day you smiled at me,<br>My world turned pink,<br>You became my happiness."],
+["Holding You 🤍","When you hold my hand,<br>I feel safe and loved,<br>Stay forever mine."],
+["Your Cute Laugh 🌸","Your laugh heals me,<br>Your voice comforts me,<br>I adore you Kanna."],
+["Eyes Full of Love ✨","When you look at me,<br>I forget everything,<br>You are my peace."],
+["Sweet Memory 💕","This moment shines bright,<br>With you life feels magical,<br>I choose you always."],
+["My Strong Charan 💗","You protect my heart,<br>You respect my dreams,<br>You are my strength."],
+["My Soft Chittikanna 🤍","Your hugs melt me,<br>Your touch feels home,<br>Forever us."],
+["My Future Husband 💍","You are my tomorrow,<br>You are my always,<br>I belong to you."]
+];
+
+for(let i=0;i<8;i++){
+createSlide(`
+<h3>${photoMessages[i][0]}</h3>
+<img src="photo${i+1}.jpg">
+<p>${photoMessages[i][1]}</p>
+`);
+}
+
+/* 10 Scavenger Hunt */
+createSlide(`
+<h3>Love Treasure Hunt 💌</h3>
+<p>
+Clues hidden with memories,<br>
+Each place whispers our story,<br>
+Final gift is my heart.
+</p>
+`);
+
+/* 11 Stargazing */
+createSlide(`
+<h3>Under The Stars 🌙</h3>
+<p>
+Blanket, music and you,<br>
+Stars witness our promises,<br>
+Forever begins tonight.
+</p>
+`);
+
+/* 12 Hot Air Balloon */
+createSlide(`
+<h3>Flying With You 🎈</h3>
+<p>
+Above the clouds together,<br>
+Holding you tight,<br>
+Love rising higher.
+</p>
+`);
+
+/* 13 Arcade Date */
+createSlide(`
+<h3>Playful Love 🎮</h3>
+<p>
+Competing and laughing,<br>
+Winner gets kisses,<br>
+Loser gets hugs.
+</p>
+`);
+
+/* 14 Cooking Together */
+createSlide(`
+<h3>Cooking With My Love 🍝</h3>
+<p>
+Making your favorite dish,<br>
+Laughing in the kitchen,<br>
+Love tastes sweeter.
+</p>
+`);
+
+/* 15 Pottery Date */
+createSlide(`
+<h3>Clay Hearts 🏺</h3>
+<p>
+Hands covered in colors,<br>
+Creating memories together,<br>
+Our love shaped forever.
+</p>
+`);
+
+/* 16 Comedy Night */
+createSlide(`
+<h3>Laughing Together 😂</h3>
+<p>
+Tears of happiness,<br>
+Inside jokes only us know,<br>
+You are my joy.
+</p>
+`);
+
+/* 17 Ice Skating */
+createSlide(`
+<h3>Gliding In Love ⛸️</h3>
+<p>
+Hand in hand skating,<br>
+Falling only for you,<br>
+Forever side by side.
+</p>
+`);
+
+/* 18 Karaoke */
+createSlide(`
+<h3>Our Love Song 🎤</h3>
+<p>
+Singing off tune,<br>
+But perfect together,<br>
+Because it’s us.
+</p>
+`);
+
+/* 19 Sunset Notes */
+createSlide(`
+<h3>Sunset Promises 🌅</h3>
+<p>
+Watching sky turn pink,<br>
+Reading love letters,<br>
+Hearts speaking softly.
+</p>
+`);
+
+/* 20 Final */
+createSlide(`
+<h2>Happy Valentine’s Day My Love ❤️</h2>
+<p>
+Kanna you are my forever.<br>
+Chittikanna you are my sweetest dream.<br>
+Charan you are my destiny always.
+</p>
+`);
+
+/* Slide control */
 let current=0;
 let totalSlides=document.querySelectorAll(".slide").length;
 let music=document.getElementById("music");
@@ -253,11 +269,9 @@ let music=document.getElementById("music");
 function showSlide(index){
 if(index<0||index>=totalSlides)return;
 current=index;
-
 document.querySelectorAll(".slide").forEach(s=>{
 s.style.transform="translateY(-"+current*100+"vh)";
 });
-
 if(current>0 && current<=8){
 music.src=songs[current-1];
 music.play();
@@ -265,63 +279,32 @@ music.play();
 music.pause();
 }
 }
-
 function nextSlide(){showSlide(current+1);}
 function prevSlide(){showSlide(current-1);}
 showSlide(0);
 
-/* Love Calculator */
-function calculateLove(){
-document.getElementById("result").innerHTML="100% Perfect Match ❤️";
-}
-
-/* Quiz */
-function checkQuiz(){
-document.getElementById("quizResult").innerHTML="Correct! He Loves Poojitha ❤️";
-}
-
-/* Countdown */
-let countDownDate=new Date().getTime()+86400000;
-setInterval(function(){
-let now=new Date().getTime();
-let distance=countDownDate-now;
-let hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-let minutes=Math.floor((distance%(1000*60*60))/(1000*60));
-let seconds=Math.floor((distance%(1000*60))/1000);
-let el=document.getElementById("countdown");
-if(el) el.innerHTML=hours+"h "+minutes+"m "+seconds+"s ";
-},1000);
-
-/* Rotating love symbols */
-const symbols=["🌹","💋","🤗","🧸","❤️"];
+/* Pink rotating symbols */
 setInterval(()=>{
-let s=document.createElement("div");
-s.className="love";
-s.innerHTML=symbols[Math.floor(Math.random()*symbols.length)];
-s.style.top=Math.random()*90+"%";
-s.style.left=Math.random()*90+"%";
-document.body.appendChild(s);
-setTimeout(()=>s.remove(),6000);
-},800);
+let icons=["💗","🤍","🌸"];
+let i=document.createElement("div");
+i.className="symbol";
+i.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+i.style.top=Math.random()*90+"%";
+i.style.left=Math.random()*90+"%";
+document.body.appendChild(i);
+setTimeout(()=>i.remove(),6000);
+},900);
 
-/* Falling Hearts */
+/* White floating hearts */
 setInterval(()=>{
 let heart=document.createElement("div");
 heart.className="heart";
-heart.innerHTML="❤️";
+heart.innerHTML="🤍";
 heart.style.left=Math.random()*100+"%";
 document.body.appendChild(heart);
 setTimeout(()=>heart.remove(),6000);
-},500);
+},600);
 
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
