@@ -10,11 +10,11 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Segoe UI', sans-serif;
+font-family:'Georgia', serif;
 }
 
 body{
-background:linear-gradient(135deg,#ff758c,#ff7eb3);
+background:linear-gradient(135deg,#ff6a88,#ff99ac);
 overflow:hidden;
 color:white;
 }
@@ -24,57 +24,70 @@ position:absolute;
 width:100%;
 height:100vh;
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-flex-direction:column;
 text-align:center;
-padding:20px;
+padding:25px;
 opacity:0;
-transform:rotateY(90deg);
-transition:all 0.8s ease;
+transform:scale(0.8) rotateY(90deg);
+transition:all 1s ease;
 }
 
 .slide.active{
 opacity:1;
-transform:rotateY(0deg);
+transform:scale(1) rotateY(0deg);
 }
 
 img{
-width:85%;
+width:90%;
 max-width:350px;
+height:auto;
 border-radius:20px;
 margin:20px 0;
 box-shadow:0 20px 40px rgba(0,0,0,0.4);
 }
 
 h1{
-font-size:26px;
+font-size:24px;
 margin-bottom:15px;
 }
 
 p{
-font-size:18px;
+font-size:17px;
+line-height:1.7;
 max-width:90%;
-line-height:1.6;
 }
 
 .buttons{
 position:fixed;
-right:20px;
-bottom:30px;
+right:15px;
+bottom:25px;
 display:flex;
 flex-direction:column;
 }
 
 button{
 margin:6px 0;
-padding:10px 15px;
+padding:10px 16px;
 border:none;
 border-radius:30px;
 font-weight:bold;
 cursor:pointer;
 background:white;
 color:#ff2e63;
+}
+
+#loveReveal{
+display:none;
+font-size:28px;
+margin-top:20px;
+animation:fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
 }
 </style>
 </head>
@@ -83,123 +96,120 @@ color:#ff2e63;
 
 <!-- INTRO -->
 <div class="slide active">
-<h1>Happy Valentine’s Day My ChittiKanna 🧸❤️</h1>
+<h1>Happy Valentine’s Day ❤️</h1>
 <p>
-You are my teddy 🧸  
-My chocolate 🍫  
-My rose 🌹  
-My kiss 💋  
-My warm hug 🤗  
-My forever promise 💍  
-
+Kanna…  
 This is not just a slideshow.  
-This is my heart rotating open for you.  
-Every click reveals another piece of my love.
+This is my heart unfolding in front of you.  
+
+Every transition carries a memory.  
+Every frame holds a feeling.  
+And every word is written with love — only for you.
 </p>
 </div>
 
 <!-- PHOTO 1 -->
 <div class="slide">
-<h1>My Sweet Chocolate 🍫</h1>
+<h1>The Day You Became My World</h1>
 <img src="photo1.jpg">
 <p>
-Just like chocolate melts slowly,
-my heart melts when I see you.
-You are sweetness in my life,
-my happiness in human form.
+Somewhere between conversations and silence,  
+you became my comfort.  
+And without even realizing it,  
+you became my home.
 </p>
 </div>
 
 <!-- PHOTO 2 -->
 <div class="slide">
-<h1>My Beautiful Rose 🌹</h1>
+<h1>Your Presence, My Peace</h1>
 <img src="photo2.jpg">
 <p>
-Like a rose blooming softly,
-you make my world beautiful.
-Your smile lights up even my darkest days.
+In a world full of noise,  
+your voice feels like calm.  
+Your presence slows my racing thoughts  
+and makes everything feel right.
 </p>
 </div>
 
 <!-- PHOTO 3 -->
 <div class="slide">
-<h1>Your Warm Hug 🤗</h1>
+<h1>The Way You Look at Me</h1>
 <img src="photo3.jpg">
 <p>
-When you hug me,
-the world feels safe.
-In your arms,
-I feel home.
+There is something in your eyes —  
+a softness that holds me gently.  
+Every time you look at me like this,  
+I fall in love all over again.
 </p>
 </div>
 
 <!-- PHOTO 4 -->
 <div class="slide">
-<h1>Sweet Kiss 💋</h1>
+<h1>Moments That Feel Like Forever</h1>
 <img src="photo4.jpg">
 <p>
-Every kiss from you
-is magic.
-It heals my heart
-and fills it with butterflies.
+This moment…  
+I wish I could freeze it.  
+Because with you, even seconds  
+feel like eternity in the best way.
 </p>
 </div>
 
 <!-- PHOTO 5 -->
 <div class="slide">
-<h1>My Teddy Bear 🧸</h1>
+<h1>My Strength, My Safe Place</h1>
 <img src="photo5.jpg">
 <p>
-You are my comfort,
-my softness,
-my safe place.
-I never want to lose you.
+When life feels heavy,  
+you become my strength.  
+When my heart feels unsure,  
+you become my certainty.
 </p>
 </div>
 
 <!-- PHOTO 6 -->
 <div class="slide">
-<h1>My Promise 💍</h1>
+<h1>Every Little Detail</h1>
 <img src="photo6.jpg">
 <p>
-I promise to love you,
-stand by you,
-support you,
-and grow with you forever.
+Your smile.  
+Your laugh.  
+The way you care.  
+Everything about you feels like destiny chose perfectly for me.
 </p>
 </div>
 
 <!-- PHOTO 7 -->
 <div class="slide">
-<h1>My Sunshine ☀</h1>
+<h1>Choosing You, Always</h1>
 <img src="photo7.jpg">
 <p>
-You brighten my life
-in ways you don’t even realize.
-You are my light,
-my hope,
-my everything.
+If life gives me a thousand choices,  
+I will still choose you —  
+in every lifetime,  
+in every version of reality.
 </p>
 </div>
 
 <!-- PHOTO 8 -->
 <div class="slide">
-<h1>Forever Yours ❤️</h1>
+<h1>Forever Begins With You</h1>
 <img src="photo8.jpg">
 <p>
-Kanna… Charan… my ChittiKanna…
-You are my today,
-my tomorrow,
-and my forever.
-Happy Valentine’s Day.
-Love always,
-Your Poojitha 💕
+You are not just part of my story.  
+You are the reason it feels meaningful.  
+And I want my future to begin and end with you.
 </p>
+
+<button onclick="revealLove()">Tap Here 💖</button>
+<div id="loveReveal">I LOVE YOU KANNA ❤️</div>
+
 </div>
 
 <div class="buttons">
-<button onclick="prevSlide()">⬆ Back</button>
-<button onclick="nextSlide()">⬇ Next</button>
+<button onclick="prevSlide()">⬆</button>
+<button onclick="nextSlide()">⬇</button>
 </div>
 
 <audio id="music"></audio>
@@ -246,9 +256,14 @@ current--;
 showSlide(current);
 }
 }
+
+function revealLove(){
+document.getElementById("loveReveal").style.display="block";
+}
 </script>
 
 </body>
 </html>
+
 
 
