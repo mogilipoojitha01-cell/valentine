@@ -10,18 +10,34 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Georgia', serif;
+font-family: 'Poppins', sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#ff6a88,#ff99ac);
 overflow:hidden;
+background:linear-gradient(to bottom,#ff758c,#ff7eb3);
 color:white;
 }
 
+/* Floating Hearts */
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-110vh);}
+}
+
+/* Slider */
+.slider{
+transition:transform 1s ease-in-out;
+}
+
 .slide{
-position:absolute;
-width:100%;
 height:100vh;
 display:flex;
 flex-direction:column;
@@ -29,181 +45,216 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:25px;
-opacity:0;
-transform:scale(0.8) rotateY(90deg);
-transition:all 1s ease;
 }
 
-.slide.active{
-opacity:1;
-transform:scale(1) rotateY(0deg);
-}
-
-img{
-width:90%;
-max-width:350px;
-height:auto;
-border-radius:20px;
-margin:20px 0;
-box-shadow:0 20px 40px rgba(0,0,0,0.4);
-}
-
-h1{
+.slide h1{
 font-size:24px;
 margin-bottom:15px;
 }
 
-p{
+.slide p{
 font-size:17px;
-line-height:1.7;
-max-width:90%;
+line-height:1.6;
+max-width:95%;
+margin-bottom:15px;
 }
 
+.slide img{
+width:85%;
+max-width:320px;
+border-radius:20px;
+margin-top:15px;
+box-shadow:0 15px 30px rgba(0,0,0,0.4);
+}
+
+/* Buttons */
 .buttons{
 position:fixed;
 right:15px;
-bottom:25px;
+bottom:20px;
 display:flex;
 flex-direction:column;
 }
 
 button{
-margin:6px 0;
-padding:10px 16px;
+margin:5px 0;
+padding:8px 14px;
 border:none;
-border-radius:30px;
-font-weight:bold;
-cursor:pointer;
+border-radius:25px;
 background:white;
 color:#ff2e63;
+font-weight:bold;
+cursor:pointer;
 }
 
-#loveReveal{
+/* Surprise Popup */
+#surprise{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
 display:none;
-font-size:28px;
-margin-top:20px;
-animation:fadeIn 2s ease forwards;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
 }
 
-@keyframes fadeIn{
-from{opacity:0;}
-to{opacity:1;}
+#surpriseContent{
+background:white;
+color:#ff2e63;
+padding:30px;
+border-radius:20px;
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<div class="slide active">
-<h1>Happy Valentine’s Day ❤️</h1>
-<p>
-Kanna…  
-This is not just a slideshow.  
-This is my heart unfolding in front of you.  
+<div class="slider" id="slider">
 
-Every transition carries a memory.  
-Every frame holds a feeling.  
-And every word is written with love — only for you.
+<!-- 1 -->
+<div class="slide">
+<h1>Happy Valentine’s Day Kanna ❤️</h1>
+<p>
+This is not just a website.  
+This is my heart speaking.  
+Every slide below holds a memory,  
+every word holds a feeling.  
+Today I celebrate us.
 </p>
 </div>
 
-<!-- PHOTO 1 -->
+<!-- PHOTO SLIDES 2-9 -->
+
 <div class="slide">
-<h1>The Day You Became My World</h1>
+<h1>You Changed My World</h1>
+<p>
+Before you, life was normal.  
+After you, life became beautiful.
+</p>
 <img src="photo1.jpg">
-<p>
-Somewhere between conversations and silence,  
-you became my comfort.  
-And without even realizing it,  
-you became my home.
-</p>
 </div>
 
-<!-- PHOTO 2 -->
 <div class="slide">
-<h1>Your Presence, My Peace</h1>
+<h1>Your Smile is My Peace</h1>
+<p>
+Whenever you smile,  
+my worries disappear.
+</p>
 <img src="photo2.jpg">
-<p>
-In a world full of noise,  
-your voice feels like calm.  
-Your presence slows my racing thoughts  
-and makes everything feel right.
-</p>
 </div>
 
-<!-- PHOTO 3 -->
 <div class="slide">
-<h1>The Way You Look at Me</h1>
+<h1>With You, I Feel Safe</h1>
+<p>
+In your presence,  
+I feel protected and loved.
+</p>
 <img src="photo3.jpg">
-<p>
-There is something in your eyes —  
-a softness that holds me gently.  
-Every time you look at me like this,  
-I fall in love all over again.
-</p>
 </div>
 
-<!-- PHOTO 4 -->
 <div class="slide">
-<h1>Moments That Feel Like Forever</h1>
+<h1>Moments I Treasure</h1>
+<p>
+This picture is not just a memory.  
+It is a feeling I never want to lose.
+</p>
 <img src="photo4.jpg">
-<p>
-This moment…  
-I wish I could freeze it.  
-Because with you, even seconds  
-feel like eternity in the best way.
-</p>
 </div>
 
-<!-- PHOTO 5 -->
 <div class="slide">
-<h1>My Strength, My Safe Place</h1>
+<h1>My Strength</h1>
+<p>
+When I feel weak,  
+you become my power.
+</p>
 <img src="photo5.jpg">
-<p>
-When life feels heavy,  
-you become my strength.  
-When my heart feels unsure,  
-you become my certainty.
-</p>
 </div>
 
-<!-- PHOTO 6 -->
 <div class="slide">
-<h1>Every Little Detail</h1>
+<h1>My Happiness</h1>
+<p>
+Your laughter is my favorite sound.
+</p>
 <img src="photo6.jpg">
-<p>
-Your smile.  
-Your laugh.  
-The way you care.  
-Everything about you feels like destiny chose perfectly for me.
-</p>
 </div>
 
-<!-- PHOTO 7 -->
 <div class="slide">
-<h1>Choosing You, Always</h1>
-<img src="photo7.jpg">
+<h1>Choosing You Always</h1>
 <p>
-If life gives me a thousand choices,  
-I will still choose you —  
-in every lifetime,  
-in every version of reality.
+If I had to choose again,  
+I would still choose you.
 </p>
+<img src="photo7.jpg">
 </div>
 
-<!-- PHOTO 8 -->
 <div class="slide">
 <h1>Forever Begins With You</h1>
-<img src="photo8.jpg">
 <p>
-You are not just part of my story.  
-You are the reason it feels meaningful.  
-And I want my future to begin and end with you.
+I see my future in your eyes.
 </p>
+<img src="photo8.jpg">
+</div>
 
-<button onclick="revealLove()">Tap Here 💖</button>
-<div id="loveReveal">I LOVE YOU KANNA ❤️</div>
+<!-- 10 -->
+<div class="slide">
+<h1>Our Journey 💞</h1>
+<p>
+From strangers  
+to something so beautiful.  
+We built this love together.
+</p>
+</div>
+
+<!-- 11 -->
+<div class="slide">
+<h1>My Promise 💍</h1>
+<p>
+I promise to stand beside you  
+through every storm and sunshine.
+</p>
+</div>
+
+<!-- 12 -->
+<div class="slide">
+<h1>My Favorite Person</h1>
+<p>
+Out of everyone in this world,  
+my heart chose you.
+</p>
+</div>
+
+<!-- 13 -->
+<div class="slide">
+<h1>You Are My Forever</h1>
+<p>
+Not just today.  
+Not just tomorrow.  
+Forever.
+</p>
+</div>
+
+<!-- 14 -->
+<div class="slide">
+<h1>Tap For Surprise 🎁</h1>
+<button onclick="showSurprise()">Open My Heart</button>
+</div>
+
+<!-- 15 -->
+<div class="slide">
+<h1>I Love You Kanna ❤️</h1>
+<p>
+You are my today,  
+my tomorrow,  
+and my always.  
+Forever yours,  
+Poojitha 💕
+</p>
+</div>
 
 </div>
 
@@ -212,54 +263,70 @@ And I want my future to begin and end with you.
 <button onclick="nextSlide()">⬇</button>
 </div>
 
-<audio id="music"></audio>
+<!-- Surprise Popup -->
+<div id="surprise">
+<div id="surpriseContent">
+<h2>I Love You More Than Words ❤️</h2>
+<p>
+No matter what happens,  
+my heart belongs to you.
+</p>
+<button onclick="closeSurprise()">Close</button>
+</div>
+</div>
 
 <script>
 let current = 0;
-const slides = document.querySelectorAll(".slide");
-const music = document.getElementById("music");
+const slider = document.getElementById("slider");
+const totalSlides = 15;
 
-const songs = [
-"",
-"song1.mp3",
-"song2.mp3",
-"song3.mp3",
-"song4.mp3",
-"song5.mp3",
-"song6.mp3",
-"song7.mp3",
-"song8.mp3"
-];
-
-function showSlide(index){
-slides.forEach(slide => slide.classList.remove("active"));
-slides[index].classList.add("active");
-
-if(songs[index]){
-music.pause();
-music.src = songs[index];
-music.load();
-music.play().catch(()=>{});
-}
+function updateSlide(){
+slider.style.transform = "translateY(-" + current * 100 + "vh)";
 }
 
 function nextSlide(){
-if(current < slides.length-1){
+if(current < totalSlides-1){
 current++;
-showSlide(current);
+updateSlide();
 }
 }
 
 function prevSlide(){
 if(current > 0){
 current--;
-showSlide(current);
+updateSlide();
 }
 }
 
-function revealLove(){
-document.getElementById("loveReveal").style.display="block";
+/* Auto Slide */
+setInterval(()=>{
+if(current < totalSlides-1){
+current++;
+}else{
+current=0;
 }
+updateSlide();
+},5000);
+
+/* Surprise */
+function showSurprise(){
+document.getElementById("surprise").style.display="flex";
+}
+
+function closeSurprise(){
+document.getElementById("surprise").style.display="none";
+}
+
+/* Floating hearts */
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"%";
+heart.style.fontSize=(15+Math.random()*20)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},500);
 </script>
 
 </body>
