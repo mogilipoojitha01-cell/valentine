@@ -6,14 +6,13 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif;}
-
 body{
 overflow:hidden;
 background:linear-gradient(to bottom,#ffcce6,#ffffff);
 color:#b30059;
 }
 
-/* Slide */
+/* Slides */
 .slide{
 position:absolute;
 width:100%;
@@ -27,21 +26,16 @@ padding:20px;
 transition:1s ease;
 }
 
-/* Image */
+/* Images */
 img{
-width:90%;
-max-width:320px;
-max-height:45vh;
+width:85%;
+max-width:300px;
+max-height:40vh;
 object-fit:contain;
 border-radius:20px;
-margin:15px 0;
+margin:10px 0;
 box-shadow:0 0 25px #ff66b2;
 }
-
-/* Text */
-h1{font-size:24px;margin-bottom:12px;}
-h2{font-size:20px;margin-bottom:10px;}
-p{font-size:15px;line-height:1.6;}
 
 /* Buttons */
 button{
@@ -54,11 +48,21 @@ background:#ff3399;
 color:white;
 font-weight:bold;
 }
-
 #prev{left:15px;}
 #next{right:15px;}
 
-/* Hearts */
+/* Rotating Love Symbols */
+.love{
+position:fixed;
+font-size:22px;
+animation:rotate 6s linear infinite;
+}
+@keyframes rotate{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+/* Floating Hearts */
 .heart{
 position:fixed;
 bottom:-20px;
@@ -66,12 +70,17 @@ font-size:18px;
 animation:float 6s linear infinite;
 color:#ff3399;
 }
-
 @keyframes float{
 0%{transform:translateY(0);}
 100%{transform:translateY(-110vh);}
 }
 
+input,select{
+padding:8px;
+margin:5px;
+border-radius:10px;
+border:1px solid pink;
+}
 </style>
 </head>
 <body>
@@ -85,73 +94,48 @@ color:#ff3399;
 <script>
 
 /* SONGS */
-const songs=[
-"song1.mp3","song2.mp3","song3.mp3","song4.mp3","song5.mp3",
-"song6.mp3","song7.mp3","song8.mp3","song9.mp3","song10.mp3",
-"song11.mp3","song12.mp3","song13.mp3","song14.mp3","song15.mp3",
-"song16.mp3","song17.mp3","song18.mp3"
-];
+const songs=["song1.mp3","song2.mp3","song3.mp3","song4.mp3","song5.mp3","song6.mp3","song7.mp3","song8.mp3"];
 
 /* CAPTIONS */
 const captions=[
-"First Smile With My Kanna 💗",
-"That Day You Held My Hand 🤍",
-"My Chittikanna’s Cute Laugh 🌸",
-"When Charan Looked Into My Eyes ✨",
-"Our Sweet Selfie Moment 📸",
-"The Day You Called Me Yours 💞",
-"That Surprise Hug 🫶",
-"Our Silly Happy Time 😍",
-"The Moment I Fell Again 💓",
-"My Forever Person 💍",
-"Your Caring Nature 🤍",
-"The Way You Protect Me 💗",
-"Late Night Talks 🌙",
-"Our Crazy Laughs 😂",
-"The Way You Say My Name 💕",
-"Your Support Always 💖",
-"The Day We Dreamed Together ✨",
-"My Entire World 🌎"
+"Our First Smile 💗",
+"Holding Hands Forever 🤍",
+"My Chittikanna’s Laugh 🌸",
+"When Charan Looked at Me ✨",
+"Our Cute Selfie 📸",
+"The Hug I Love 🤗",
+"My Teddy Bear 🧸",
+"My Forever Kanna 💍"
 ];
 
 /* MESSAGES */
 const messages=[
-"You smiled and my world changed.<br>You became my peace.<br>You are my forever, Kanna.",
-"When you held my hand,<br>I felt safest in this world.<br>Stay with me always, My Love.",
-"Your laugh is my favorite music.<br>Your voice is my comfort.<br>Chittikanna, you are magic.",
-"That look in your eyes,<br>Made me believe in destiny.<br>Charan, you are my dream.",
-"This memory is my treasure.<br>Every second shines.<br>You are my heartbeat.",
-"When you called me yours,<br>I felt complete.<br>I belong to you forever.",
-"That hug healed everything.<br>Your arms are my home.<br>Kanna never leave me.",
-"We laughed like kids.<br>We loved like soulmates.<br>You are my happiness.",
-"I fall for you daily.<br>Again and again.<br>You are my destiny.",
-"You are not just today.<br>You are my always.<br>My love story begins with you.",
-"You care for me deeply.<br>You understand my silence.<br>You are special.",
-"You protect my heart.<br>You respect my dreams.<br>You are my strength.",
-"Our late talks mean everything.<br>Your voice comforts me.<br>I love you endlessly.",
-"We laugh without reason.<br>We shine together.<br>Life is fun with you.",
-"When you say Poojitha,<br>My heart melts.<br>Say it forever.",
-"You stand beside me.<br>You never give up on us.<br>That means everything.",
-"We dream big together.<br>We plan forever.<br>I want only you.",
-"You are my world.<br>My future husband.<br>My everything, Kanna."
+"You smiled and my world changed.<br>You are my peace Kanna.<br>Stay forever mine.",
+"When you hold my hand,<br>I feel safest My Love.<br>Never leave me.",
+"Your laugh heals my heart.<br>Chittikanna you are magic.<br>I love you endlessly.",
+"That look made me blush.<br>Charan you are my destiny.<br>Always choose me.",
+"This memory is treasure.<br>We shine together.<br>Forever us.",
+"Your hugs fix everything.<br>You are my comfort.<br>My heart is yours.",
+"My teddy Kanna,<br>You are soft and caring.<br>I adore you.",
+"You are my future.<br>My husband my love.<br>My everything."
 ];
 
 let container=document.getElementById("slides");
 
-/* 1️⃣ START SLIDE (NO PHOTO) */
+/* SLIDE 1 INTRO */
 createSlide(`
-<h1>My Kanna ❤️</h1>
+<h1>Happy Valentine’s Day ❤️</h1>
 <p>
-From the day you entered my life,<br>
-Everything turned pink and beautiful.<br>
-You are my happiness.<br>
-You are my comfort.<br>
-You are my forever Charan.
+Kanna, you are my today and tomorrow.<br>
+Chittikanna, you are my sweetest dream.<br>
+Charan, you are my forever home.<br>
+My love grows every second.<br>
+You are my everything.
 </p>
 `);
 
-/* 2️⃣ PHOTO SLIDES (18) */
-for(let i=0;i<18;i++){
+/* PHOTO SLIDES 2-9 */
+for(let i=0;i<8;i++){
 createSlide(`
 <h2>${captions[i]}</h2>
 <img src="photo${i+1}.jpg">
@@ -159,14 +143,97 @@ createSlide(`
 `);
 }
 
-/* 3️⃣ FINAL SLIDE (NO PHOTO) */
+/* FEATURE SLIDES 10-19 */
+
+/* Countdown */
 createSlide(`
-<h1>Happy Valentine’s Day ❤️</h1>
+<h2>Countdown For Our Forever ⏳</h2>
+<p>Every second brings us closer.<br>My heart waits for you.<br>Let’s start forever.</p>
+<h3 id="countdown"></h3>
+`);
+
+/* Love Meter */
+createSlide(`
+<h2>Love Calculator 💖</h2>
+<p>Kanna + Poojitha = 100% Forever</p>
+<input id="name1" placeholder="Your Name">
+<input id="name2" placeholder="His Name">
+<button onclick="calculateLove()">Check Love</button>
+<h3 id="result"></h3>
+`);
+
+/* Quiz */
+createSlide(`
+<h2>Compatibility Quiz 💞</h2>
+<p>What does Kanna love most?</p>
+<select id="quiz">
+<option>Me</option>
+<option>Food</option>
+<option>Sleep</option>
+</select>
+<button onclick="checkQuiz()">Submit</button>
+<h3 id="quizResult"></h3>
+`);
+
+/* AI Poem */
+createSlide(`
+<h2>AI Love Poem ✨</h2>
 <p>
-Kanna, you are my today and tomorrow.<br>
-You are the reason my heart smiles.<br>
-With you love feels pure and endless.<br>
-I promise to stand beside you forever.<br>
+Poojitha loves Kanna deeply.<br>
+Charan is her heartbeat.<br>
+Together they are destiny.
+</p>
+`);
+
+/* Proposal Game */
+createSlide(`
+<h2>Find The Heart Game ❤️</h2>
+<p>Tap the hidden heart below</p>
+<button onclick="alert('Will You Marry Me Poojitha? 💍')">💖</button>
+`);
+
+/* Popup Offer */
+createSlide(`
+<h2>Special Love Offer 💌</h2>
+<p>Buy 1 Heart, Get 1000 Kisses Free</p>
+<button onclick="alert('Offer Accepted My Love 💋')">Claim</button>
+`);
+
+/* E-Card */
+createSlide(`
+<h2>Virtual Love Card 💌</h2>
+<p>
+To My Kanna,<br>
+You are my sunshine.<br>
+Forever yours, Poojitha.
+</p>
+`);
+
+/* Slider */
+createSlide(`
+<h2>Our Love Moments 🌹</h2>
+<p>Slide through memories in heart.</p>
+<input type="range">
+`);
+
+/* Scroll Story */
+createSlide(`
+<h2>Our Love Story 📖</h2>
+<p>
+We met by destiny.<br>
+We stayed by choice.<br>
+We love endlessly.
+</p>
+`);
+
+/* FINAL SLIDE 20 */
+createSlide(`
+<h1>Happy Valentine’s Day My Love ❤️</h1>
+<p>
+Kanna you are my forever.<br>
+Chittikanna you are my sweetest blessing.<br>
+Charan you are my destiny.<br>
+I promise to love you endlessly.<br>
 Forever yours, Poojitha 💍
 </p>
 `);
@@ -191,8 +258,7 @@ document.querySelectorAll(".slide").forEach(s=>{
 s.style.transform="translateY(-"+current*100+"vh)";
 });
 
-/* Play song only for photo slides */
-if(current>0 && current<=18){
+if(current>0 && current<=8){
 music.src=songs[current-1];
 music.play();
 }else{
@@ -204,6 +270,40 @@ function nextSlide(){showSlide(current+1);}
 function prevSlide(){showSlide(current-1);}
 showSlide(0);
 
+/* Love Calculator */
+function calculateLove(){
+document.getElementById("result").innerHTML="100% Perfect Match ❤️";
+}
+
+/* Quiz */
+function checkQuiz(){
+document.getElementById("quizResult").innerHTML="Correct! He Loves Poojitha ❤️";
+}
+
+/* Countdown */
+let countDownDate=new Date().getTime()+86400000;
+setInterval(function(){
+let now=new Date().getTime();
+let distance=countDownDate-now;
+let hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+let minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+let seconds=Math.floor((distance%(1000*60))/1000);
+let el=document.getElementById("countdown");
+if(el) el.innerHTML=hours+"h "+minutes+"m "+seconds+"s ";
+},1000);
+
+/* Rotating love symbols */
+const symbols=["🌹","💋","🤗","🧸","❤️"];
+setInterval(()=>{
+let s=document.createElement("div");
+s.className="love";
+s.innerHTML=symbols[Math.floor(Math.random()*symbols.length)];
+s.style.top=Math.random()*90+"%";
+s.style.left=Math.random()*90+"%";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),6000);
+},800);
+
 /* Falling Hearts */
 setInterval(()=>{
 let heart=document.createElement("div");
@@ -212,11 +312,12 @@ heart.innerHTML="❤️";
 heart.style.left=Math.random()*100+"%";
 document.body.appendChild(heart);
 setTimeout(()=>heart.remove(),6000);
-},400);
+},500);
 
 </script>
 </body>
 </html>
+
 
 
 
