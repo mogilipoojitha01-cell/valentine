@@ -7,19 +7,20 @@
 <style>
 body{
 margin:0;
-font-family:cursive;
-background:linear-gradient(180deg,#ffb6d9,#ff69b4,#ff1493);
-color:white;
 overflow:hidden;
+font-family:cursive;
+background:linear-gradient(180deg,#ff1493,#ff69b4,#ff1493);
+color:white;
 }
 
+/* Slides */
 .slide{
 display:none;
 position:absolute;
-width:100%;
-height:100vh;
 top:0;
 left:0;
+width:100%;
+height:100vh;
 padding:25px;
 box-sizing:border-box;
 text-align:center;
@@ -33,27 +34,24 @@ align-items:center;
 animation:fade 0.6s;
 }
 
-@keyframes fade{
-from{opacity:0;}
-to{opacity:1;}
-}
+@keyframes fade{from{opacity:0;}to{opacity:1;}}
 
+/* Photo */
 .photo{
 width:90%;
 height:45vh;
 object-fit:contain;
 border-radius:20px;
-box-shadow:0 0 25px white;
-margin-bottom:10px;
+box-shadow:0 0 25px #ffb6d9;
 }
 
 .caption{
 font-size:22px;
 font-weight:bold;
-margin-bottom:8px;
-color:#fff0f5;
+margin:10px 0;
 }
 
+/* Buttons */
 .controls{
 position:fixed;
 bottom:15px;
@@ -61,40 +59,31 @@ width:100%;
 display:flex;
 justify-content:space-between;
 padding:0 25px;
-box-sizing:border-box;
 }
 
 button{
-background:white;
+background:#ffb6d9;
 color:#ff1493;
 border:none;
-padding:10px 20px;
-border-radius:25px;
-font-size:15px;
+padding:10px 18px;
+border-radius:20px;
 font-weight:bold;
 }
 
-input{
-padding:8px;
-border-radius:15px;
-border:none;
-margin-top:10px;
-text-align:center;
-}
-
-/* Floating Symbols */
+/* Floating rotating symbols */
 .symbol{
 position:absolute;
 font-size:24px;
-animation:floatUp 6s linear forwards;
+animation:rotateFloat 6s linear forwards;
 cursor:pointer;
 }
 
-@keyframes floatUp{
-0%{transform:translateY(100vh);}
-100%{transform:translateY(-10vh);}
+@keyframes rotateFloat{
+0%{transform:translateY(100vh) rotate(0deg);}
+100%{transform:translateY(-10vh) rotate(360deg);}
 }
 
+/* Flower blast */
 .flower{
 position:absolute;
 font-size:22px;
@@ -102,8 +91,15 @@ animation:bloom 1s ease-out forwards;
 }
 
 @keyframes bloom{
-0%{transform:translate(0,0);opacity:1;}
-100%{transform:translate(var(--x),var(--y));opacity:0;}
+0%{transform:translate(0,0) scale(1);opacity:1;}
+100%{transform:translate(var(--x),var(--y)) scale(0.5);opacity:0;}
+}
+
+input{
+padding:8px;
+border-radius:15px;
+border:none;
+text-align:center;
 }
 </style>
 </head>
@@ -111,7 +107,7 @@ animation:bloom 1s ease-out forwards;
 <body>
 
 <script>
-const icons=["💖","🌹","💕","🤍"];
+const icons=["💖","🌹","💕","💘"];
 
 setInterval(()=>{
 let s=document.createElement("span");
@@ -121,14 +117,14 @@ s.style.left=Math.random()*100+"%";
 document.body.appendChild(s);
 
 s.onclick=function(){
-for(let i=0;i<12;i++){
+for(let i=0;i<20;i++){
 let f=document.createElement("span");
 f.className="flower";
 f.innerHTML=Math.random()>0.5?"🌸":"🌺";
-f.style.left=s.offsetLeft+"px";
-f.style.top=s.offsetTop+"px";
-let x=(Math.random()*200-100)+"px";
-let y=(Math.random()*200-100)+"px";
+f.style.left="50%";
+f.style.top="50%";
+let x=(Math.random()*400-200)+"px";
+let y=(Math.random()*400-200)+"px";
 f.style.setProperty('--x',x);
 f.style.setProperty('--y',y);
 document.body.appendChild(f);
@@ -137,109 +133,147 @@ setTimeout(()=>f.remove(),1000);
 s.remove();
 };
 setTimeout(()=>{if(s) s.remove()},6000);
-},900);
+},700);
 </script>
 
-<!-- INTRO -->
+<!-- 1 INTRO -->
 <div class="slide active">
-<h2>My Chittikanna 💗</h2>
+<h2>My Chittikanna 💖</h2>
 <p>
-Charan, you are my destiny.<br>
-Kanna, you are my heartbeat.<br>
-My world turns pink because of you.<br>
-Every second feels magical.<br>
-Tonight is ours forever.
+Charan, from the moment you entered my life,<br>
+Kanna, my world turned into pure pink magic,<br>
+Chittikanna, you are my heartbeat and my forever,<br>
+This Valentine is only about us and our destiny.
 </p>
+<button onclick="alert('My Love Letter 💌\n\nChittikanna, I never believed in destiny until I met you. Charan, you are my peace, my passion, my forever dream. Kanna, will you stay with me in every lifetime? I am madly, deeply, endlessly in love with you. 💖')">
+Open Secret 💌
+</button>
 </div>
 
-<!-- PHOTO SLIDES -->
+<!-- 2-9 PHOTO SLIDES -->
+
 <div class="slide">
 <img src="photo1.jpg" class="photo">
 <div class="caption">Spark</div>
-<p>Chittikanna, your eyes shine brighter than stars.</p>
+<p>Your eyes light up my universe.<br>
+Chittikanna, you are my brightest star.<br>
+With you everything glows.<br>
+I fall for you every second.</p>
 <audio src="song1.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo2.jpg" class="photo">
 <div class="caption">Heaven</div>
-<p>Kanna, your hug feels like my safest home.</p>
+<p>Kanna, your hug feels like paradise.<br>
+Your touch melts my soul.<br>
+I feel safest with you.<br>
+You are my home.</p>
 <audio src="song2.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo3.jpg" class="photo">
 <div class="caption">Magic</div>
-<p>Charan, your smile melts my entire world.</p>
+<p>Charan, your smile heals me.<br>
+You are my sunshine.<br>
+You are my happiness.<br>
+My forever dream.</p>
 <audio src="song3.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo4.jpg" class="photo">
 <div class="caption">Bliss</div>
-<p>With you, time stops beautifully, Chittikanna.</p>
+<p>Time stops when I'm with you.<br>
+Chittikanna, you are my peace.<br>
+My calm in chaos.<br>
+My beautiful destiny.</p>
 <audio src="song4.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo5.jpg" class="photo">
 <div class="caption">Dream</div>
-<p>Kanna, loving you feels like living my dream.</p>
+<p>Kanna, loving you feels unreal.<br>
+Like living inside a fairytale.<br>
+My heart belongs to you.<br>
+Forever and always.</p>
 <audio src="song5.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo6.jpg" class="photo">
 <div class="caption">Forever</div>
-<p>Charan, I choose you in every lifetime.</p>
+<p>Charan, I choose you daily.<br>
+In every lifetime.<br>
+In every universe.<br>
+You are mine.</p>
 <audio src="song6.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo7.jpg" class="photo">
 <div class="caption">Comfort</div>
-<p>Your laugh heals my heart, Kanna.</p>
+<p>Your laugh is my therapy.<br>
+Kanna, you calm my storms.<br>
+You are my comfort zone.<br>
+My safe arms.</p>
 <audio src="song7.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo8.jpg" class="photo">
 <div class="caption">Destiny</div>
-<p>Chittikanna, our love is written in stars.</p>
+<p>Chittikanna, our love is written.<br>
+In stars and skies.<br>
+In fate and forever.<br>
+We are eternal.</p>
 <audio src="song8.mp3"></audio>
 </div>
 
-<!-- LOVE CALCULATOR -->
+<!-- 10 LOVE CALCULATOR -->
 <div class="slide">
 <h2>Love Calculator 💕</h2>
-<input id="name" placeholder="Enter Kanna's Name">
-<button onclick="calcLove()">Check Love</button>
+<input id="loveName" placeholder="Enter Kanna's Name">
+<button onclick="document.getElementById('loveResult').innerHTML='💖 100% Eternal Love 💖'">Calculate</button>
 <p id="loveResult"></p>
 </div>
 
-<!-- COUNTDOWN -->
+<!-- 11 COUNTDOWN -->
 <div class="slide">
 <h2>Forever Countdown ⏳</h2>
-<p id="countdown"></p>
-<p>Every second with you, Charan, is priceless.</p>
+<p id="count"></p>
 </div>
 
-<!-- QUIZ -->
+<!-- 12 QUIZ -->
 <div class="slide">
 <h2>Compatibility Quiz 💌</h2>
-<p>Who loves more?</p>
-<button onclick="alert('Poojitha loves Kanna infinity 💖')">Reveal</button>
+<button onclick="alert('Perfect Match 💖 Gift: Romantic Surprise Date 🌹')">Check Compatibility</button>
 </div>
 
-<!-- FINAL -->
+<!-- 13 AUDIO MESSAGE -->
 <div class="slide">
-<h1>Happy Valentine’s Day 💖</h1>
+<h2>Special Audio 💖</h2>
+<p>Play this surprise message for you, Kanna.</p>
+<audio controls src="song1.mp3"></audio>
+</div>
+
+<!-- 14 GAME -->
+<div class="slide">
+<h2>Find My Heart 💘</h2>
+<button onclick="alert('You found my heart, Charan 💖 Proposal Accepted Forever!')">Tap to Find</button>
+</div>
+
+<!-- 15 FINAL -->
+<div class="slide">
+<h1>Happy Valentine’s Day Kanna 💖</h1>
 <p>
-Chittikanna, you are my forever,<br>
-Kanna, you are my heartbeat,<br>
-Charan, you are my world,<br>
-Our love blooms endlessly,<br>
-Forever starts now.
+Chittikanna, you are my once in a lifetime love.<br>
+Charan, you are the reason my world glows pink.<br>
+Kanna, every heartbeat whispers your name.<br>
+Our love feels like a beautiful cinema scene.<br>
+And I promise to love you beyond forever.
 </p>
 </div>
 
@@ -271,23 +305,18 @@ function prevSlide(){
 if(current>0){current--;showSlide(current);}
 }
 
-function calcLove(){
-let name=document.getElementById("name").value;
-document.getElementById("loveResult").innerHTML=
-"💖 "+name+" & Poojitha = 100% Eternal Love 💖";
-}
-
 setInterval(()=>{
 let future=new Date("Feb 14, 2026 00:00:00").getTime();
 let now=new Date().getTime();
 let gap=future-now;
 let days=Math.floor(gap/(1000*60*60*24));
-document.getElementById("countdown").innerHTML=
-days+" days until our next magical Valentine, Kanna 💗";
+document.getElementById("count").innerHTML=
+days+" days until our next Valentine, Kanna 💗";
 },1000);
 </script>
 
 </body>
 </html>
+
 
 
