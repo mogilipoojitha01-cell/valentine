@@ -64,13 +64,26 @@ border:none;
 padding:10px 18px;
 border-radius:25px;
 font-size:15px;
+cursor:pointer;
 }
 
-input{
+input, textarea{
 padding:8px;
 border-radius:15px;
 border:1px solid pink;
-margin-top:10px;
+margin:5px;
+width:80%;
+max-width:300px;
+font-family:cursive;
+}
+
+.letter{
+background:rgba(255,182,193,0.3);
+padding:20px;
+border-radius:25px;
+box-shadow:0 0 15px #ff69b4;
+max-width:90%;
+margin:10px 0;
 }
 
 /* Floating symbols */
@@ -138,54 +151,86 @@ setTimeout(()=>{if(s) s.remove()},6000);
 },900);
 </script>
 
-<!-- SLIDE 1 -->
+<!-- SLIDE 1: Intro -->
 <div class="slide active">
 <h2>For My Chittikanna 💗</h2>
 <p>
+My dearest Kanna Charan,<br>
 You entered my life like magic,<br>
 turned everything soft pink,<br>
 Kanna you are my heartbeat,<br>
-Charan my sweetest destiny,<br>
-Tonight is our love story.
+Chittikanna my sweetest destiny,<br>
+Tonight is our love story. 💖
 </p>
 </div>
 
-<!-- PHOTO SLIDES 2-9 -->
-<div class="slide"><img src="photo1.jpg" class="photo"><p>Your eyes hold my universe.<br>I fall for you daily.<br>You are my spark.</p><audio src="song1.mp3"></audio></div>
-<div class="slide"><img src="photo2.jpg" class="photo"><p>Your hug feels like heaven.<br>You are my safe place.<br>I melt for you.</p><audio src="song2.mp3"></audio></div>
-<div class="slide"><img src="photo3.jpg" class="photo"><p>Your smile heals me.<br>You are my sunshine.<br>I adore you.</p><audio src="song3.mp3"></audio></div>
-<div class="slide"><img src="photo4.jpg" class="photo"><p>Time stops with you.<br>Every moment shines.<br>Stay mine forever.</p><audio src="song4.mp3"></audio></div>
-<div class="slide"><img src="photo5.jpg" class="photo"><p>Your love colors my world.<br>Life is beautiful with you.<br>I choose you always.</p><audio src="song5.mp3"></audio></div>
-<div class="slide"><img src="photo6.jpg" class="photo"><p>Your touch is magic.<br>You light my nights.<br>Forever yours.</p><audio src="song6.mp3"></audio></div>
-<div class="slide"><img src="photo7.jpg" class="photo"><p>Your laugh melts me.<br>You are my comfort.<br>Endless love.</p><audio src="song7.mp3"></audio></div>
-<div class="slide"><img src="photo8.jpg" class="photo"><p>Your love is strength.<br>Our future shines.<br>Kanna I love you.</p><audio src="song8.mp3"></audio></div>
+<!-- SLIDES 2-9: 8 Photos with songs -->
+<div class="slide"><img src="photo1.jpg" class="photo"><p>My Chittikanna, your eyes hold my universe.<br>I fall for you daily, Kanna.<br>You are my spark, Charan. 💕</p><audio src="song1.mp3" autoplay></audio></div>
+<div class="slide"><img src="photo2.jpg" class="photo"><p>Kanna Charan, your hug feels like heaven.<br>You are my safe place, Chittikanna.<br>I melt for you always. 🌹</p><audio src="song2.mp3" autoplay></audio></div>
+<div class="slide"><img src="photo3.jpg" class="photo"><p>Chittikanna, your smile heals me.<br>You are my sunshine, Kanna.<br>I adore you forever, Charan. 💖</p><audio src="song3.mp3" autoplay></audio></div>
+<div class="slide"><img src="photo4.jpg" class="photo"><p>My Kanna, time stops with you.<br>Every moment shines, Chittikanna.<br>Stay mine forever, Charan. 🤍</p><audio src="song4.mp3" autoplay></audio></div>
+<div class="slide"><img src="photo5.jpg" class="photo"><p>Chittikanna, your love colors my world.<br>Life is beautiful with you, Kanna.<br>I choose you always, Charan. 💕</p><audio src="song5.mp3" autoplay></audio></div>
+<div class="slide"><img src="photo6.jpg" class="photo"><p>Kanna Charan, your touch is magic.<br>You light my nights, Chittikanna.<br>Forever yours, my love. 🌸</p><audio src="song6.mp3" autoplay></audio></div>
+<div class="slide"><img src="photo7.jpg" class="photo"><p>My Chittikanna, your laugh melts me.<br>You are my comfort, Kanna.<br>Endless love for you, Charan. 💗</p><audio src="song7.mp3" autoplay></audio></div>
+<div class="slide"><img src="photo8.jpg" class="photo"><p>Kanna Charan, your love is my strength.<br>Our future shines bright, Chittikanna.<br>I love you eternally. 💖</p><audio src="song8.mp3" autoplay></audio></div>
 
-<!-- FEATURES 10-18 -->
-<div class="slide"><h2>Love Calculator 💕</h2><input id="name"><button onclick="document.getElementById('res').innerHTML='100% Perfect Love 💖'">Check</button><p id="res"></p></div>
+<!-- SLIDE 10: Love Calculator -->
+<div class="slide"><h2>Love Calculator 💕</h2><input id="name" placeholder="Enter your name, Kanna"><button onclick="document.getElementById('res').innerHTML='100% Perfect Love for Chittikanna 💖 Forever!'">Check Our Love</button><p id="res"></p></div>
 
-<div class="slide"><h2>Countdown ⏳</h2><p id="count"></p></div>
+<!-- SLIDE 11: Countdown -->
+<div class="slide"><h2>Our Love Countdown ⏳</h2><p id="count">Every second with you is precious, my Kanna Charan 💕</p></div>
 
-<div class="slide"><h2>Compatibility Quiz 💌</h2><button onclick="alert('Poojitha loves Kanna infinity 💖')">Who loves more?</button></div>
-
-<div class="slide"><h2>Find My Heart 💖</h2><button onclick="alert('You found my heart 💕')">Tap</button></div>
-
-<div class="slide"><h2>Scavenger Hunt 🌹</h2><p>Hidden clues.<br>First date memory.<br>Sweet surprise ending.</p></div>
-
-<div class="slide"><h2>Stargazing Picnic 🤍</h2><p>Blanket under stars.<br>Your favorite snacks.<br>Our love playlist.</p></div>
-
-<div class="slide"><h2>Fun Adventures 💗</h2><p>Hot air balloon ride.<br>Arcade laughter.<br>Karaoke duets.</p></div>
-
-<div class="slide"><h2>Cozy Moments 🌸</h2><p>Pottery hearts.<br>Comedy night laughs.<br>Sunset love letters.</p></div>
-
-<!-- FINAL 19 -->
+<!-- SLIDE 12: Romantic Love Letter 1 -->
 <div class="slide">
-<h1>Happy Valentine’s Day 💖</h1>
+<h2>Love Letter for My Kanna 💌</h2>
+<div class="letter">
+My dearest Chittikanna,<br><br>
+Holding your hand, I can walk for miles. Hugging you tight, I can spend my life. You are the most special person who makes me feel loved, Kanna Charan. I wish we stay together until eternity.<br><br>
+Love you to the moon and back,<br>
+Your Poojitha 💖
+</div>
+<button onclick="alert('This letter is just for you, my Chittikanna! 🌹')">Read Again</button>
+</div>
+
+<!-- SLIDE 13: Romantic Love Letter 2 -->
+<div class="slide">
+<h2>Another Letter for Charan 💕</h2>
+<div class="letter">
+Kanna, my rock,<br><br>
+You are my ultimate support, keeping me grounded. Your presence is bliss; I cannot imagine life without you, Chittikanna. You brighten my darkest days.<br><br>
+Forever yours,<br>
+Your loving Poojitha 🤍
+</div>
+<button onclick="alert('I cherish you always, Kanna Charan! 💗')">Feel My Love</button>
+</div>
+
+<!-- SLIDE 14: Compatibility Quiz -->
+<div class="slide"><h2>Our Compatibility Quiz 💌</h2><button onclick="alert('Poojitha loves Kanna Charan infinity% 💖 We are soulmates!')">Who loves more, Chittikanna?</button></div>
+
+<!-- SLIDE 15: Find My Heart -->
+<div class="slide"><h2>Find My Heart, Kanna 💖</h2><button onclick="alert('You found my heart forever, my Chittikanna 💕')">Tap Here, Charan</button></div>
+
+<!-- SLIDE 16: Promise Keeper -->
+<div class="slide"><h2>My Promises to You 💗</h2><p>- Kiss you good morning every day, Kanna.<br>- Hold your hand through everything, Charan.<br>- Love you more each moment, Chittikanna. 💖</p></div>
+
+<!-- SLIDE 17: Virtual Hug -->
+<div class="slide"><h2>Send Me a Hug 💕</h2><button onclick="document.querySelector('.hug').style.display='block'; alert('Sending virtual hugs to my Kanna! 🤗')">Hug Me, Charan</button><p class="hug" style="display:none; font-size:30px; margin-top:20px;">🤗💕🤗 Big hug from Poojitha! 💖</p></div>
+
+<!-- SLIDE 18: Memory Moment -->
+<div class="slide"><h2>Our Special Memory 🌹</h2><p>Remember our first laugh together, Chittikanna? Every moment with you is magic, Kanna Charan. Can't wait for more! 💖</p></div>
+
+<!-- SLIDE 19: Forever Vow -->
+<div class="slide"><h2>Our Forever Vow 🤍</h2><p>My Kanna Charan, you are my dream come true. I love you more than words, Chittikanna. Happy Valentine's Day! 🌸</p></div>
+
+<!-- SLIDE 20: Final Valentine's Slide -->
+<div class="slide">
+<h1>Happy Valentine’s Day, My Kanna 💖</h1>
 <p>
-Under pink skies we shine,<br>
+Under pink skies we shine, Chittikanna,<br>
 our hearts bloom together,<br>
 like flowers in spring,<br>
 this love feels cinematic,<br>
-Forever starts now.
+Forever starts now, Charan.
 </p>
 </div>
 
@@ -225,13 +270,16 @@ showSlide(current);
 }
 
 setInterval(()=>{
-document.getElementById("count").innerHTML=
-"Every second with you is precious 💕";
-},1000);
+let countEl=document.getElementById("count");
+if(countEl){
+countEl.innerHTML="Next heartbeat: I love you, Kanna Charan 💕";
+}
+},2000);
 </script>
 
 </body>
 </html>
+
 
 
 
