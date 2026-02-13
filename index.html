@@ -7,13 +7,11 @@
 <style>
 body{
 margin:0;
-padding:0;
-overflow:hidden;
-background:linear-gradient(to bottom,#ffe6f2,#fff0f5);
 font-family:cursive;
+background:linear-gradient(#fff0f5,#ffd6ec);
+overflow:hidden;
 }
 
-/* Slides */
 .slide{
 display:none;
 position:absolute;
@@ -32,7 +30,7 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-animation:fade 0.5s ease;
+animation:fade 0.6s;
 }
 
 @keyframes fade{
@@ -40,17 +38,15 @@ from{opacity:0;}
 to{opacity:1;}
 }
 
-/* Image */
 .photo{
 width:90%;
-max-height:55vh;
+height:45vh;
 object-fit:contain;
 border-radius:20px;
 box-shadow:0 0 20px #ff69b4;
 margin-bottom:15px;
 }
 
-/* Controls */
 .controls{
 position:fixed;
 bottom:15px;
@@ -65,157 +61,138 @@ button{
 background:#ff69b4;
 color:white;
 border:none;
-padding:10px 20px;
+padding:10px 18px;
 border-radius:25px;
-font-size:16px;
+font-size:15px;
 }
 
-/* Floating love symbols */
-.love{
+input{
+padding:8px;
+border-radius:15px;
+border:1px solid pink;
+margin-top:10px;
+}
+
+/* Floating symbols */
+.symbol{
 position:absolute;
 font-size:24px;
-animation:float 6s linear forwards;
+animation:floatUp 6s linear forwards;
 cursor:pointer;
 color:#ff69b4;
 }
 
-@keyframes float{
+@keyframes floatUp{
 0%{transform:translateY(100vh);}
 100%{transform:translateY(-10vh);}
 }
 
-/* Crack burst */
-.burst{
-position:absolute;
-font-size:35px;
-animation:explode 0.6s forwards;
-}
-
-@keyframes explode{
-0%{transform:scale(1);opacity:1;}
-100%{transform:scale(2.5);opacity:0;}
-}
-
-/* Flower bloom */
+/* Blast */
 .flower{
 position:absolute;
 font-size:22px;
-animation:bloom 1s forwards;
+animation:bloom 1s ease-out forwards;
 }
 
 @keyframes bloom{
-0%{transform:translate(0,0) scale(1);opacity:1;}
-100%{transform:translate(var(--x),var(--y)) scale(0.5);opacity:0;}
+0%{transform:translate(0,0);opacity:1;}
+100%{transform:translate(var(--x),var(--y));opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- FLOATING SYMBOL SCRIPT -->
 <script>
-const icons=["💖","🌹","💕","💗"];
+const icons=["💖","🌹","💕","🤍"];
 
 setInterval(()=>{
-let el=document.createElement("span");
-el.className="love";
-el.innerHTML=icons[Math.floor(Math.random()*icons.length)];
-el.style.left=Math.random()*100+"%";
-document.body.appendChild(el);
+let s=document.createElement("span");
+s.className="symbol";
+s.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+s.style.left=Math.random()*100+"%";
+document.body.appendChild(s);
 
-el.onclick=function(){
-
-// burst effect
-let boom=document.createElement("span");
-boom.className="burst";
-boom.innerHTML="💥";
-boom.style.left=el.offsetLeft+"px";
-boom.style.top=el.offsetTop+"px";
-document.body.appendChild(boom);
-setTimeout(()=>boom.remove(),600);
-
-// flower bloom pink & white
+s.onclick=function(){
 for(let i=0;i<10;i++){
-let flower=document.createElement("span");
-flower.className="flower";
-flower.innerHTML= i%2==0 ? "🌸" : "🤍";
-flower.style.left=el.offsetLeft+"px";
-flower.style.top=el.offsetTop+"px";
+let f=document.createElement("span");
+f.className="flower";
+f.innerHTML=Math.random()>0.5?"🌸":"🌺";
+f.style.left=s.offsetLeft+"px";
+f.style.top=s.offsetTop+"px";
 
 let x=(Math.random()*200-100)+"px";
 let y=(Math.random()*200-100)+"px";
-flower.style.setProperty("--x",x);
-flower.style.setProperty("--y",y);
 
-document.body.appendChild(flower);
-setTimeout(()=>flower.remove(),1000);
+f.style.setProperty('--x',x);
+f.style.setProperty('--y',y);
+
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),1000);
 }
-
-el.remove();
+s.remove();
 };
 
-setTimeout(()=>{if(el) el.remove()},6000);
+setTimeout(()=>{if(s) s.remove()},6000);
 
 },900);
 </script>
 
-<!-- SLIDES -->
-
+<!-- SLIDE 1 -->
 <div class="slide active">
-<h2>For My Chittikanna 💖</h2>
+<h2>For My Chittikanna 💗</h2>
 <p>
-The day you came into my life,<br>
-everything turned into pink magic,<br>
-Kanna you are my forever dream,<br>
-Charan my sweetest heartbeat,<br>
-Tonight belongs to us.
+You entered my life like magic,<br>
+turned everything soft pink,<br>
+Kanna you are my heartbeat,<br>
+Charan my sweetest destiny,<br>
+Tonight is our love story.
 </p>
 </div>
 
-<div class="slide">
-<img src="photo1.jpg" class="photo">
-<p>Your eyes are my universe.<br>I fall deeper each day.<br>You are my forever spark.</p>
-<audio src="song1.mp3"></audio>
-</div>
+<!-- PHOTO SLIDES 2-9 -->
+<div class="slide"><img src="photo1.jpg" class="photo"><p>Your eyes hold my universe.<br>I fall for you daily.<br>You are my spark.</p><audio src="song1.mp3"></audio></div>
+<div class="slide"><img src="photo2.jpg" class="photo"><p>Your hug feels like heaven.<br>You are my safe place.<br>I melt for you.</p><audio src="song2.mp3"></audio></div>
+<div class="slide"><img src="photo3.jpg" class="photo"><p>Your smile heals me.<br>You are my sunshine.<br>I adore you.</p><audio src="song3.mp3"></audio></div>
+<div class="slide"><img src="photo4.jpg" class="photo"><p>Time stops with you.<br>Every moment shines.<br>Stay mine forever.</p><audio src="song4.mp3"></audio></div>
+<div class="slide"><img src="photo5.jpg" class="photo"><p>Your love colors my world.<br>Life is beautiful with you.<br>I choose you always.</p><audio src="song5.mp3"></audio></div>
+<div class="slide"><img src="photo6.jpg" class="photo"><p>Your touch is magic.<br>You light my nights.<br>Forever yours.</p><audio src="song6.mp3"></audio></div>
+<div class="slide"><img src="photo7.jpg" class="photo"><p>Your laugh melts me.<br>You are my comfort.<br>Endless love.</p><audio src="song7.mp3"></audio></div>
+<div class="slide"><img src="photo8.jpg" class="photo"><p>Your love is strength.<br>Our future shines.<br>Kanna I love you.</p><audio src="song8.mp3"></audio></div>
 
-<div class="slide">
-<img src="photo2.jpg" class="photo">
-<p>Your hug feels like heaven.<br>You are my safest place.<br>I belong only to you.</p>
-<audio src="song2.mp3"></audio>
-</div>
+<!-- FEATURES 10-18 -->
+<div class="slide"><h2>Love Calculator 💕</h2><input id="name"><button onclick="document.getElementById('res').innerHTML='100% Perfect Love 💖'">Check</button><p id="res"></p></div>
 
-<div class="slide">
-<img src="photo3.jpg" class="photo">
-<p>Your smile melts my heart.<br>Life shines with you.<br>Stay mine forever.</p>
-<audio src="song3.mp3"></audio>
-</div>
+<div class="slide"><h2>Countdown ⏳</h2><p id="count"></p></div>
 
-<div class="slide">
-<img src="photo4.jpg" class="photo">
-<p>You color my world pink.<br>Every second is magical.<br>I adore you endlessly.</p>
-<audio src="song4.mp3"></audio>
-</div>
+<div class="slide"><h2>Compatibility Quiz 💌</h2><button onclick="alert('Poojitha loves Kanna infinity 💖')">Who loves more?</button></div>
 
-<div class="slide">
-<h2>Love Meter 💕</h2>
-<p>Our Love = 100% Perfect 💖</p>
-</div>
+<div class="slide"><h2>Find My Heart 💖</h2><button onclick="alert('You found my heart 💕')">Tap</button></div>
 
+<div class="slide"><h2>Scavenger Hunt 🌹</h2><p>Hidden clues.<br>First date memory.<br>Sweet surprise ending.</p></div>
+
+<div class="slide"><h2>Stargazing Picnic 🤍</h2><p>Blanket under stars.<br>Your favorite snacks.<br>Our love playlist.</p></div>
+
+<div class="slide"><h2>Fun Adventures 💗</h2><p>Hot air balloon ride.<br>Arcade laughter.<br>Karaoke duets.</p></div>
+
+<div class="slide"><h2>Cozy Moments 🌸</h2><p>Pottery hearts.<br>Comedy night laughs.<br>Sunset love letters.</p></div>
+
+<!-- FINAL 19 -->
 <div class="slide">
-<h1>Happy Valentine’s Day 💗</h1>
+<h1>Happy Valentine’s Day 💖</h1>
 <p>
 Under pink skies we shine,<br>
-two hearts beating as one,<br>
-our love feels cinematic,<br>
-written in destiny,<br>
-Forever begins now.
+our hearts bloom together,<br>
+like flowers in spring,<br>
+this love feels cinematic,<br>
+Forever starts now.
 </p>
 </div>
 
 <!-- CONTROLS -->
 <div class="controls">
-<button onclick="prev()">Back</button>
-<button onclick="next()">Next</button>
+<button onclick="prevSlide()">Back</button>
+<button onclick="nextSlide()">Next</button>
 </div>
 
 <script>
@@ -233,20 +210,26 @@ let audio=slides[i].querySelector("audio");
 if(audio){audio.play();}
 }
 
-function next(){
+function nextSlide(){
 if(current<slides.length-1){
 current++;
 showSlide(current);
 }
 }
 
-function prev(){
+function prevSlide(){
 if(current>0){
 current--;
 showSlide(current);
 }
 }
+
+setInterval(()=>{
+document.getElementById("count").innerHTML=
+"Every second with you is precious 💕";
+},1000);
 </script>
 
 </body>
-</html
+</html>
+
