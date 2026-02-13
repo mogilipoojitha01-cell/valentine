@@ -6,17 +6,16 @@
 <style>
 body{
 margin:0;
-font-family: 'Comic Sans MS';
+font-family:Arial;
 background:linear-gradient(to bottom,#ff1493,#ff69b4);
 color:white;
 text-align:center;
-overflow:hidden;
 }
 
 .slide{
 display:none;
 padding:40px;
-height:100vh;
+min-height:80vh;
 }
 
 .active{
@@ -24,23 +23,22 @@ display:block;
 }
 
 h1{
-font-size:40px;
-text-shadow:2px 2px 5px hotpink;
+font-size:35px;
 }
 
 button{
-padding:10px 20px;
+padding:12px 25px;
 font-size:18px;
-background:#ff1493;
-color:white;
+background:white;
+color:#ff1493;
 border:none;
-border-radius:20px;
-cursor:pointer;
+border-radius:25px;
 margin:10px;
+cursor:pointer;
 }
 
 button:hover{
-background:#ff69b4;
+background:#ffe6f2;
 }
 
 input{
@@ -50,7 +48,7 @@ border:none;
 margin:10px;
 }
 
-.pink-box{
+.box{
 background:#ff69b4;
 padding:20px;
 border-radius:20px;
@@ -63,54 +61,61 @@ width:70%;
 
 <body>
 
-<!-- SLIDES -->
-
+<!-- 1 -->
 <div class="slide active">
 <h1>Welcome My Chittikanna 💖</h1>
 <p>You are my world Kanna 💕</p>
 </div>
 
+<!-- 2 -->
 <div class="slide">
 <h1>My Charan 🌸</h1>
 <p>You are my sunshine ☀</p>
 </div>
 
+<!-- 3 -->
 <div class="slide">
 <h1>Forever Us 💞</h1>
 <p>Only you and me Chittikanna 💕</p>
 </div>
 
+<!-- 4 -->
 <div class="slide">
-<h1>My Heart Beats for You 💓</h1>
+<h1>My Heart 💓</h1>
 <p>Kanna you are everything 💗</p>
 </div>
 
+<!-- 5 -->
 <div class="slide">
 <h1>My Pink Love 🌷</h1>
-<p>With you life is beautiful Charan 💖</p>
+<p>Life is beautiful with you Charan 💖</p>
 </div>
 
+<!-- 6 -->
 <div class="slide">
 <h1>Always Yours 💘</h1>
 <p>I love you endlessly Chittikanna 💕</p>
 </div>
 
+<!-- 7 -->
 <div class="slide">
 <h1>My Happiness 💝</h1>
 <p>Kanna you are my smile 💞</p>
 </div>
 
+<!-- 8 -->
 <div class="slide">
 <h1>My Dream 💗</h1>
-<p>Charan you are my dream boy 💕</p>
+<p>Charan you are my dream 💕</p>
 </div>
 
+<!-- 9 -->
 <div class="slide">
 <h1>My Everything 💖</h1>
-<p>Chittikanna you complete me 💞</p>
+<p>You complete me Chittikanna 💞</p>
 </div>
 
-<!-- LOVE CALCULATOR -->
+<!-- 10 LOVE CALCULATOR -->
 <div class="slide">
 <h1>Love Calculator 💘</h1>
 <input id="name1" placeholder="Your Name">
@@ -120,43 +125,43 @@ width:70%;
 <p id="result"></p>
 </div>
 
-<!-- FIND MY HEART -->
+<!-- 11 FIND HEART -->
 <div class="slide">
 <h1>Find My Heart 💖</h1>
-<div class="pink-box">
+<div class="box">
 <button onclick="alert('You found my heart Kanna 💕')">💗</button>
 <button onclick="alert('Wrong one Charan 😜')">💙</button>
-<button onclick="alert('Wrong one 😆')">💚</button>
+<button onclick="alert('Try again Chittikanna 💕')">💚</button>
 </div>
 </div>
 
-<!-- COMPATIBILITY -->
+<!-- 12 COMPATIBILITY -->
 <div class="slide">
 <h1>Love Compatibility 💞</h1>
-<button onclick="showCompatibility()">Check Compatibility</button>
-<p id="compatibility"></p>
+<button onclick="compatibility()">Check Compatibility</button>
+<p id="comp"></p>
 </div>
 
-<!-- COUNTDOWN -->
+<!-- 13 COUNTDOWN -->
 <div class="slide">
-<h1>Countdown For Us 💕</h1>
+<h1>Countdown For Our Day 💕</h1>
 <p id="countdown"></p>
 </div>
 
-<!-- LOVE LETTER -->
+<!-- 14 LOVE LETTER -->
 <div class="slide">
 <h1>My Love Letter 💌</h1>
-<div class="pink-box">
+<div class="box">
 <p>
 My dearest Chittikanna,  
-You are my heart, my soul, my everything.  
+You are my heart and soul.  
 Kanna, every moment with you feels magical.  
 Charan, I promise to love you forever and ever 💖  
 </p>
 </div>
 </div>
 
-<!-- VALENTINES -->
+<!-- 15 VALENTINE -->
 <div class="slide">
 <h1>Happy Valentine's Day 💝</h1>
 <p>
@@ -197,34 +202,32 @@ showSlide(current);
 }
 
 function calculateLove(){
-let n1=document.getElementById("name1").value;
-let n2=document.getElementById("name2").value;
-let percent=Math.floor(Math.random()*50)+50;
-document.getElementById("result").innerText=
-n1+" ❤️ "+n2+" = "+percent+"% Love 💕";
-}
-
-function showCompatibility(){
 let percent=Math.floor(Math.random()*40)+60;
-document.getElementById("compatibility").innerText=
-"Your Compatibility with Charan is "+percent+"% 💖";
+document.getElementById("result").innerText=
+"Love with Charan = "+percent+"% 💖";
 }
 
-let countdownDate=new Date("Feb 14, 2026 00:00:00").getTime();
+function compatibility(){
+let percent=Math.floor(Math.random()*30)+70;
+document.getElementById("comp").innerText=
+"Compatibility with Chittikanna = "+percent+"% 💞";
+}
+
+let target=new Date("Feb 14, 2026 00:00:00").getTime();
 
 setInterval(function(){
 let now=new Date().getTime();
-let distance=countdownDate-now;
-
-let days=Math.floor(distance/(1000*60*60*24));
+let diff=target-now;
+let days=Math.floor(diff/(1000*60*60*24));
 document.getElementById("countdown").innerText=
-days+" days left for our special day Chittikanna 💕";
+days+" days left for our special day Kanna 💕";
 },1000);
 
 </script>
 
 </body>
 </html>
+
 
 
 
