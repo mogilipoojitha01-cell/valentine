@@ -2,49 +2,42 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Chittikanna 💖</title>
+<title>My Chittikanna 💖</title>
 
 <style>
-body{
+html,body{
 margin:0;
-overflow:hidden;
+padding:0;
+background:#ff1493;
 font-family:cursive;
-background:linear-gradient(180deg,#ff1493,#ff69b4,#ff1493);
 color:white;
+scroll-behavior:smooth;
 }
 
-/* Slides */
+/* Slide layout */
 .slide{
-display:none;
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100vh;
-padding:25px;
+min-height:100vh;
+padding:30px 20px;
 box-sizing:border-box;
-text-align:center;
-}
-
-.active{
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-animation:fade 0.6s;
+text-align:center;
+background:linear-gradient(#ff1493,#ff69b4);
+border-bottom:3px solid #ff85c1;
 }
 
-@keyframes fade{from{opacity:0;}to{opacity:1;}}
-
-/* Photo */
+/* Image */
 .photo{
 width:90%;
-height:45vh;
+max-height:45vh;
 object-fit:contain;
 border-radius:20px;
-box-shadow:0 0 25px #ffb6d9;
+box-shadow:0 0 20px #ffc0cb;
 }
 
+/* Caption */
 .caption{
 font-size:22px;
 font-weight:bold;
@@ -52,29 +45,21 @@ margin:10px 0;
 }
 
 /* Buttons */
-.controls{
-position:fixed;
-bottom:15px;
-width:100%;
-display:flex;
-justify-content:space-between;
-padding:0 25px;
-}
-
 button{
 background:#ffb6d9;
 color:#ff1493;
 border:none;
 padding:10px 18px;
 border-radius:20px;
+margin-top:10px;
 font-weight:bold;
 }
 
 /* Floating rotating symbols */
 .symbol{
-position:absolute;
-font-size:24px;
-animation:rotateFloat 6s linear forwards;
+position:fixed;
+font-size:22px;
+animation:rotateFloat 8s linear infinite;
 cursor:pointer;
 }
 
@@ -85,21 +70,14 @@ cursor:pointer;
 
 /* Flower blast */
 .flower{
-position:absolute;
-font-size:22px;
+position:fixed;
+font-size:20px;
 animation:bloom 1s ease-out forwards;
 }
 
 @keyframes bloom{
 0%{transform:translate(0,0) scale(1);opacity:1;}
 100%{transform:translate(var(--x),var(--y)) scale(0.5);opacity:0;}
-}
-
-input{
-padding:8px;
-border-radius:15px;
-border:none;
-text-align:center;
 }
 </style>
 </head>
@@ -108,215 +86,152 @@ text-align:center;
 
 <script>
 const icons=["💖","🌹","💕","💘"];
-
 setInterval(()=>{
-let s=document.createElement("span");
+let s=document.createElement("div");
 s.className="symbol";
 s.innerHTML=icons[Math.floor(Math.random()*icons.length)];
 s.style.left=Math.random()*100+"%";
 document.body.appendChild(s);
 
 s.onclick=function(){
-for(let i=0;i<20;i++){
-let f=document.createElement("span");
+for(let i=0;i<25;i++){
+let f=document.createElement("div");
 f.className="flower";
 f.innerHTML=Math.random()>0.5?"🌸":"🌺";
 f.style.left="50%";
 f.style.top="50%";
-let x=(Math.random()*400-200)+"px";
-let y=(Math.random()*400-200)+"px";
-f.style.setProperty('--x',x);
-f.style.setProperty('--y',y);
+f.style.setProperty('--x',(Math.random()*500-250)+"px");
+f.style.setProperty('--y',(Math.random()*500-250)+"px");
 document.body.appendChild(f);
 setTimeout(()=>f.remove(),1000);
 }
-s.remove();
 };
-setTimeout(()=>{if(s) s.remove()},6000);
-},700);
+},1500);
 </script>
 
-<!-- 1 INTRO -->
-<div class="slide active">
+<!-- 1 -->
+<div class="slide">
 <h2>My Chittikanna 💖</h2>
 <p>
-Charan, from the moment you entered my life,<br>
-Kanna, my world turned into pure pink magic,<br>
-Chittikanna, you are my heartbeat and my forever,<br>
-This Valentine is only about us and our destiny.
+Charan, you are my destiny.<br>
+Kanna, my world turns pink for you.<br>
+Chittikanna, you are my heartbeat.<br>
+This Valentine is ours forever.
 </p>
-<button onclick="alert('My Love Letter 💌\n\nChittikanna, I never believed in destiny until I met you. Charan, you are my peace, my passion, my forever dream. Kanna, will you stay with me in every lifetime? I am madly, deeply, endlessly in love with you. 💖')">
-Open Secret 💌
-</button>
+<button onclick="alert('My Love Letter 💌\n\nCharan, you are my once in a lifetime love. Kanna, will you stay with me forever?')">Open Secret 💌</button>
 </div>
 
-<!-- 2-9 PHOTO SLIDES -->
-
+<!-- 2-9 Photos -->
 <div class="slide">
 <img src="photo1.jpg" class="photo">
 <div class="caption">Spark</div>
-<p>Your eyes light up my universe.<br>
-Chittikanna, you are my brightest star.<br>
-With you everything glows.<br>
-I fall for you every second.</p>
-<audio src="song1.mp3"></audio>
+<p>You light up my universe.<br>You are my brightest star.<br>I adore you deeply.<br>Forever mine.</p>
+<audio controls src="song1.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo2.jpg" class="photo">
 <div class="caption">Heaven</div>
-<p>Kanna, your hug feels like paradise.<br>
-Your touch melts my soul.<br>
-I feel safest with you.<br>
-You are my home.</p>
-<audio src="song2.mp3"></audio>
+<p>Your hug feels magical.<br>My safe place.<br>My peace.<br>My home.</p>
+<audio controls src="song2.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo3.jpg" class="photo">
 <div class="caption">Magic</div>
-<p>Charan, your smile heals me.<br>
-You are my sunshine.<br>
-You are my happiness.<br>
-My forever dream.</p>
-<audio src="song3.mp3"></audio>
+<p>Your smile heals me.<br>You shine bright.<br>You melt my heart.<br>I love you.</p>
+<audio controls src="song3.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo4.jpg" class="photo">
 <div class="caption">Bliss</div>
-<p>Time stops when I'm with you.<br>
-Chittikanna, you are my peace.<br>
-My calm in chaos.<br>
-My beautiful destiny.</p>
-<audio src="song4.mp3"></audio>
+<p>Time stops with you.<br>You calm my storms.<br>You are my joy.<br>My forever.</p>
+<audio controls src="song4.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo5.jpg" class="photo">
 <div class="caption">Dream</div>
-<p>Kanna, loving you feels unreal.<br>
-Like living inside a fairytale.<br>
-My heart belongs to you.<br>
-Forever and always.</p>
-<audio src="song5.mp3"></audio>
+<p>Loving you is unreal.<br>You are my wish.<br>You are my heart.<br>My world.</p>
+<audio controls src="song5.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo6.jpg" class="photo">
 <div class="caption">Forever</div>
-<p>Charan, I choose you daily.<br>
-In every lifetime.<br>
-In every universe.<br>
-You are mine.</p>
-<audio src="song6.mp3"></audio>
+<p>I choose you always.<br>In every life.<br>In every world.<br>You are mine.</p>
+<audio controls src="song6.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo7.jpg" class="photo">
 <div class="caption">Comfort</div>
-<p>Your laugh is my therapy.<br>
-Kanna, you calm my storms.<br>
-You are my comfort zone.<br>
-My safe arms.</p>
-<audio src="song7.mp3"></audio>
+<p>Your laugh heals me.<br>You are my calm.<br>You are my safe arms.<br>My love.</p>
+<audio controls src="song7.mp3"></audio>
 </div>
 
 <div class="slide">
 <img src="photo8.jpg" class="photo">
 <div class="caption">Destiny</div>
-<p>Chittikanna, our love is written.<br>
-In stars and skies.<br>
-In fate and forever.<br>
-We are eternal.</p>
-<audio src="song8.mp3"></audio>
+<p>Our love is written.<br>In stars above.<br>In fate and time.<br>Eternal bond.</p>
+<audio controls src="song8.mp3"></audio>
 </div>
 
-<!-- 10 LOVE CALCULATOR -->
+<!-- 10 -->
 <div class="slide">
 <h2>Love Calculator 💕</h2>
-<input id="loveName" placeholder="Enter Kanna's Name">
-<button onclick="document.getElementById('loveResult').innerHTML='💖 100% Eternal Love 💖'">Calculate</button>
-<p id="loveResult"></p>
+<input id="name" placeholder="Enter Kanna Name">
+<button onclick="document.getElementById('result').innerHTML='💖 100% Eternal Love 💖'">Calculate</button>
+<p id="result"></p>
 </div>
 
-<!-- 11 COUNTDOWN -->
+<!-- 11 -->
 <div class="slide">
-<h2>Forever Countdown ⏳</h2>
+<h2>Countdown ⏳</h2>
 <p id="count"></p>
 </div>
 
-<!-- 12 QUIZ -->
+<!-- 12 -->
 <div class="slide">
 <h2>Compatibility Quiz 💌</h2>
-<button onclick="alert('Perfect Match 💖 Gift: Romantic Surprise Date 🌹')">Check Compatibility</button>
+<button onclick="alert('Perfect Match 💖')">Check</button>
 </div>
 
-<!-- 13 AUDIO MESSAGE -->
+<!-- 13 -->
 <div class="slide">
 <h2>Special Audio 💖</h2>
-<p>Play this surprise message for you, Kanna.</p>
 <audio controls src="song1.mp3"></audio>
 </div>
 
-<!-- 14 GAME -->
+<!-- 14 -->
 <div class="slide">
 <h2>Find My Heart 💘</h2>
-<button onclick="alert('You found my heart, Charan 💖 Proposal Accepted Forever!')">Tap to Find</button>
+<button onclick="alert('Proposal Accepted 💍')">Tap</button>
 </div>
 
-<!-- 15 FINAL -->
+<!-- 15 -->
 <div class="slide">
 <h1>Happy Valentine’s Day Kanna 💖</h1>
 <p>
-Chittikanna, you are my once in a lifetime love.<br>
-Charan, you are the reason my world glows pink.<br>
-Kanna, every heartbeat whispers your name.<br>
-Our love feels like a beautiful cinema scene.<br>
-And I promise to love you beyond forever.
+Chittikanna, you are my forever.<br>
+Charan, you are my dream come true.<br>
+Kanna, my heart beats for you.<br>
+Our love shines endlessly.<br>
+Forever and always.
 </p>
 </div>
 
-<div class="controls">
-<button onclick="prevSlide()">Back</button>
-<button onclick="nextSlide()">Next</button>
-</div>
-
 <script>
-let slides=document.querySelectorAll(".slide");
-let current=0;
-
-function showSlide(i){
-slides.forEach(s=>{
-s.classList.remove("active");
-let a=s.querySelector("audio");
-if(a){a.pause();a.currentTime=0;}
-});
-slides[i].classList.add("active");
-let audio=slides[i].querySelector("audio");
-if(audio){audio.play();}
-}
-
-function nextSlide(){
-if(current<slides.length-1){current++;showSlide(current);}
-}
-
-function prevSlide(){
-if(current>0){current--;showSlide(current);}
-}
-
 setInterval(()=>{
-let future=new Date("Feb 14, 2026 00:00:00").getTime();
-let now=new Date().getTime();
-let gap=future-now;
-let days=Math.floor(gap/(1000*60*60*24));
 document.getElementById("count").innerHTML=
-days+" days until our next Valentine, Kanna 💗";
+"Every second with you is precious 💖";
 },1000);
 </script>
 
 </body>
 </html>
+
 
 
 
