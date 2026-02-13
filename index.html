@@ -1,190 +1,213 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>For My Chittikanna 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Kanna 💖</title>
 
 <style>
 body{
 margin:0;
-font-family:Arial;
-background:linear-gradient(to bottom,#ff1493,#ff69b4);
-color:white;
-text-align:center;
+font-family:cursive;
+background:linear-gradient(#fff0f5,#ffd6ec);
+overflow:hidden;
 }
 
 .slide{
 display:none;
-padding:40px;
-min-height:80vh;
+position:absolute;
+width:100%;
+height:100vh;
+top:0;
+left:0;
+padding:25px;
+box-sizing:border-box;
+text-align:center;
+color:#ff1493;
 }
 
 .active{
-display:block;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+animation:fade 0.6s;
 }
 
-h1{
-font-size:35px;
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+.photo{
+width:90%;
+height:45vh;
+object-fit:contain;
+border-radius:20px;
+box-shadow:0 0 20px #ff69b4;
+margin-bottom:15px;
+}
+
+.controls{
+position:fixed;
+bottom:15px;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:0 25px;
+box-sizing:border-box;
 }
 
 button{
-padding:12px 25px;
-font-size:18px;
-background:white;
-color:#ff1493;
+background:#ff69b4;
+color:white;
 border:none;
+padding:10px 18px;
 border-radius:25px;
-margin:10px;
-cursor:pointer;
-}
-
-button:hover{
-background:#ffe6f2;
+font-size:15px;
 }
 
 input{
-padding:10px;
-border-radius:10px;
-border:none;
-margin:10px;
+padding:8px;
+border-radius:15px;
+border:1px solid pink;
+margin-top:10px;
 }
 
-.box{
-background:#ff69b4;
-padding:20px;
-border-radius:20px;
-margin:20px auto;
-width:70%;
+/* Floating symbols */
+.symbol{
+position:absolute;
+font-size:24px;
+animation:floatUp 6s linear forwards;
+cursor:pointer;
+color:#ff69b4;
 }
 
+@keyframes floatUp{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+/* Blast */
+.flower{
+position:absolute;
+font-size:22px;
+animation:bloom 1s ease-out forwards;
+}
+
+@keyframes bloom{
+0%{transform:translate(0,0);opacity:1;}
+100%{transform:translate(var(--x),var(--y));opacity:0;}
+}
 </style>
 </head>
 
 <body>
 
-<!-- 1 -->
+<script>
+const icons=["💖","🌹","💕","🤍"];
+
+setInterval(()=>{
+let s=document.createElement("span");
+s.className="symbol";
+s.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+s.style.left=Math.random()*100+"%";
+document.body.appendChild(s);
+
+s.onclick=function(){
+for(let i=0;i<10;i++){
+let f=document.createElement("span");
+f.className="flower";
+f.innerHTML=Math.random()>0.5?"🌸":"🌺";
+f.style.left=s.offsetLeft+"px";
+f.style.top=s.offsetTop+"px";
+
+let x=(Math.random()*200-100)+"px";
+let y=(Math.random()*200-100)+"px";
+
+f.style.setProperty('--x',x);
+f.style.setProperty('--y',y);
+
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),1000);
+}
+s.remove();
+};
+
+setTimeout(()=>{if(s) s.remove()},6000);
+
+},900);
+</script>
+
+<!-- SLIDE 1 -->
 <div class="slide active">
-<h1>Welcome My Chittikanna 💖</h1>
-<p>You are my world Kanna 💕</p>
-</div>
-
-<!-- 2 -->
-<div class="slide">
-<h1>My Charan 🌸</h1>
-<p>You are my sunshine ☀</p>
-</div>
-
-<!-- 3 -->
-<div class="slide">
-<h1>Forever Us 💞</h1>
-<p>Only you and me Chittikanna 💕</p>
-</div>
-
-<!-- 4 -->
-<div class="slide">
-<h1>My Heart 💓</h1>
-<p>Kanna you are everything 💗</p>
-</div>
-
-<!-- 5 -->
-<div class="slide">
-<h1>My Pink Love 🌷</h1>
-<p>Life is beautiful with you Charan 💖</p>
-</div>
-
-<!-- 6 -->
-<div class="slide">
-<h1>Always Yours 💘</h1>
-<p>I love you endlessly Chittikanna 💕</p>
-</div>
-
-<!-- 7 -->
-<div class="slide">
-<h1>My Happiness 💝</h1>
-<p>Kanna you are my smile 💞</p>
-</div>
-
-<!-- 8 -->
-<div class="slide">
-<h1>My Dream 💗</h1>
-<p>Charan you are my dream 💕</p>
-</div>
-
-<!-- 9 -->
-<div class="slide">
-<h1>My Everything 💖</h1>
-<p>You complete me Chittikanna 💞</p>
-</div>
-
-<!-- 10 LOVE CALCULATOR -->
-<div class="slide">
-<h1>Love Calculator 💘</h1>
-<input id="name1" placeholder="Your Name">
-<input id="name2" placeholder="His Name">
-<br>
-<button onclick="calculateLove()">Check Love</button>
-<p id="result"></p>
-</div>
-
-<!-- 11 FIND HEART -->
-<div class="slide">
-<h1>Find My Heart 💖</h1>
-<div class="box">
-<button onclick="alert('You found my heart Kanna 💕')">💗</button>
-<button onclick="alert('Wrong one Charan 😜')">💙</button>
-<button onclick="alert('Try again Chittikanna 💕')">💚</button>
-</div>
-</div>
-
-<!-- 12 COMPATIBILITY -->
-<div class="slide">
-<h1>Love Compatibility 💞</h1>
-<button onclick="compatibility()">Check Compatibility</button>
-<p id="comp"></p>
-</div>
-
-<!-- 13 COUNTDOWN -->
-<div class="slide">
-<h1>Countdown For Our Day 💕</h1>
-<p id="countdown"></p>
-</div>
-
-<!-- 14 LOVE LETTER -->
-<div class="slide">
-<h1>My Love Letter 💌</h1>
-<div class="box">
+<h2>For My Chittikanna 💗</h2>
 <p>
-My dearest Chittikanna,  
-You are my heart and soul.  
-Kanna, every moment with you feels magical.  
-Charan, I promise to love you forever and ever 💖  
-</p>
-</div>
-</div>
-
-<!-- 15 VALENTINE -->
-<div class="slide">
-<h1>Happy Valentine's Day 💝</h1>
-<p>
-To my sweet Chittikanna,  
-My love Kanna,  
-My forever Charan,  
-I love you more than words can say 💕  
+You entered my life like magic,<br>
+turned everything soft pink,<br>
+Kanna you are my heartbeat,<br>
+Charan my sweetest destiny,<br>
+Tonight is our love story.
 </p>
 </div>
 
-<br>
+<!-- PHOTO SLIDES 2-9 -->
+<div class="slide"><img src="photo1.jpg" class="photo"><p>Your eyes hold my universe.<br>I fall for you daily.<br>You are my spark.</p><audio src="song1.mp3"></audio></div>
+<div class="slide"><img src="photo2.jpg" class="photo"><p>Your hug feels like heaven.<br>You are my safe place.<br>I melt for you.</p><audio src="song2.mp3"></audio></div>
+<div class="slide"><img src="photo3.jpg" class="photo"><p>Your smile heals me.<br>You are my sunshine.<br>I adore you.</p><audio src="song3.mp3"></audio></div>
+<div class="slide"><img src="photo4.jpg" class="photo"><p>Time stops with you.<br>Every moment shines.<br>Stay mine forever.</p><audio src="song4.mp3"></audio></div>
+<div class="slide"><img src="photo5.jpg" class="photo"><p>Your love colors my world.<br>Life is beautiful with you.<br>I choose you always.</p><audio src="song5.mp3"></audio></div>
+<div class="slide"><img src="photo6.jpg" class="photo"><p>Your touch is magic.<br>You light my nights.<br>Forever yours.</p><audio src="song6.mp3"></audio></div>
+<div class="slide"><img src="photo7.jpg" class="photo"><p>Your laugh melts me.<br>You are my comfort.<br>Endless love.</p><audio src="song7.mp3"></audio></div>
+<div class="slide"><img src="photo8.jpg" class="photo"><p>Your love is strength.<br>Our future shines.<br>Kanna I love you.</p><audio src="song8.mp3"></audio></div>
 
-<button onclick="prevSlide()">⬅ Back</button>
-<button onclick="nextSlide()">Next ➡</button>
+<!-- FEATURES 10-18 -->
+<div class="slide"><h2>Love Calculator 💕</h2><input id="name"><button onclick="document.getElementById('res').innerHTML='100% Perfect Love 💖'">Check</button><p id="res"></p></div>
+
+<div class="slide"><h2>Countdown ⏳</h2><p id="count"></p></div>
+
+<div class="slide"><h2>Compatibility Quiz 💌</h2><button onclick="alert('Poojitha loves Kanna infinity 💖')">Who loves more?</button></div>
+
+<div class="slide"><h2>Find My Heart 💖</h2><button onclick="alert('You found my heart 💕')">Tap</button></div>
+
+<div class="slide"><h2>Scavenger Hunt 🌹</h2><p>Hidden clues.<br>First date memory.<br>Sweet surprise ending.</p></div>
+
+<div class="slide"><h2>Stargazing Picnic 🤍</h2><p>Blanket under stars.<br>Your favorite snacks.<br>Our love playlist.</p></div>
+
+<div class="slide"><h2>Fun Adventures 💗</h2><p>Hot air balloon ride.<br>Arcade laughter.<br>Karaoke duets.</p></div>
+
+<div class="slide"><h2>Cozy Moments 🌸</h2><p>Pottery hearts.<br>Comedy night laughs.<br>Sunset love letters.</p></div>
+
+<!-- FINAL 19 -->
+<div class="slide">
+<h1>Happy Valentine’s Day 💖</h1>
+<p>
+Under pink skies we shine,<br>
+our hearts bloom together,<br>
+like flowers in spring,<br>
+this love feels cinematic,<br>
+Forever starts now.
+</p>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+<button onclick="prevSlide()">Back</button>
+<button onclick="nextSlide()">Next</button>
+</div>
 
 <script>
-
 let slides=document.querySelectorAll(".slide");
 let current=0;
 
-function showSlide(index){
-slides.forEach(s=>s.classList.remove("active"));
-slides[index].classList.add("active");
+function showSlide(i){
+slides.forEach(s=>{
+s.classList.remove("active");
+let a=s.querySelector("audio");
+if(a){a.pause();a.currentTime=0;}
+});
+slides[i].classList.add("active");
+let audio=slides[i].querySelector("audio");
+if(audio){audio.play();}
 }
 
 function nextSlide(){
@@ -201,28 +224,10 @@ showSlide(current);
 }
 }
 
-function calculateLove(){
-let percent=Math.floor(Math.random()*40)+60;
-document.getElementById("result").innerText=
-"Love with Charan = "+percent+"% 💖";
-}
-
-function compatibility(){
-let percent=Math.floor(Math.random()*30)+70;
-document.getElementById("comp").innerText=
-"Compatibility with Chittikanna = "+percent+"% 💞";
-}
-
-let target=new Date("Feb 14, 2026 00:00:00").getTime();
-
-setInterval(function(){
-let now=new Date().getTime();
-let diff=target-now;
-let days=Math.floor(diff/(1000*60*60*24));
-document.getElementById("countdown").innerText=
-days+" days left for our special day Kanna 💕";
+setInterval(()=>{
+document.getElementById("count").innerHTML=
+"Every second with you is precious 💕";
 },1000);
-
 </script>
 
 </body>
